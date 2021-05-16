@@ -1,9 +1,13 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
+    dataBinding {
+        enabled = true
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -46,4 +50,8 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    kapt "com.android.databinding:compiler:3.2.0-alpha10"
+}
+kapt {
+    generateStubs = true
 }

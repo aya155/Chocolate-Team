@@ -1,4 +1,4 @@
-package com.aya.chocolateteam
+package com.aya.chocolateteam.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import com.aya.chocolateteam.R
 
 class SplashScreen : AppCompatActivity() {
     private lateinit var topAnimation: Animation
@@ -28,8 +29,8 @@ class SplashScreen : AppCompatActivity() {
             finish()
         },SPLASH_TIME)
 
-        topAnimation= AnimationUtils.loadAnimation(this,R.anim.top_animation)
-        buttomAnimation= AnimationUtils.loadAnimation(this,R.anim.buttom_animation)
+        topAnimation= AnimationUtils.loadAnimation(this, R.anim.top_animation)
+        buttomAnimation= AnimationUtils.loadAnimation(this, R.anim.buttom_animation)
 
         imageView=findViewById(R.id.earth)
         text1=findViewById(R.id.text1)
