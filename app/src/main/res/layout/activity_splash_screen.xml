@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFEB3B"
-    tools:context=".SplashScreen">
+    tools:context=".ui.SplashScreen">
+
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="match_parent"
@@ -20,7 +21,7 @@
         android:layout_below="@id/progress_bar"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/bangers"
-        android:text="World Fact"
+        android:text="@string/world_fact"
         android:textAlignment="center"
         android:textColor="#A9000000"
         android:textSize="50sp" />
@@ -29,11 +30,11 @@
         android:id="@+id/text2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="See The Information Of The Country"
-        android:textColor="#A9000000"
-        android:textSize="16sp"
+        android:layout_below="@id/text1"
+        android:text="@string/discover_countries_information"
         android:textAlignment="center"
-        android:layout_below="@id/text1"/>
+        android:textColor="#A9000000"
+        android:textSize="16sp" />
 
     <ImageView
         android:id="@+id/earth"
