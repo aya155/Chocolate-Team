@@ -12,7 +12,9 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     abstract val LOG_TAG: String
     abstract val bindingInflater: (LayoutInflater) -> VB
     var _binding: ViewBinding? = null
-    protected var binding = _binding as? VB
+    protected var binding: VB?
+        get() = _binding as VB?
+        set(value) = TODO()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +23,6 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         setup()
         addCallBack()
     }
-
     abstract fun setup()
     abstract fun addCallBack()
     protected fun log(value: Any) {

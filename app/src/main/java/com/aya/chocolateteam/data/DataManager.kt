@@ -12,14 +12,14 @@ object DataManager {
 
     /**
      * this function return an instance of CurrentCity while swiping between cities info
-     * @return a instance of City with info
+     * @return an instance of City with info
      */
     fun getCurrentCity(): City = citesList[cityIndex]
 
 
     /**
      * this function return an instance of NextCity while swiping between cities info
-     * @return a instance of City with info
+     * @return an instance of City with info
      */
     fun getNextCity(): City {
         cityIndex++
@@ -32,7 +32,7 @@ object DataManager {
 
     /**
      * this function return an instance of PreviousCity while swiping between cities info
-     * @return a instance of City with info
+     * @return an instance of City with info
      */
     fun getPreviousCity(): City {
         cityIndex--
@@ -47,15 +47,16 @@ object DataManager {
      * @param countryName a string represent name of country that user search for
      * @return a list of Cities with info belong to searched country
      */
+    @OptIn(kotlin.ExperimentalStdlibApi::class)
     fun getCitiesByCountry(countryName: String): List<City> {
-        return citesList.filter { it.countryName == countryName }
+        return citesList.filter { it.countryName.lowercase() == countryName.lowercase() }
     }
 
 
     /**
      * this function return an instance of City
      * @param index an integer represent index of required city
-     * @return a instance of City with info
+     * @return an instance of City with info
      */
     fun getCityByIndex(index: Int): City = citesList[index]
 
@@ -65,8 +66,9 @@ object DataManager {
      * @param cityName a string represent name of city that user search for
      * @return a list of City with info satisfy search keyword
      */
+    @OptIn(kotlin.ExperimentalStdlibApi::class)
     fun searchCity(cityName: String): List<City> {
-        return citesList.filter { it.cityName == cityName }
+        return citesList.filter { it.cityName.lowercase() == cityName.lowercase() }
     }
 
 
@@ -77,7 +79,7 @@ object DataManager {
      */
     fun sortByPopulation(sortType: SortType): List<City> {
         return when (sortType) {
-            SortType.Ascending -> citesList.sortedBy { it.population }.take(3)
+            SortType.Ascending -> citesList.sortedBy { it.population }
             else -> citesList.sortedByDescending { it.population }
         }
     }

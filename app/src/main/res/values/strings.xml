@@ -9,5 +9,7 @@
     <string name="text3">
         Search for your favorite thing or find\n similar results in this area.
     </string>
+    <string name="discover_countries_information">Discover Countries Information.</string>
+    <string name="world_fact">World Fact</string>
 
 </resources>
