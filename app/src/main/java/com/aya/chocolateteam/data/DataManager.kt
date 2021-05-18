@@ -6,9 +6,10 @@ import com.aya.chocolateteam.data.domain.SortType
 
 object DataManager {
     private val citesList = mutableListOf<City>()
-    var countryList = mutableListOf<Country>()
+    private var countryList = mutableListOf<Country>()
 
     private var cityIndex = 0
+    private var countryIndex = 0
     fun addCity(city: City) {
         citesList.add(city)
     }
@@ -69,7 +70,7 @@ object DataManager {
      * @param cityName a string represent name of city that user search for
      * @return a list of City with info satisfy search keyword
      */
-    @OptIn(kotlin.ExperimentalStdlibApi::class)
+    @OptIn(ExperimentalStdlibApi::class)
     fun searchCity(cityName: String): List<City> {
         return citesList.filter { it.cityName.lowercase() == cityName.lowercase() }
     }
@@ -111,6 +112,36 @@ object DataManager {
         }
     }
 
+    /**
+     * this function return an instance of CurrentCountry while swiping between countries info
+     * @return an instance of Country with info
+     */
+    fun getCurrentCountry(): Country = countryList[countryIndex]
 
+
+    /**
+     * this function return an instance of NextCountry while swiping between countries info
+     * @return an instance of Country with info
+     */
+    fun getNextCountry(): Country {
+        countryIndex++
+        if (countryIndex == countryList.size) {
+            countryIndex = 0
+        }
+        return countryList[countryIndex]
+    }
+
+
+    /**
+     * this function return an instance of PreviousCountry while swiping between countries info
+     * @return an instance of Country with info
+     */
+    fun getPreviousCountry(): Country {
+        countryIndex--
+        if (countryIndex == -1) {
+            countryIndex = countryList.size - 1
+        }
+        return countryList[countryIndex]
+    }
 }
 
