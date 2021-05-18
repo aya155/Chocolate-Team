@@ -1,6 +1,13 @@
 package com.aya.chocolateteam.ui
 
 import android.view.LayoutInflater
+import androidx.fragment.app.FragmentTransaction
+import androidx.transition.FragmentTransitionSupport
+import com.aya.chocolateteam.fragments.FragmentA
+import com.aya.chocolateteam.fragments.FragmentB
+import com.aya.chocolateteam.fragments.FragmentC
+import com.aya.chocolateteam.fragments.FragmentD
+
 import com.aya.chocolateteam.*
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.databinding.ActivityMainBinding
@@ -18,6 +25,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun setup() {
         parseFile()
+        setTabs()
+
     }
 
 
@@ -44,7 +53,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    private fun initViewPager2() {
+    private fun setTabs(){
+        val adapter = ViewpagerAdapter2(supportFragmentManager).apply {
+            addFragment(FragmentA(), "Home")
+            addFragment(FragmentB(), "Map")
+            addFragment(FragmentC(), "Search")
+            addFragment(FragmentD(), "MyProfile")
+        }
+        binding!!.viewpager.adapter = adapter
+        binding!!.tablayout.apply {
+            setupWithViewPager(binding!!.viewpager)
+            getTabAt(0)?.text = adapter.getPageTitle(0)
+            getTabAt(1)?.text = adapter.getPageTitle(1)
+            getTabAt(2)?.text = adapter.getPageTitle(2)
+            getTabAt(3)?.text = adapter.getPageTitle(3)
+        }
+    }
+            private fun initViewPager2() {
         val adapter = ViewPagerViewAdapter()
         binding?.apply {
             viewpager.adapter = adapter
