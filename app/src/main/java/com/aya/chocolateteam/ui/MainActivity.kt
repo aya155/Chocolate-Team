@@ -45,7 +45,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun initViewPager2() {
-
         val adapter = ViewPagerViewAdapter()
         binding?.apply {
             viewpager.adapter = adapter
@@ -58,8 +57,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun initViewPager2WithFragments() {
-
-
         binding?.apply {
             val adapter = ExampleStateAdapter(supportFragmentManager,lifecycle)
             viewpager.adapter = adapter
