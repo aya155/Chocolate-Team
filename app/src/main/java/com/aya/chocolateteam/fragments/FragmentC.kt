@@ -1,19 +1,37 @@
 package com.aya.chocolateteam.fragments
 
-import android.os.Bundle
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.aya.chocolateteam.R
+import androidx.fragment.app.FragmentTransaction
+import com.aya.chocolateteam.data.DataManager
+import com.aya.chocolateteam.data.domain.City
+import com.aya.chocolateteam.databinding.FragmentCBinding
+import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
+import com.github.aachartmodel.aainfographics.aachartcreator.AASeriesElement
 
-class FragmentC : Fragment() {
+class FragmentC : BaseFragment<FragmentCBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_c, container, false)
+    override val LOG_TAG: String="FRAGMENT_C"
+    override val bindingInflater: (LayoutInflater) -> FragmentCBinding = FragmentCBinding::inflate
+    override fun setup() {
     }
-}
+    override fun addCallBack() {
+        binding!!.apply {
+            searchBtn.setOnClickListener {
+                val cityList=DataManager.getCitiesByCountry(searchView.query.toString())
+                if (cityList.isNotEmpty()) {
+                    text.text=cityList[0].countryName
+                    subText.text=""
+                    text4.visibility= View.VISIBLE
+                    text2.visibility= View.VISIBLE
+                    view.visibility= View.VISIBLE
+                    searchPhoto.visibility= View.INVISIBLE
+                    populationCitiesChart.visibility= View.VISIBLE
+                    populationCitiesChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = cityList[0].countryName,seriesArray = makeSeriesArray(cityList.toList()).toTypedArray()))
+
+                }
+            }
+        }
+}}
