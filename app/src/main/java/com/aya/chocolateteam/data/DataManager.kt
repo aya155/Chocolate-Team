@@ -7,6 +7,7 @@ import com.aya.chocolateteam.data.domain.SortType
 object DataManager {
     private val citesList = mutableListOf<City>()
     var countryList = mutableListOf<Country>()
+
     private var cityIndex = 0
     fun addCity(city: City) {
         citesList.add(city)
@@ -49,7 +50,7 @@ object DataManager {
      * @param countryName a string represent name of country that user search for
      * @return a list of Cities with info belong to searched country
      */
-    @OptIn(kotlin.ExperimentalStdlibApi::class)
+    @OptIn(ExperimentalStdlibApi::class)
     fun getCitiesByCountry(countryName: String): List<City> {
         return citesList.filter { it.countryName.lowercase() == countryName.lowercase() }
     }
@@ -105,7 +106,7 @@ object DataManager {
      * @return a List Country with it's name and cities
      */
     fun getCountariesInfo() {
-        citesList.groupBy { it.countryName }.entries.map { (name, group) ->
+         citesList.groupBy { it.countryName }.entries.map { (name, group) ->
             name?.let { Country(it, group as ArrayList<City>) }?.let { countryList.add(it) }
         }
     }
