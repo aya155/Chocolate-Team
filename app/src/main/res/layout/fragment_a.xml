@@ -8,7 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/country_name"
         android:layout_width="121dp"
         android:layout_height="69dp"
         android:layout_marginStart="144dp"
@@ -26,7 +26,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/rightarrow"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/country_name"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -35,7 +35,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         android:src="@drawable/leftarrow"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/country_name"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -50,7 +50,7 @@
         android:textSize="13dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/country_name" />
 
     <TextView
         android:id="@+id/textView4"
@@ -86,7 +86,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
-        android:id="@+id/aa_chart_view"
+        android:id="@+id/population_cities_chart"
         android:layout_width="355dp"
         android:layout_height="193dp"
         android:layout_marginTop="4dp"

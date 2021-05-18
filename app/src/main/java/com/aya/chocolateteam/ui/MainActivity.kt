@@ -31,14 +31,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 
     override fun addCallBack() {
-        initViewPager2()
-        initViewPager2WithFragments()
         binding?.apply {
 
         }
 //        log(DataManager.sortByPopulation(SortType.Ascending)[0])
 //        log(DataManager.sortByPopulation(SortType.Descending,3))
-        log(DataManager.getCitiesByCountry("iraq"))
+//        log(DataManager.getCitiesByCountry("iraq"))
 //        log(DataManager.searchCity("Tokyo"))
     }
 
@@ -69,32 +67,32 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             getTabAt(3)?.text = adapter.getPageTitle(3)
         }
     }
-            private fun initViewPager2() {
-        val adapter = ViewPagerViewAdapter()
-        binding?.apply {
-            viewpager.adapter = adapter
-            adapter.setNewUsers(createExampleUserList())
-
-            TabLayoutMediator(tablayout,viewpager){tab, position ->
-                tab.text = createExampleUserList()[position].name
-            }.attach()
-        }
-    }
-
-    private fun initViewPager2WithFragments() {
-        binding?.apply {
-            val adapter = ExampleStateAdapter(supportFragmentManager,lifecycle)
-            viewpager.adapter = adapter
-            val names:Array<String> = arrayOf("Home","Map","Search","MyProfile")
-            TabLayoutMediator(tablayout,viewpager){tab, position ->
-                tab.text = names[position]
-            }.attach()
-        }
-
-//        var viewPager2:ViewPager2 = findViewById(R.id.viewpager)
-    }
-
-    private fun createExampleUserList(): ArrayList<User> {
-        return ArrayList()
-    }
+//            private fun initViewPager2() {
+//        val adapter = ViewPagerViewAdapter()
+//        binding?.apply {
+//            viewpager.adapter = adapter
+//            adapter.setNewUsers(createExampleUserList())
+//
+//            TabLayoutMediator(tablayout,viewpager){tab, position ->
+//                tab.text = createExampleUserList()[position].name
+//            }.attach()
+//        }
+//    }
+//
+//    private fun initViewPager2WithFragments() {
+//        binding?.apply {
+//            val adapter = ExampleStateAdapter(supportFragmentManager,lifecycle)
+//            viewpager.adapter = adapter
+//            val names:Array<String> = arrayOf("Home","Map","Search","MyProfile")
+//            TabLayoutMediator(tablayout,viewpager){tab, position ->
+//                tab.text = names[position]
+//            }.attach()
+//        }
+//
+////        var viewPager2:ViewPager2 = findViewById(R.id.viewpager)
+//    }
+//
+//    private fun createExampleUserList(): ArrayList<User> {
+//        return ArrayList()
+//    }
 }

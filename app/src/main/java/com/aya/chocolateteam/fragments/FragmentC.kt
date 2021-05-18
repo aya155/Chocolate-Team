@@ -27,23 +27,8 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
                 val cityList=DataManager.getCitiesByCountry(searchView.query.toString())
                 if (cityList.isNotEmpty()) {
                     text.text=cityList[0].countryName
-                    subText.text=""
-                    text4.visibility= View.VISIBLE
-                    text2.visibility= View.VISIBLE
-                    view.visibility= View.VISIBLE
-                    searchPhoto.visibility= View.INVISIBLE
-                    populationCitiesChart.visibility= View.VISIBLE
-                    populationCitiesChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = cityList[0].countryName,seriesArray = makeSeriesArray(cityList.toList()).toTypedArray()))
-
                 }
             }
         }
-    }
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_c, container, false)
     }
 }
