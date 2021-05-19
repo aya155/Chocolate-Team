@@ -70,7 +70,7 @@ object DataManager {
      * @param cityName a string represent name of city that user search for
      * @return a list of City with info satisfy search keyword
      */
-    @OptIn(kotlin.ExperimentalStdlibApi::class)
+    @OptIn(ExperimentalStdlibApi::class)
     fun searchCity(cityName: String): List<City> {
         return citesList.filter { it.cityName.lowercase() == cityName.lowercase() }
     }
@@ -111,6 +111,13 @@ object DataManager {
             name?.let { Country(it, group as ArrayList<City>) }?.let { countryList.add(it) }
         }
     }
+
+    /**
+     * this function return an instance of Country
+     * @param index an integer represent index of required country
+     * @return an instance of Country with info
+     */
+    fun getCountryByIndex(index: Int): Country = countryList[index]
 
 
     /**

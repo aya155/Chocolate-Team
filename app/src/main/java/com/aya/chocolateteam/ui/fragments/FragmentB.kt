@@ -1,11 +1,6 @@
-package com.aya.chocolateteam.fragments
+package com.aya.chocolateteam.ui.fragments
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.aya.chocolateteam.R
 import com.aya.chocolateteam.databinding.FragmentBBinding
 
 class FragmentB : BaseFragment<FragmentBBinding>() {

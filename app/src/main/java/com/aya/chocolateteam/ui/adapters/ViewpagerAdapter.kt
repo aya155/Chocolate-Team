@@ -1,11 +1,11 @@
-package com.aya.chocolateteam
+package com.aya.chocolateteam.ui.adapters
 
 import android.icu.text.CaseMap
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
-class ViewpagerAdapter2(supportFragmentManager: FragmentManager):FragmentPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
+class ViewpagerAdapter(supportFragmentManager: FragmentManager):FragmentPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
     private val mFragmentList=ArrayList<Fragment>()
     private val mFragmentTitleList=ArrayList<String>()
     override fun getItem(position: Int)=mFragmentList[position]

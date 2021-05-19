@@ -1,4 +1,4 @@
-package com.aya.chocolateteam.ui
+package com.aya.chocolateteam.ui.activities
 
 import android.content.Intent
 import android.os.Handler
@@ -20,7 +20,7 @@ class SplashScreen : BaseActivity<ActivitySplashScreenBinding>() {
 
     override fun setup() {
         Handler().postDelayed({
-                startActivity(Intent(this, com.aya.chocolateteam.ui.MainActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
         }, SPLASH_TIME)
     }

@@ -1,14 +1,13 @@
-package com.aya.chocolateteam.ui
+package com.aya.chocolateteam.ui.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import com.aya.chocolateteam.BaseInterface
+import com.aya.chocolateteam.ui.fragments.BaseInterface
 
 
-abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(),BaseInterface<VB> {
+abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), BaseInterface<VB> {
 
     abstract override val LOG_TAG: String
     abstract override val bindingInflater: (LayoutInflater) -> VB
