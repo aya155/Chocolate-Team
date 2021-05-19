@@ -1,8 +1,12 @@
 package com.aya.chocolateteam.ui.fragments
 
 import android.view.LayoutInflater
+import androidx.viewpager.widget.ViewPager
+import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.databinding.FragmentCBinding
+import com.aya.chocolateteam.util.Constants
+
 
 class FragmentC : BaseFragment<FragmentCBinding>() {
 
@@ -15,7 +19,8 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             searchBtn.setOnClickListener {
                 val cityList=DataManager.getCitiesByCountry(searchView.query.toString())
                 if (cityList.isNotEmpty()) {
-                    text.text=cityList[0].countryName
+                    Constants.SEARCH_COUNTRY=searchView.query.toString()
+                    activity!!.findViewById<ViewPager>(R.id.viewpager).currentItem=0
                 }
             }
         }

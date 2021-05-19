@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import com.aya.chocolateteam.ui.fragments.FragmentA
 import com.aya.chocolateteam.ui.fragments.FragmentB
 import com.aya.chocolateteam.ui.fragments.FragmentC
-import com.aya.chocolateteam.ui.fragments.FragmentD
-
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.databinding.ActivityMainBinding
 import com.aya.chocolateteam.ui.adapters.ViewpagerAdapter
@@ -28,13 +26,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 
     override fun addCallBack() {
-        binding?.apply {
-
-        }
-//        log(DataManager.sortByPopulation(SortType.Ascending)[0])
-//        log(DataManager.sortByPopulation(SortType.Descending,3))
-//        log(DataManager.getCitiesByCountry("iraq"))
-//        log(DataManager.searchCity("Tokyo"))
     }
 
 
@@ -54,7 +45,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             addFragment(FragmentA(), "Home")
             addFragment(FragmentB(), "Map")
             addFragment(FragmentC(), "Search")
-            addFragment(FragmentD(), "MyProfile")
         }
         binding?.viewpager?.adapter = adapter
         binding?.tablayout?.apply {
@@ -62,7 +52,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             getTabAt(0)?.text = adapter.getPageTitle(0)
             getTabAt(1)?.text = adapter.getPageTitle(1)
             getTabAt(2)?.text = adapter.getPageTitle(2)
-            getTabAt(3)?.text = adapter.getPageTitle(3)
         }
     }
 }

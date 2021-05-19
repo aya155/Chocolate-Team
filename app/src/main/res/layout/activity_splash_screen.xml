@@ -40,6 +40,5 @@
         android:layout_width="match_parent"
         android:layout_height="218dp"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/p"
-        android:contentDescription="@string/earth_image"/>
+        android:src="@drawable/p"/>
 </RelativeLayout>

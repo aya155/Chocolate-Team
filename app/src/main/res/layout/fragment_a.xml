@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/next_btn"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="24dp"
@@ -30,6 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/before_btn"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="20dp"
@@ -39,7 +41,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/headland_one"
@@ -60,7 +62,7 @@
         android:background="@drawable/textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <View
         android:id="@+id/view"
