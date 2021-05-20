@@ -14,7 +14,7 @@ class FragmentA : BaseFragment<FragmentABinding>() {
     override val bindingInflater: (LayoutInflater) -> FragmentABinding=FragmentABinding::inflate
     @ExperimentalStdlibApi
     override fun setup() {
-        DataManager.getCountariesInfo()
+        DataManager.getCountriesInfo()
         val country= if(Constants.SEARCH_COUNTRY==null)DataManager.countryList[(0..DataManager.countryList.lastIndex).random()] else DataManager.countryList.filter { it.name.toLowerCase() == Constants.SEARCH_COUNTRY!!.toLowerCase() }[0]
         bindLayout(country)
     }
@@ -37,7 +37,5 @@ class FragmentA : BaseFragment<FragmentABinding>() {
         Constants.SEARCH_COUNTRY=null
     }
 
-    override fun addCallBack() {
-    }
 
 }
