@@ -5,6 +5,8 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import android.widget.TextView
 import com.aya.chocolateteam.R
 import com.aya.chocolateteam.databinding.ActivitySplashScreenBinding
 
@@ -13,7 +15,7 @@ class SplashScreen : BaseActivity<ActivitySplashScreenBinding>() {
     private lateinit var topAnimation: Animation
     private lateinit var bottomAnimation: Animation
 
-    private val SPLASH_TIME: Long = 1500
+    private val SPLASH_TIME: Long = 1000
 
     override val LOG_TAG: String = "SPLASH_ACTIVITY"
     override val bindingInflater: (LayoutInflater) -> ActivitySplashScreenBinding = ActivitySplashScreenBinding::inflate
