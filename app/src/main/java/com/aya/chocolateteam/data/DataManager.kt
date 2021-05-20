@@ -144,8 +144,8 @@ object DataManager {
      * @return an instance of Country with info
      */
     @OptIn(ExperimentalStdlibApi::class)
-    fun getCountryByName(countryName: String): Country {
-        return countryList.first { it.name.lowercase().trim() == countryName.lowercase().trim() }
+    fun getCountryByName(countryName: String): Country? {
+        return countryList.firstOrNull{ it.name.lowercase().trim() == countryName.lowercase().trim() }
     }
 
     /**
