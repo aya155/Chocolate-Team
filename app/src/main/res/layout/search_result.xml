@@ -18,9 +18,10 @@
         app:lottie_rawRes="@raw/worldmap" />
 
     <TextView
+        android:id="@+id/country_name"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="158dp"
         android:fontFamily="cursive"
         android:gravity="center"
         android:text="Japan"
@@ -37,16 +38,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lottieAnimationView"/>
+        app:layout_constraintTop_toBottomOf="@id/country_name"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title_chart1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/andada"
-        android:text="A country in East Asia"
+        android:text="Population According To Years"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/textView2"
@@ -60,15 +61,15 @@
         android:background="#B8B6B6"
         app:layout_constraintEnd_toEndOf="@id/textView2"
         app:layout_constraintStart_toStartOf="@id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/title_chart1" />
 
-    <TextView
+    <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
+        android:id="@+id/population_cities_chart"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="193dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/andada"
         android:paddingLeft="20dp"
-        android:text="Japan is a country in East Asia, located between the Pacific Ocean, the Sea of ​​Japan, and the east of the Korean Peninsula. The Chinese called the country a bright land - the source - of the sun, due to its location in the easternmost part of the inhabited world at that time. Japan consists of many islands, four of these islands are the most important and largest, respectively: Kyushu, Shikoku, Honshu, Hokkaido."
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/textView2"
         app:layout_constraintStart_toStartOf="@id/textView2"

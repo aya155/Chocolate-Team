@@ -63,7 +63,11 @@ object DataManager {
      * @return an instance of City with info
      */
     fun getCityByIndex(index: Int): City = citesList[index]
-
+    fun getCountriesInfo() {
+        citesList.groupBy { it.countryName }.entries.map { (name, group) ->
+            name?.let { Country(it, group as ArrayList<City>) }?.let { countryList.add(it) }
+        }
+    }
 
     /**
      * this function take a parameter of string and return list of cities that satisfy search keyword
