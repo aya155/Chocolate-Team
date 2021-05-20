@@ -1,4 +1,4 @@
-package com.aya.chocolateteam.ui.activities
+package com.aya.chocolateteam.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
