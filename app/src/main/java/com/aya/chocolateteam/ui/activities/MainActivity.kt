@@ -46,7 +46,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         buffer.forEachLine {
            DataManager.addCity(parser.parse(it))
         }
-        DataManager.getCountariesInfo()
+        DataManager.getCountriesInfo()
     }
 
     private fun setTabs(){
@@ -64,5 +64,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             getTabAt(2)?.text = adapter.getPageTitle(2)
             getTabAt(3)?.text = adapter.getPageTitle(3)
         }
+
+
     }
 }

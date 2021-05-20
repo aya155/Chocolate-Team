@@ -106,7 +106,7 @@ object DataManager {
      * this function return data grouped by country
      * @return a List Country with it's name and cities
      */
-    fun getCountariesInfo() {
+    fun getCountriesInfo() {
          citesList.groupBy { it.countryName }.entries.map { (name, group) ->
             name?.let { Country(it, group as ArrayList<City>) }?.let { countryList.add(it) }
         }
@@ -119,6 +119,15 @@ object DataManager {
      */
     fun getCountryByIndex(index: Int): Country = countryList[index]
 
+    /**
+     * this function return an instance of Country
+     * @param countryName a string represent name of required country
+     * @return an instance of Country with info
+     */
+    @OptIn(ExperimentalStdlibApi::class)
+    fun getCountryByName(countryName: String): Country {
+        return countryList.first { it.name.lowercase() == countryName.lowercase() }
+    }
 
     /**
      * this function return an instance of CurrentCountry while swiping between countries info

@@ -10,8 +10,9 @@ import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
 class FragmentA : BaseFragment<FragmentABinding>() {
     override val LOG_TAG: String="FRAGMENT_A"
     override val bindingInflater: (LayoutInflater) -> FragmentABinding=FragmentABinding::inflate
+
     override fun setup() {
-        DataManager.getCountariesInfo()
+        DataManager.getCountriesInfo()
         val country= DataManager.countryList[(0..DataManager.countryList.lastIndex).random()]
         binding?.apply {
             countryName.text=country.name
@@ -20,6 +21,7 @@ class FragmentA : BaseFragment<FragmentABinding>() {
     }
 
     override fun addCallBack() {
+
     }
 
 }
