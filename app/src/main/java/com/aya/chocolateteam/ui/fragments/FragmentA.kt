@@ -21,18 +21,18 @@ class FragmentA : BaseFragment<FragmentABinding>() {
 
     override fun addCallBack() {
         binding?.apply {
-            beforeBtn.setOnClickListener {
+            beforeBtn?.setOnClickListener {
                 bindLayout(DataManager.getPreviousCountry())
             }
-            nextBtn.setOnClickListener {
+            nextBtn?.setOnClickListener {
                 bindLayout(DataManager.getNextCountry())
             }
         }
     }
     private fun bindLayout(country: Country){
         binding?.apply {
-            countryName.text=country.name
-            populationCitiesChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(3)).toTypedArray()))
+            countryName?.text=country.name
+            populationCitiesChart?.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(3)).toTypedArray()))
         }
         Constants.SEARCH_COUNTRY=null
     }
