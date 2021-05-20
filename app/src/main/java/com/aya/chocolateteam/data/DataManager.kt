@@ -53,7 +53,7 @@ object DataManager {
      */
     @OptIn(ExperimentalStdlibApi::class)
     fun getCitiesByCountry(countryName: String): List<City> {
-        return citesList.filter { it.countryName.lowercase() == countryName.lowercase() }
+        return citesList.filter { it.countryName.lowercase().trim() == countryName.lowercase().trim() }
     }
 
 
@@ -72,7 +72,7 @@ object DataManager {
      */
     @OptIn(ExperimentalStdlibApi::class)
     fun searchCity(cityName: String): List<City> {
-        return citesList.filter { it.cityName.lowercase() == cityName.lowercase() }
+        return citesList.filter { it.cityName.lowercase().trim() == cityName.lowercase().trim() }
     }
 
 
@@ -94,7 +94,7 @@ object DataManager {
      * @param noOfRetrievedCity an integer represent count of required cities to retrieve after sorting
      * @return a List of City with info sorted by population
      */
-    fun sortByPopulation(sortType: SortType, noOfRetrievedCity : Int): List<City> {
+    fun sortByPopulation(sortType: SortType, noOfRetrievedCity: Int): List<City> {
         return when (sortType) {
             SortType.Ascending -> citesList.sortedBy { it.population }.take(noOfRetrievedCity)
             else -> citesList.sortedByDescending { it.population }.take(noOfRetrievedCity)
@@ -106,10 +106,12 @@ object DataManager {
      * this function return data grouped by country
      * @return a List Country with it's name and cities
      */
-    fun getCountriesInfo() {
-         citesList.groupBy { it.countryName }.entries.map { (name, group) ->
+    fun createCountriesInfo(): List<Country> {
+        citesList.groupBy { it.countryName }.entries.map { (name, group) ->
             name?.let { Country(it, group as ArrayList<City>) }?.let { countryList.add(it) }
         }
+
+        return countryList
     }
 
     /**
@@ -125,8 +127,8 @@ object DataManager {
      * @return an instance of Country with info
      */
     @OptIn(ExperimentalStdlibApi::class)
-    fun getCountryByName(countryName: String): List<Country> {
-        return countryList.filter { it.name.lowercase() == countryName.lowercase() }
+    fun getCountryByName(countryName: String): Country {
+        return countryList.first { it.name.lowercase().trim() == countryName.lowercase().trim() }
     }
 
     /**
