@@ -36,7 +36,6 @@
                 android:textSize="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/constraintLayout" />
-
             <ImageView
                 android:id="@+id/next_btn"
                 android:layout_width="30dp"
