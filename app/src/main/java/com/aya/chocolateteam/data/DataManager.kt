@@ -1,11 +1,15 @@
 package com.aya.chocolateteam.data
 
 import com.aya.chocolateteam.data.domain.City
+import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.data.domain.SortType
 
 object DataManager {
     private val citesList = mutableListOf<City>()
+    var countryList = mutableListOf<Country>()
+
     private var cityIndex = 0
+    private var countryIndex = 0
     fun addCity(city: City) {
         citesList.add(city)
     }
@@ -47,7 +51,7 @@ object DataManager {
      * @param countryName a string represent name of country that user search for
      * @return a list of Cities with info belong to searched country
      */
-    @OptIn(kotlin.ExperimentalStdlibApi::class)
+    @OptIn(ExperimentalStdlibApi::class)
     fun getCitiesByCountry(countryName: String): List<City> {
         return citesList.filter { it.countryName.lowercase() == countryName.lowercase() }
     }
@@ -66,7 +70,7 @@ object DataManager {
      * @param cityName a string represent name of city that user search for
      * @return a list of City with info satisfy search keyword
      */
-    @OptIn(kotlin.ExperimentalStdlibApi::class)
+    @OptIn(ExperimentalStdlibApi::class)
     fun searchCity(cityName: String): List<City> {
         return citesList.filter { it.cityName.lowercase() == cityName.lowercase() }
     }
@@ -96,5 +100,66 @@ object DataManager {
             else -> citesList.sortedByDescending { it.population }.take(noOfRetrievedCity)
         }
     }
+
+
+    /**
+     * this function return data grouped by country
+     * @return a List Country with it's name and cities
+     */
+    fun getCountriesInfo() {
+         citesList.groupBy { it.countryName }.entries.map { (name, group) ->
+            name?.let { Country(it, group as ArrayList<City>) }?.let { countryList.add(it) }
+        }
+    }
+
+    /**
+     * this function return an instance of Country
+     * @param index an integer represent index of required country
+     * @return an instance of Country with info
+     */
+    fun getCountryByIndex(index: Int): Country = countryList[index]
+
+    /**
+     * this function return an instance of Country
+     * @param countryName a string represent name of required country
+     * @return an instance of Country with info
+     */
+    @OptIn(ExperimentalStdlibApi::class)
+    fun getCountryByName(countryName: String): Country {
+        return countryList.first { it.name.lowercase() == countryName.lowercase() }
+    }
+
+    /**
+     * this function return an instance of CurrentCountry while swiping between countries info
+     * @return an instance of Country with info
+     */
+    fun getCurrentCountry(): Country = countryList[countryIndex]
+
+
+    /**
+     * this function return an instance of NextCountry while swiping between countries info
+     * @return an instance of Country with info
+     */
+    fun getNextCountry(): Country {
+        countryIndex++
+        if (countryIndex == countryList.size) {
+            countryIndex = 0
+        }
+        return countryList[countryIndex]
+    }
+
+
+    /**
+     * this function return an instance of PreviousCountry while swiping between countries info
+     * @return an instance of Country with info
+     */
+    fun getPreviousCountry(): Country {
+        countryIndex--
+        if (countryIndex == -1) {
+            countryIndex = countryList.size - 1
+        }
+        return countryList[countryIndex]
+    }
+
 }
 
