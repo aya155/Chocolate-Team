@@ -46,6 +46,15 @@ object DataManager {
         return citesList[cityIndex]
     }
 
+
+    /**
+     * this function return a long represent total population of list of cities
+     * @param list a list represent cities
+     * @return an long represent total population of list of cities
+     */
+    fun getTotalPopulation(list: MutableList<City>): Long = list.sumOf { it.population }.toLong()
+
+
     /**
      * this function take a parameter of string which represent country name and return list of Cities with info belong to searched country
      * @param countryName a string represent name of country that user search for
@@ -53,7 +62,9 @@ object DataManager {
      */
     @OptIn(ExperimentalStdlibApi::class)
     fun getCitiesByCountry(countryName: String): List<City> {
-        return citesList.filter { it.countryName.lowercase().trim() == countryName.lowercase().trim() }
+        return citesList.filter {
+            it.countryName.lowercase().trim() == countryName.lowercase().trim()
+        }
     }
 
 
@@ -63,6 +74,8 @@ object DataManager {
      * @return an instance of City with info
      */
     fun getCityByIndex(index: Int): City = citesList[index]
+
+
     fun getCountriesInfo() {
         citesList.groupBy { it.countryName }.entries.map { (name, group) ->
             name?.let { Country(it, group as ArrayList<City>) }?.let { countryList.add(it) }
@@ -165,6 +178,16 @@ object DataManager {
             countryIndex = countryList.size - 1
         }
         return countryList[countryIndex]
+    }
+
+
+    /**
+     * this function return an long represent to total population of a given Country
+     * @param country required country to get  total population
+     * @return a Long represent total number of a country population
+     */
+    fun getTotalCountryPopulation(country: Country): Long {
+        return getTotalPopulation(country.cities)
     }
 
 }
