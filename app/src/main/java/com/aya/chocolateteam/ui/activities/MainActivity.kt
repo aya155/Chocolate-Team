@@ -6,7 +6,6 @@ import com.aya.chocolateteam.ui.fragments.FragmentB
 import com.aya.chocolateteam.ui.fragments.FragmentC
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.databinding.ActivityMainBinding
-import com.aya.chocolateteam.ui.BaseActivity
 import com.aya.chocolateteam.ui.adapters.ViewpagerAdapter
 import com.aya.chocolateteam.util.CsvParser
 import java.io.BufferedReader

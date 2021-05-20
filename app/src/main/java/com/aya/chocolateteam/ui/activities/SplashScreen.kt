@@ -7,7 +7,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.aya.chocolateteam.R
 import com.aya.chocolateteam.databinding.ActivitySplashScreenBinding
-import com.aya.chocolateteam.ui.BaseActivity
 
 class SplashScreen : BaseActivity<ActivitySplashScreenBinding>() {
 

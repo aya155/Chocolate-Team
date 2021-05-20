@@ -1,4 +1,4 @@
-package com.aya.chocolateteam.ui.fragments
+package com.aya.chocolateteam.ui
 
 import android.util.Log
 import android.view.LayoutInflater

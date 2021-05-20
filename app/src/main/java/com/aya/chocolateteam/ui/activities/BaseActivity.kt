@@ -1,10 +1,10 @@
-package com.aya.chocolateteam.ui
+package com.aya.chocolateteam.ui.activities
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import com.aya.chocolateteam.ui.fragments.BaseInterface
+import com.aya.chocolateteam.ui.BaseInterface
 
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), BaseInterface<VB> {
