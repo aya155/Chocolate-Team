@@ -8,6 +8,7 @@ import com.aya.chocolateteam.util.Constants
 
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
 
+@Suppress("UNREACHABLE_CODE")
 class FragmentA : BaseFragment<FragmentABinding>() {
     override val LOG_TAG: String="FRAGMENT_A"
     override val bindingInflater: (LayoutInflater) -> FragmentABinding=FragmentABinding::inflate
@@ -35,4 +36,8 @@ class FragmentA : BaseFragment<FragmentABinding>() {
         }
         Constants.SEARCH_COUNTRY=null
     }
+
+    override fun addCallBack() {
+    }
+
 }
