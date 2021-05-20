@@ -12,6 +12,6 @@ interface BaseInterface<VB:ViewBinding> {
         get() = _binding as VB?
         set(value) = TODO()
     fun setup()
-     fun addCallBack()
+    fun addCallBack()
     fun log(value: Any) { Log.v(LOG_TAG, value.toString()) }
 }

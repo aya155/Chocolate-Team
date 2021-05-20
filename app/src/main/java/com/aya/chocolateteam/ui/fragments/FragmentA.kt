@@ -8,14 +8,12 @@ import com.aya.chocolateteam.util.Constants
 
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
 
-@Suppress("UNREACHABLE_CODE")
 class FragmentA : BaseFragment<FragmentABinding>() {
     override val LOG_TAG: String="FRAGMENT_A"
     override val bindingInflater: (LayoutInflater) -> FragmentABinding=FragmentABinding::inflate
-    @ExperimentalStdlibApi
     override fun setup() {
         DataManager.getCountriesInfo()
-        val country= if(Constants.SEARCH_COUNTRY==null)DataManager.countryList[(0..DataManager.countryList.lastIndex).random()] else DataManager.countryList.filter { it.name.toLowerCase() == Constants.SEARCH_COUNTRY!!.toLowerCase() }[0]
+        val country= DataManager.countryList[(0..DataManager.countryList.lastIndex).random()]
         bindLayout(country)
     }
 
