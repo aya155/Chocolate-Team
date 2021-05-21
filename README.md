@@ -7,7 +7,7 @@ Below app screen shots 😊
 
 ![app video](https://github.com/aya155/Chocolate-Team/blob/master/Screenshots/app.gif)  
 
-![](https://github.com/aya155/Chocolate-Team/blob/Develope/Screenshots/pic1.jpg | width= 100)
+![](https://github.com/aya155/Chocolate-Team/blob/Develope/Screenshots/pic1.jpg)
 ![](https://github.com/aya155/Chocolate-Team/blob/Develope/Screenshots/pic2.jpg)
 ![](https://github.com/aya155/Chocolate-Team/blob/Develope/Screenshots/pic3.jpg) 
 ![](https://github.com/aya155/Chocolate-Team/blob/Develope/Screenshots/pic4.jpg)
