@@ -257,6 +257,7 @@ object DataManager {
     fun getCountryCitiesName(country: Country): List<String> {
         return getCitiesName(country.cities)
     }
+
 }
 
 
