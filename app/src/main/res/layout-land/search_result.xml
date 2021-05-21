@@ -21,6 +21,7 @@
         android:id="@+id/country_name"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="178dp"
         android:layout_marginTop="128dp"
         android:fontFamily="cursive"
         android:gravity="center"
@@ -28,7 +29,7 @@
         android:textColor="@color/black"
         android:textSize="50sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lottieAnimationView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scroll1"
