@@ -155,11 +155,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/lat_country" />
 
             <TextView
-                android:id="@+id/lat_country"
+                android:id="@+id/iso2_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/andada"
-                android:text="lat: 377,975 km²"
+                android:text="iso2: 377,975 km²"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/textView3"
@@ -186,12 +186,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/lag_country" />
 
             <TextView
-                android:id="@+id/lag_country"
+                android:id="@+id/iso3_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:fontFamily="@font/andada"
-                android:text="lag: 377,975 km²"
+                android:text="iso3: 377,975 km²"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/view2"

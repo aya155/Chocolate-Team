@@ -12,12 +12,13 @@ class SearchResultActivity: BaseActivity<SearchResultBinding>() {
     override val LOG_TAG: String="SEARCH_RESULT"
     override val bindingInflater: (LayoutInflater) -> SearchResultBinding= SearchResultBinding::inflate
     override fun setup() {
-
-        val country=intent.getParcelableExtra<Country>(Constants.COUNTRY)  //error
+        val country=intent.getParcelableExtra<Country>(Constants.COUNTRY)
         binding?.apply {
             countryName.text=country!!.name
             populationCitiesChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(3)).toTypedArray()))
-            populationCountry.text=DataManager.getTotalCountryPopulation(country).toString()
+            populationCountry.text="Population :${DataManager.getTotalCountryPopulation(country)}".toString()
+            iso2Country.text="ISO2 :${DataManager.getIso2ByCountry(country)}"
+            iso3Country.text="ISO3 :${DataManager.getIso3ByCountry(country)}"
         }
     }
     override fun addCallBack() {

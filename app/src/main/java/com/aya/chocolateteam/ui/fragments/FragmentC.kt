@@ -3,7 +3,7 @@ package com.aya.chocolateteam.ui.fragments
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.activities.SearchResultActivity
@@ -20,9 +20,9 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
     }
     override fun addCallBack() {
         binding!!.apply {
-            searchBtn.setOnClickListener {
-                search()
-            }
+//            searchBtn.setOnClickListener {
+//                search()
+//            }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String)=search()
