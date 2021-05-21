@@ -33,14 +33,19 @@
             android:src="@drawable/leftarrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/country_name"
-            app:layout_constraintTop_toTopOf="@id/country_name" />
+            app:layout_constraintTop_toTopOf="@id/country_name"
+            app:layout_constraintBottom_toBottomOf="@id/country_name"/>
         <TextView
             android:id="@+id/country_name"
-            android:layout_width="121dp"
-            android:layout_height="69dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:autoSizeMaxTextSize="100sp"
+            app:autoSizeMinTextSize="20sp"
+            app:autoSizeTextType="uniform"
             android:fontFamily="@font/headland_one"
             android:gravity="center"
-            android:text="Japan"
+            android:text="south georgia and south sandwich islands"
             android:elevation="10dp"
             android:textColor="@color/black"
             android:textSize="20dp"
@@ -60,7 +65,7 @@
             app:layout_constraintHorizontal_bias="0.208"
             app:layout_constraintStart_toEndOf="@+id/country_name"
             app:layout_constraintTop_toTopOf="@id/country_name"
-            />
+            app:layout_constraintBottom_toBottomOf="@id/country_name"/>
 
 
 
@@ -71,6 +76,7 @@
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/headland_one"
                 android:gravity="center"
+                android:layout_margin="20dp"
                 android:paddingLeft="10dp"
                 android:text="@string/text"
                 android:textColor="@color/black"
@@ -88,7 +94,8 @@
                 android:background="@drawable/textview"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description"/>
+                app:layout_constraintTop_toBottomOf="@id/description"
+                app:layout_constraintBottom_toTopOf="@id/textView4"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -138,7 +145,8 @@
                 android:background="@drawable/textview"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_listView" />
+                app:layout_constraintTop_toBottomOf="@+id/text_listView"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
             <View
                 android:id="@+id/view"

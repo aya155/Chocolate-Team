@@ -5,8 +5,6 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.TextView
 import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.ActivitySplashScreenBinding
@@ -23,7 +21,7 @@ class SplashScreen : BaseActivity<ActivitySplashScreenBinding>() {
 
     override fun setup() {
         Handler().postDelayed({
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, TabActivity::class.java))
                 finish()
         }, SPLASH_TIME)
     }
