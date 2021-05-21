@@ -52,7 +52,8 @@ object DataManager {
      * @param list a list represent cities
      * @return an long represent total population of list of cities
      */
-    fun getTotalPopulation(list: MutableList<City>): Long = list.sumOf { it.population }.toLong()
+    private fun getTotalPopulation(list: MutableList<City>): Long =
+        list.sumOf { it.population }.toLong()
 
 
     /**
@@ -145,7 +146,9 @@ object DataManager {
      */
     @OptIn(ExperimentalStdlibApi::class)
     fun getCountryByName(countryName: String): Country? {
-        return countryList.firstOrNull{ it.name.lowercase().trim() == countryName.lowercase().trim() }
+        return countryList.firstOrNull {
+            it.name.lowercase().trim() == countryName.lowercase().trim()
+        }
     }
 
     /**
@@ -190,5 +193,50 @@ object DataManager {
         return getTotalPopulation(country.cities)
     }
 
+    /**
+     * this function return a ISO2 of a country
+     * @param countryName a string represent name of required country
+     * @return String represent ISO3 of a country
+     */
+    @OptIn(ExperimentalStdlibApi::class)
+    fun getIso2ByCountryName(countryName: String): String {
+        return countryList.first {
+            it.name.lowercase().trim() == countryName.lowercase()
+        }.cities[0].iso2
+    }
+
+    /**
+     * this function return a ISO3 of a country
+     * @param countryName a string represent name of required country
+     * @return String represent ISO3 of a country
+     */
+    @OptIn(ExperimentalStdlibApi::class)
+    fun getIso3ByCountryName(countryName: String): String {
+        return countryList.first {
+            it.name.lowercase().trim() == countryName.lowercase()
+        }.cities[0].iso3
+    }
+
+    /**
+     * this function return a ISO2 of a country
+     * @param countryName a string represent name of required country
+     * @return String represent ISO3 of a country
+     */
+    @OptIn(ExperimentalStdlibApi::class)
+    fun getIso2ByCountry(country: Country): String {
+        return country.cities[0].iso2
+    }
+
+    /**
+     * this function return a ISO3 of a country
+     * @param country a required country
+     * @return String represent ISO3 of a country
+     */
+    @OptIn(ExperimentalStdlibApi::class)
+    fun getIso3ByCountry(country: Country): String {
+        return country.cities[0].iso3
+    }
 }
+
+
 

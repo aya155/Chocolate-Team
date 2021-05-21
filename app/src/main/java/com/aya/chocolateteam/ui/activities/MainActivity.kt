@@ -36,7 +36,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         buffer.forEachLine {
            DataManager.addCity(parser.parse(it))
         }
-        DataManager.getCountriesInfo()
+        DataManager.createCountriesInfo()
     }
 
     private fun setTabs(){
@@ -48,8 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding?.tablayout?.apply {
             setupWithViewPager(binding!!.viewpager)
             getTabAt(0)?.text = adapter.getPageTitle(0)
-            getTabAt(1)?.text = adapter.getPageTitle(1)
-            getTabAt(2)?.text = adapter.getPageTitle(2)
+            getTabAt(2)?.text = adapter.getPageTitle(1)
         }
 
 

@@ -37,14 +37,5 @@ abstract class BaseFragment<VB:ViewBinding>:Fragment(), BaseInterface<VB> {
         return _binding?.root
     }
 
-    protected fun bindChart(type: AAChartType, title: String, subTitle: String = "", backgroundColor: String = "#CDCACA", seriesArray: Array<AASeriesElement>) = AAChartModel().chartType(type)
-            .title(title)
-            .subtitle(subTitle)
-            .backgroundColor(backgroundColor)
-            .dataLabelsEnabled(true)
-            .series(seriesArray)
 
-    protected fun makeSeriesArray(cityList: List<City>) = arrayListOf<AASeriesElement>().apply {
-        cityList.forEach { this.add(AASeriesElement().name(it.cityName).data(arrayOf(it.population))) }
-    }
 }

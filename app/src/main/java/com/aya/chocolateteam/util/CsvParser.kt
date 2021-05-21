@@ -15,6 +15,8 @@ class CsvParser {
         return City(
             cityName = tokenList[Constants.CITY_INDEX],
             countryName = tokenList[Constants.COUNTRY_INDEX],
+            iso2 = tokenList[Constants.ISO2_INDEX],
+            iso3 = tokenList[Constants.ISO3_INDEX],
             latitude = tokenList[Constants.LATITUDE_INDEX].toDouble(),
             longitude = tokenList[Constants.LONGITUDE_INDEX].toDouble(),
             population = tokenList[Constants.POPULATION_INDEX].toDoubleOrNull() ?: 0.0
