@@ -12,5 +12,6 @@
     <string name="discover_countries_information">Discover Countries Information.</string>
     <string name="world_fact">World Fact</string>
     <string name="earth_image">earth image</string>
+    <string name="chartName">Population According To Cities</string>
 
 </resources>
