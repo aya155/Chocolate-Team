@@ -20,27 +20,27 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
         setVisibility(true)
     }
     override fun addCallBack() {
-        binding!!.apply {
-            searchBtn.setOnClickListener {
-                search()
-            }
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String)=search()
-            override fun onQueryTextChange(newText: String?)= false
-        })
+//        binding!!.apply {
+//            searchBtn.setOnClickListener {
+//                search()
+//            }
+//
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String)=search()
+//            override fun onQueryTextChange(newText: String?)= false
+//        })
+//    }
     }
-    }
-    private fun search():Boolean{
-        binding?.apply {
-            val listCountry=DataManager.getCountryByName(searchView.query.toString())
-            if (listCountry.isNotEmpty()) {
-                startActivity(Intent(activity,SearchResultActivity::class.java))
-                setVisibility(true)
-            }else setVisibility(false)
-        }
-        return false
-    }
+//    private fun search():Boolean{
+//        binding?.apply {
+//            val listCountry=DataManager.getCountryByName(searchView.query.toString())
+//            if (listCountry.isNotEmpty()) {
+//                startActivity(Intent(activity,SearchResultActivity::class.java))
+//                setVisibility(true)
+//            }else setVisibility(false)
+//        }
+//        return false
+//    }
     private fun setVisibility(b:Boolean){
         var searchvisiable:Int;
         var errorVisiable:Int

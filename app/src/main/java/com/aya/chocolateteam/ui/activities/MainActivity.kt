@@ -2,7 +2,6 @@ package com.aya.chocolateteam.ui.activities
 
 import android.view.LayoutInflater
 import com.aya.chocolateteam.ui.fragments.FragmentA
-import com.aya.chocolateteam.ui.fragments.FragmentB
 import com.aya.chocolateteam.ui.fragments.FragmentC
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.databinding.ActivityMainBinding
@@ -43,7 +42,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun setTabs(){
         val adapter = ViewpagerAdapter(supportFragmentManager).apply {
             addFragment(FragmentA(), "Home")
-            addFragment(FragmentB(), "Map")
             addFragment(FragmentC(), "Search")
         }
         binding?.viewpager?.adapter = adapter
