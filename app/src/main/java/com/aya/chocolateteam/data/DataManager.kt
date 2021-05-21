@@ -222,7 +222,6 @@ object DataManager {
      * @param country a string represent name of required country
      * @return String represent ISO3 of a country
      */
-    @OptIn(ExperimentalStdlibApi::class)
     fun getIso2ByCountry(country: Country): String {
         return country.cities[0].iso2
     }
@@ -232,7 +231,6 @@ object DataManager {
      * @param country a required country
      * @return String represent ISO3 of a country
      */
-    @OptIn(ExperimentalStdlibApi::class)
     fun getIso3ByCountry(country: Country): String {
         return country.cities[0].iso3
     }
@@ -242,7 +240,6 @@ object DataManager {
      * @param cities a list of cities
      * @return a list of cities name
      */
-    @OptIn(ExperimentalStdlibApi::class)
     fun getCitiesName(cities: List<City>): List<String> {
         return cities.map { it.cityName }
     }
@@ -253,7 +250,6 @@ object DataManager {
      * @param country a required country
      * @return list of String represent cities of a country
      */
-    @OptIn(ExperimentalStdlibApi::class)
     fun getCountryCitiesName(country: Country): List<String> {
         return getCitiesName(country.cities)
     }
