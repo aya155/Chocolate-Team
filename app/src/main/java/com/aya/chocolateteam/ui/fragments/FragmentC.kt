@@ -8,7 +8,6 @@ import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.activities.SearchResultActivity
 import com.aya.chocolateteam.util.Constants
-import kotlin.math.log
 
 
 class FragmentC : BaseFragment<FragmentCBinding>() {
@@ -20,15 +19,14 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
     }
     override fun addCallBack() {
         binding!!.apply {
-//            searchBtn.setOnClickListener {
-//                search()
-//            }
-
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String)=search()
-            override fun onQueryTextChange(newText: String?)= false
+            override fun onQueryTextChange(newText: String?):Boolean{
+                takeIf { searchView.query.isBlank() }?.let { setVisibility(true) }
+                return false
+            }
         })
-    }
+        }
     }
     private fun search():Boolean{
         binding?.apply {
@@ -43,16 +41,8 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
         return false
     }
     private fun setVisibility(b:Boolean){
-        val searchVisible:Int;
-        val errorVisible:Int
-        if(b) {
-            searchVisible = View.VISIBLE
-            errorVisible=View.INVISIBLE
-        }else
-        {
-            searchVisible = View.INVISIBLE
-            errorVisible=View.VISIBLE
-        }
+        val searchVisible:Int=if(b)View.VISIBLE else View.INVISIBLE
+        val errorVisible:Int=if(b)View.INVISIBLE else View.VISIBLE
         binding?.apply {
             notFound.visibility=errorVisible
             searchPhoto.visibility=searchVisible
