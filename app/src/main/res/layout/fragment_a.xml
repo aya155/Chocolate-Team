@@ -183,12 +183,6 @@
 
             </com.github.aachartmodel.aainfographics.aachartcreator.AAChartView>
 
-
-            <!--    <ListView-->
-            <!--        android:layout_width="207dp"-->
-            <!--        android:layout_height="74dp"-->
-            <!--        tools:layout_editor_absoluteX="31dp"-->
-            <!--        tools:layout_editor_absoluteY="72dp" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
