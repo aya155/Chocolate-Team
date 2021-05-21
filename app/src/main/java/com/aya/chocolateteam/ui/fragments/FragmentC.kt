@@ -8,6 +8,7 @@ import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.activities.SearchResultActivity
 import com.aya.chocolateteam.util.Constants
+import kotlin.math.log
 
 
 class FragmentC : BaseFragment<FragmentCBinding>() {
@@ -19,6 +20,7 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
     }
     override fun addCallBack() {
         binding!!.apply {
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String)=search()
             override fun onQueryTextChange(newText: String?):Boolean{
@@ -26,7 +28,9 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
                 return false
             }
         })
-        }
+
+            searchView.queryHint = "Search ..."
+    }
     }
     private fun search():Boolean{
         binding?.apply {
