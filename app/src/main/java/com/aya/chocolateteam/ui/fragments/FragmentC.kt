@@ -3,7 +3,7 @@ package com.aya.chocolateteam.ui.fragments
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.widget.SearchView
+import android.widget.SearchView
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.activities.SearchResultActivity
