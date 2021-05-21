@@ -2,6 +2,7 @@ package com.aya.chocolateteam.ui.activities
 
 import android.content.Intent
 import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -16,19 +17,17 @@ class SplashScreen : BaseActivity<ActivitySplashScreenBinding>() {
     private lateinit var topAnimation: Animation
     private lateinit var bottomAnimation: Animation
 
-    private val SPLASH_TIME: Long = 1000
+    private val SPLASH_TIME: Long = 1350
 
     override val LOG_TAG: String = "SPLASH_ACTIVITY"
     override val bindingInflater: (LayoutInflater) -> ActivitySplashScreenBinding = ActivitySplashScreenBinding::inflate
 
     override fun setup() {
-        Handler().postDelayed({
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }, SPLASH_TIME)
-    }
-
-    override fun addCallBack() {
+        // set layout of splash screen
         topAnimation = AnimationUtils.loadAnimation(this, R.anim.top_animation)
         bottomAnimation = AnimationUtils.loadAnimation(this, R.anim.buttom_animation)
         binding?.apply {
@@ -38,8 +37,9 @@ class SplashScreen : BaseActivity<ActivitySplashScreenBinding>() {
             progressBar.animation = topAnimation
         }
     }
+    override fun addCallBack() {
+    }
 
     override fun bindLayout(country: Country) {
-
     }
 }
