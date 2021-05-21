@@ -2,7 +2,6 @@ package com.aya.chocolateteam.ui.activities
 
 import android.view.LayoutInflater
 import com.aya.chocolateteam.data.DataManager
-import com.aya.chocolateteam.data.domain.City
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.SearchResultBinding
 import com.aya.chocolateteam.util.Constants
@@ -11,13 +10,15 @@ import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
 class SearchResultActivity: BaseActivity<SearchResultBinding>() {
     override val LOG_TAG: String="SEARCH_RESULT"
     override val bindingInflater: (LayoutInflater) -> SearchResultBinding= SearchResultBinding::inflate
+    // set layout
     override fun setup() {
         val country=intent.getParcelableExtra<Country>(Constants.COUNTRY)
         bindLayout(country!!)
     }
-    override fun addCallBack() {
 
+    override fun addCallBack() {
     }
+    // set name of country , build  bar chart , set a total population of this country ,set iso2 and iso3
     override fun bindLayout(country: Country){
         binding?.apply {
             countryName.text=country.name

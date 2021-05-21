@@ -13,22 +13,26 @@ import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
 class FragmentA : BaseFragment<FragmentABinding>() {
     override val LOG_TAG: String="FRAGMENT_A"
     override val bindingInflater: (LayoutInflater) -> FragmentABinding=FragmentABinding::inflate
+
     override fun setup() {
-        DataManager.getCountriesInfo()
+        // get  initial country
         val country= DataManager.getCurrentCountry()
         bindLayout(country)
     }
 
     override fun addCallBack() {
         binding?.apply {
+            // move to previous country
             beforeBtn.setOnClickListener {
                 bindLayout(DataManager.getPreviousCountry())
             }
+            //move to next country
             nextBtn.setOnClickListener {
                 bindLayout(DataManager.getNextCountry())
             }
         }
     }
+    // set layout with information of current country
     override fun bindLayout(country: Country){
         binding?.apply {
             countryName.text=country.name

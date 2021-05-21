@@ -16,13 +16,16 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
 
     override val LOG_TAG: String="FRAGMENT_C"
     override val bindingInflater: (LayoutInflater) -> FragmentCBinding = FragmentCBinding::inflate
+   //set initial visibility
     override fun setup() {
         setVisibility(true)
     }
     override fun addCallBack() {
         binding!!.apply {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            //click search icon in keyboard
             override fun onQueryTextSubmit(query: String)=search()
+            //when change text and be empty set visibility
             override fun onQueryTextChange(newText: String?):Boolean{
                 takeIf { searchView.query.isBlank() }?.let { setVisibility(true) }
                 return false
@@ -30,17 +33,20 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
         })
 
             searchView.queryHint = "Search ..."
+        }
     }
-    }
+
     private fun search():Boolean{
         binding?.apply {
             val country=DataManager.getCountryByName(searchView.query.toString())
+            // if country already exiting  in csv file
             if (country!=null) {
                 val intent=Intent(activity,SearchResultActivity::class.java)
                 intent.putExtra(Constants.COUNTRY,country)
                 startActivity(intent)
                 setVisibility(true)
-            }else setVisibility(false)
+            }// if invalid country
+            else setVisibility(false)
         }
         return false
     }
