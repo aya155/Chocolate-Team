@@ -13,7 +13,7 @@ class FragmentA : BaseFragment<FragmentABinding>() {
     override val bindingInflater: (LayoutInflater) -> FragmentABinding=FragmentABinding::inflate
     override fun setup() {
         DataManager.getCountriesInfo()
-        val country= DataManager.countryList[(0..DataManager.countryList.lastIndex).random()]
+        val country= DataManager.getCurrentCountry()
         bindLayout(country)
     }
 
@@ -30,7 +30,8 @@ class FragmentA : BaseFragment<FragmentABinding>() {
     private fun bindLayout(country: Country){
         binding?.apply {
             countryName.text=country.name
-            populationCitiesChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name!!,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(3)).toTypedArray()))
+            populationCitiesChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(4)).toTypedArray()))
+            description.text="Population  : ${DataManager.getTotalCountryPopulation(country)} \nISO2  : ${DataManager.getIso2ByCountry(country)}     \nISO3  : ${DataManager.getIso3ByCountry(country)}   \n"
         }
     }
 
