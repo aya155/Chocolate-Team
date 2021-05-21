@@ -79,7 +79,7 @@ object DataManager {
 
     fun getCountriesInfo() {
         citesList.groupBy { it.countryName }.entries.map { (name, group) ->
-            name?.let { Country(it, group as ArrayList<City>) }?.let { countryList.add(it) }
+            name.let { Country(it, group as ArrayList<City>) }.let { countryList.add(it) }
         }
     }
 
@@ -126,7 +126,7 @@ object DataManager {
      */
     fun createCountriesInfo(): List<Country> {
         citesList.groupBy { it.countryName }.entries.map { (name, group) ->
-            name?.let { Country(it, group as ArrayList<City>) }?.let { countryList.add(it) }
+            name.let { Country(it, group as ArrayList<City>) }.let { countryList.add(it) }
         }
 
         return countryList
@@ -219,10 +219,9 @@ object DataManager {
 
     /**
      * this function return a ISO2 of a country
-     * @param countryName a string represent name of required country
+     * @param country a string represent name of required country
      * @return String represent ISO3 of a country
      */
-    @OptIn(ExperimentalStdlibApi::class)
     fun getIso2ByCountry(country: Country): String {
         return country.cities[0].iso2
     }
@@ -232,10 +231,29 @@ object DataManager {
      * @param country a required country
      * @return String represent ISO3 of a country
      */
-    @OptIn(ExperimentalStdlibApi::class)
     fun getIso3ByCountry(country: Country): String {
         return country.cities[0].iso3
     }
+
+    /**
+     * this function return a list of cities name
+     * @param cities a list of cities
+     * @return a list of cities name
+     */
+    fun getCitiesName(cities: List<City>): List<String> {
+        return cities.map { it.cityName }
+    }
+
+
+    /**
+     * this function return a list of cities name of a country
+     * @param country a required country
+     * @return list of String represent cities of a country
+     */
+    fun getCountryCitiesName(country: Country): List<String> {
+        return getCitiesName(country.cities)
+    }
+
 }
 
 
