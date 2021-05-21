@@ -8,7 +8,6 @@ object DataManager {
     private val citesList = mutableListOf<City>()
     var countryList = mutableListOf<Country>()
 
-    private var cityIndex = 0
     private var countryIndex = 0
     fun addCity(city: City) {
         citesList.add(city)
@@ -21,13 +20,7 @@ object DataManager {
      */
     private fun getTotalPopulation(list: MutableList<City>): Long =
         list.sumOf { it.population }.toLong()
-
-    fun getCountriesInfo() {
-        citesList.groupBy { it.countryName }.entries.map { (name, group) ->
-            name.let { Country(it, group as ArrayList<City>) }.let { countryList.add(it) }
-        }
-    }
-
+    
     /**
      * this function return data grouped by country
      * @return a List Country with it's name and cities
@@ -40,12 +33,6 @@ object DataManager {
         return countryList
     }
 
-    /**
-     * this function return an instance of Country
-     * @param index an integer represent index of required country
-     * @return an instance of Country with info
-     */
-    fun getCountryByIndex(index: Int): Country = countryList[index]
 
     /**
      * this function return an instance of Country

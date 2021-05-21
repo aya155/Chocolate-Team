@@ -9,8 +9,6 @@ import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.activities.SearchResultActivity
 import com.aya.chocolateteam.util.Constants
-import kotlin.math.log
-
 
 class FragmentC : BaseFragment<FragmentCBinding>() {
 
