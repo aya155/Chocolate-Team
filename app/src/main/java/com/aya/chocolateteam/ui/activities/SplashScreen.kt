@@ -24,7 +24,7 @@ class SplashScreen : BaseActivity<ActivitySplashScreenBinding>() {
 
     override fun setup() {
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, TabActivity::class.java))
             finish()
         }, SPLASH_TIME)
         // set layout of splash screen
