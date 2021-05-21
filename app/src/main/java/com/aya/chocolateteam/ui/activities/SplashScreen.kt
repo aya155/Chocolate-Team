@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import com.aya.chocolateteam.R
+import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.ActivitySplashScreenBinding
 
 class SplashScreen : BaseActivity<ActivitySplashScreenBinding>() {
@@ -36,5 +37,9 @@ class SplashScreen : BaseActivity<ActivitySplashScreenBinding>() {
             text2.animation = topAnimation
             progressBar.animation = topAnimation
         }
+    }
+
+    override fun bindLayout(country: Country) {
+
     }
 }

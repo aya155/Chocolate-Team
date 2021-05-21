@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import com.aya.chocolateteam.ui.fragments.FragmentA
 import com.aya.chocolateteam.ui.fragments.FragmentC
 import com.aya.chocolateteam.data.DataManager
+import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.ActivityMainBinding
 import com.aya.chocolateteam.ui.adapters.ViewpagerAdapter
 import com.aya.chocolateteam.util.CsvParser
@@ -20,7 +21,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun setup() {
         parseFile()
         setTabs()
-
     }
 
 
@@ -51,6 +51,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             getTabAt(2)?.text = adapter.getPageTitle(1)
         }
 
+
+    }
+
+    override fun bindLayout(country: Country) {
 
     }
 }

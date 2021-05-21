@@ -13,15 +13,18 @@ class SearchResultActivity: BaseActivity<SearchResultBinding>() {
     override val bindingInflater: (LayoutInflater) -> SearchResultBinding= SearchResultBinding::inflate
     override fun setup() {
         val country=intent.getParcelableExtra<Country>(Constants.COUNTRY)
-        binding?.apply {
-            countryName.text=country!!.name
-            populationCitiesChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(4)).toTypedArray()))
-            populationCountry.text="Population :${DataManager.getTotalCountryPopulation(country)}".toString()
-            iso2Country.text="ISO2 :${DataManager.getIso2ByCountry(country)}"
-            iso3Country.text="ISO3 :${DataManager.getIso3ByCountry(country)}"
-        }
+        bindLayout(country!!)
     }
     override fun addCallBack() {
 
+    }
+    override fun bindLayout(country: Country){
+        binding?.apply {
+            countryName.text=country.name
+            populationCitiesChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(4)).toTypedArray()))
+            populationCountry.text="Population :${DataManager.getTotalCountryPopulation(country)}"
+            iso2Country.text="ISO2 :${DataManager.getIso2ByCountry(country)}"
+            iso3Country.text="ISO3 :${DataManager.getIso3ByCountry(country)}"
+        }
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.SearchView
 import com.aya.chocolateteam.data.DataManager
+import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.activities.SearchResultActivity
 import com.aya.chocolateteam.util.Constants
@@ -20,7 +21,6 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
     }
     override fun addCallBack() {
         binding!!.apply {
-
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String)=search()
             override fun onQueryTextChange(newText: String?):Boolean{
@@ -54,5 +54,9 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             text.visibility=searchVisible
             errorText.visibility=errorVisible
         }
+    }
+
+    override fun bindLayout(country: Country) {
+
     }
 }

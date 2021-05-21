@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.viewbinding.ViewBinding
 import com.aya.chocolateteam.data.domain.City
+import com.aya.chocolateteam.data.domain.Country
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartModel
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
 import com.github.aachartmodel.aainfographics.aachartcreator.AASeriesElement
@@ -28,4 +29,5 @@ interface BaseInterface<VB:ViewBinding> {
     fun makeSeriesArray(cityList: List<City>) = arrayListOf<AASeriesElement>().apply {
         cityList.forEach { this.add(AASeriesElement().name(it.cityName).data(arrayOf(it.population))) }
     }
+    fun bindLayout(country: Country)
 }
