@@ -254,6 +254,14 @@ object DataManager {
         return getCitiesName(country.cities)
     }
 
+    /**
+     * this function return string represent country latitude and longitude
+     * @param country a required country
+     * @return list of String represent country latitude and longitude
+     */
+    fun getCountryLatLan(country: Country): String {
+        return "${country.cities[0].latitude.toString()},${country.cities[0].longitude.toString()}"
+    }
 }
 
 
