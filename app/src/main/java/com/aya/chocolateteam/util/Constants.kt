@@ -5,4 +5,5 @@ object Constants {
     const val LATITUDE_INDEX = 2
     const val LONGITUDE_INDEX = 3
     const val POPULATION_INDEX = 9
+    const val COUNTRY="COUNTRY"
 }

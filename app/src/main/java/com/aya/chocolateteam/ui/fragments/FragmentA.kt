@@ -30,7 +30,7 @@ class FragmentA : BaseFragment<FragmentABinding>() {
     private fun bindLayout(country: Country){
         binding?.apply {
             countryName.text=country.name
-            populationCitiesChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(3)).toTypedArray()))
+            populationCitiesChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name!!,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(3)).toTypedArray()))
         }
     }
 

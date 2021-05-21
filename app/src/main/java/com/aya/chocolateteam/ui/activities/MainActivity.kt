@@ -2,7 +2,6 @@ package com.aya.chocolateteam.ui.activities
 
 import android.view.LayoutInflater
 import com.aya.chocolateteam.ui.fragments.FragmentA
-import com.aya.chocolateteam.ui.fragments.FragmentB
 import com.aya.chocolateteam.ui.fragments.FragmentC
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.databinding.ActivityMainBinding
@@ -37,21 +36,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         buffer.forEachLine {
            DataManager.addCity(parser.parse(it))
         }
-        DataManager.getCountriesInfo()
+        DataManager.createCountriesInfo()
     }
 
     private fun setTabs(){
         val adapter = ViewpagerAdapter(supportFragmentManager).apply {
             addFragment(FragmentA(), "Home")
-            addFragment(FragmentB(), "Map")
             addFragment(FragmentC(), "Search")
         }
         binding?.viewpager?.adapter = adapter
         binding?.tablayout?.apply {
             setupWithViewPager(binding!!.viewpager)
             getTabAt(0)?.text = adapter.getPageTitle(0)
-            getTabAt(1)?.text = adapter.getPageTitle(1)
-            getTabAt(2)?.text = adapter.getPageTitle(2)
+            getTabAt(2)?.text = adapter.getPageTitle(1)
         }
 
 

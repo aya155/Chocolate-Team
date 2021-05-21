@@ -82,7 +82,6 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/textview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -104,17 +103,17 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/id_country" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/id_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
         android:fontFamily="@font/andada"
-        android:text="Capital: Tokyo"
+        android:text="ID: 377,975 km²"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
@@ -135,17 +134,17 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/lat_country" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/lat_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
         android:fontFamily="@font/andada"
-        android:text="Area: 377,975 km²"
+        android:text="lat: 377,975 km²"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -154,7 +153,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="25dp"
-        android:src="@drawable/demographics"
+        android:src="@drawable/dollarsignundertheroof"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -166,18 +165,19 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/lag_country" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/lag_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="3dp"
         android:fontFamily="@font/andada"
-        android:text="Population: 126.3 million (2019)"
+        android:text="lag: 126.3 "
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
@@ -186,18 +186,20 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="25dp"
-        android:src="@drawable/dollarsignundertheroof"
+        android:src="@drawable/demographics"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
+        android:id="@+id/population_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:fontFamily="@font/andada"
-        android:text="Currency: Japanese yen"
+        android:text="Population: 126.3 million (2019)"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@id/imageView4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

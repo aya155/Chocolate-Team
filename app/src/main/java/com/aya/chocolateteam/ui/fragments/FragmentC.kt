@@ -4,12 +4,11 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.SearchView
-import androidx.viewpager.widget.ViewPager
-import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.activities.SearchResultActivity
 import com.aya.chocolateteam.util.Constants
+import kotlin.math.log
 
 
 class FragmentC : BaseFragment<FragmentCBinding>() {
@@ -33,33 +32,33 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
     }
     private fun search():Boolean{
         binding?.apply {
-            val listCountry=DataManager.getCountryByName(searchView.query.toString())
-            if (listCountry.isNotEmpty()) {
-                startActivity(Intent(activity,SearchResultActivity::class.java))
+            val country=DataManager.getCountryByName(searchView.query.toString())
+            if (country!=null) {
+                val intent=Intent(activity,SearchResultActivity::class.java)
+                intent.putExtra(Constants.COUNTRY,country)
+                startActivity(intent)
                 setVisibility(true)
             }else setVisibility(false)
         }
         return false
     }
     private fun setVisibility(b:Boolean){
-        var searchvisiable:Int;
-        var errorVisiable:Int
+        val searchVisible:Int;
+        val errorVisible:Int
         if(b) {
-            searchvisiable = View.VISIBLE
-            errorVisiable=View.INVISIBLE
+            searchVisible = View.VISIBLE
+            errorVisible=View.INVISIBLE
         }else
         {
-            searchvisiable = View.INVISIBLE
-            errorVisiable=View.VISIBLE
-
+            searchVisible = View.INVISIBLE
+            errorVisible=View.VISIBLE
         }
         binding?.apply {
-            notFound.visibility=errorVisiable
-            searchPhoto.visibility=searchvisiable
-            subtext.visibility=searchvisiable
-            text.visibility=searchvisiable
-            errorText.visibility=errorVisiable
+            notFound.visibility=errorVisible
+            searchPhoto.visibility=searchVisible
+            subtext.visibility=searchVisible
+            text.visibility=searchVisible
+            errorText.visibility=errorVisible
         }
-
     }
 }
