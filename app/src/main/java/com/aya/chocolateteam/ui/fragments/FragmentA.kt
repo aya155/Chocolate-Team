@@ -1,6 +1,8 @@
 package com.aya.chocolateteam.ui.fragments
 
 import android.view.LayoutInflater
+import android.widget.ArrayAdapter
+import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.FragmentABinding
@@ -32,6 +34,7 @@ class FragmentA : BaseFragment<FragmentABinding>() {
             countryName.text=country.name
             populationCitiesChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(4)).toTypedArray()))
             description.text="Population  : ${DataManager.getTotalCountryPopulation(country)} \nISO2  : ${DataManager.getIso2ByCountry(country)}     \nISO3  : ${DataManager.getIso3ByCountry(country)}   \n"
+            listItem.adapter= ArrayAdapter(context!!, android.R.layout.simple_list_item_1,DataManager.getCountryCitiesName(country))
         }
     }
 }
