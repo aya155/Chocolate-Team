@@ -33,11 +33,11 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
     }
     private fun search():Boolean{
         binding?.apply {
-            val listCountry=DataManager.getCountryByName(searchView.query.toString())
-            if (listCountry.isNotEmpty()) {
-                startActivity(Intent(activity,SearchResultActivity::class.java))
-                setVisibility(true)
-            }else setVisibility(false)
+//            val listCountry=DataManager.getCountryByName(searchView.query.toString())
+//            if (listCountry.isNotEmpty()) {
+//                startActivity(Intent(activity,SearchResultActivity::class.java))
+//                setVisibility(true)
+//            }else setVisibility(false)
         }
         return false
     }

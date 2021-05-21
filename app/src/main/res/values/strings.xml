@@ -12,5 +12,15 @@
     <string name="discover_countries_information">Discover Countries Information.</string>
     <string name="world_fact">World Fact</string>
     <string name="earth_image">earth image</string>
+    
+    <string-array name="CitiesName">
+        <item name="city">Baghdad</item>
+        <item name="city">Tokyo</item>
+        <item name="city">Beijing</item>
+        <item name="city">Delhi</item>
+        <item name="city">Washington</item>
+        <item name="city">Cairo</item>
+        <item name="city">Seoul</item>
+    </string-array>
 
 </resources>
