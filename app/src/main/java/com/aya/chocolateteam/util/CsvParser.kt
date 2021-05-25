@@ -19,6 +19,7 @@ class CsvParser {
             iso3 = tokenList[Constants.ISO3_INDEX],
             latitude = tokenList[Constants.LATITUDE_INDEX].toDouble(),
             longitude = tokenList[Constants.LONGITUDE_INDEX].toDouble(),
+            capital = tokenList[Constants.CAPITAL_INDEX],
             population = tokenList[Constants.POPULATION_INDEX].toDoubleOrNull() ?: 0.0
         )
     }

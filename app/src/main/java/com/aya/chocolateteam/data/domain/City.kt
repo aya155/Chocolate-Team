@@ -12,5 +12,8 @@ data class City(
     val iso3: String,
     val latitude: Double,
     val longitude: Double,
+    val capital: String,
     val population: Double
 ) : Parcelable
+
+//"city","city_ascii","lat","lng","country","iso2","iso3","admin_name","capital","population","id"

@@ -8,6 +8,7 @@ object Constants {
     const val ISO3_INDEX = 6
     const val LATITUDE_INDEX = 2
     const val LONGITUDE_INDEX = 3
+    const val CAPITAL_INDEX = 8
     const val POPULATION_INDEX = 9
     const val COUNTRY="COUNTRY"
 }
