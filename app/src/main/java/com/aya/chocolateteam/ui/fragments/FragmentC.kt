@@ -38,7 +38,7 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
 
     private fun search():Boolean{
         binding?.apply {
-            val country=DataManager.getCountryByName(searchView.query.toString())
+            val country = DataManager.getCountryByName(searchView.query.toString())
             // if country already exiting  in csv file
             if (country!=null) {
                 val intent=Intent(activity,SearchResultActivity::class.java)

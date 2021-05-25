@@ -7,6 +7,7 @@ import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.ActivityTabBinding
 import com.aya.chocolateteam.ui.adapters.ViewpagerAdapter
+import com.aya.chocolateteam.ui.fragments.FragmentB
 import com.aya.chocolateteam.util.CsvParser
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -41,6 +42,7 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
     // add home && search fragment and set tabs text
     private fun setTabs(){
         val adapter = ViewpagerAdapter(supportFragmentManager).apply {
+            addFragment(FragmentB(), "Map")
             addFragment(FragmentA(), "Home")
             addFragment(FragmentC(), "Search")
         }
@@ -49,7 +51,8 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
         binding?.tablayout?.apply {
             setupWithViewPager(binding!!.viewpager)
             getTabAt(0)?.text = adapter.getPageTitle(0)
-            getTabAt(2)?.text = adapter.getPageTitle(1)
+            getTabAt(1)?.text = adapter.getPageTitle(1)
+            getTabAt(2)?.text = adapter.getPageTitle(2)
         }
 
 
