@@ -1,97 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="#f1f2f6"
+    app:layoutDescription="@xml/fragment_c_scene">
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="325dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="6dp"
-        android:background="@drawable/search"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/rec"
+        app:layout_constraintBottom_toTopOf="@id/text"
+        android:elevation="@dimen/cardview_default_elevation"
+        app:layout_constraintEnd_toStartOf="@+id/spinner_filter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_filter"
+        android:layout_width="44dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:entries="@array/filter"
+        app:layout_constraintBottom_toBottomOf="@+id/search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchView">
-        <TextView
-            android:id="@+id/error_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:fontFamily="@font/andada"
-            android:gravity="center"
-            android:text="Sorry there is no result try again."
-            android:textAllCaps="false"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/constraintLayout2" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/not_found"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="60dp"
-            app:lottie_rawRes="@raw/robot"
-            app:lottie_loop="true"
-            app:lottie_autoPlay="true"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/error_text" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintStart_toEndOf="@+id/search"
+        app:layout_constraintTop_toTopOf="@+id/search" />
     <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/main_text"
+        style="@style/textStyle.large"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/headland_one"
-        android:text="@string/text2"
-        android:gravity="center"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:textStyle="bold"
+        android:text="@string/main_text"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/subtext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
-
+        app:layout_constraintTop_toBottomOf="@+id/search" />
+    <TextView
+        android:id="@+id/error_text"
+        style="@style/textStyle.large"
+        android:text="sorry sorry sorry sorry sorry "
+        android:visibility="invisible"
+        android:layout_marginTop="120dp"
+        app:layout_constraintBottom_toTopOf="@id/error_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search" />
     <TextView
         android:id="@+id/subtext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/headland_one"
-        android:text="@string/text3"
-        android:gravity="center"
-        android:textColor="#615E5E"
-        android:textSize="16sp"
+        android:text="@string/sub_text"
+        style="@style/textStyle.small"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/search_photo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text" />
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/search_photo"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="60dp"
+        style="@style/lotte"
+        android:layout_marginHorizontal="16dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subtext"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
         app:lottie_rawRes="@raw/searchingcontract" />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/error_photo"
+        style="@style/lotte"
+        android:layout_marginHorizontal="16dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/error_text"
+        app:lottie_rawRes="@raw/robot" />
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/country_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/search"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
+                android:id="@+id/AAChartView"
+                style="@style/views"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@id/card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <ImageView
+                android:id="@+id/photo_city"
+                style="@style/views"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@id/card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                style="@style/views"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="#c5a880"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/AAChartView">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginVertical="16dp"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/textStyle.large"
+                        android:visibility="gone"
+                        android:layout_marginTop="16dp"
+                        android:text="Total population"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:text="22,333,455"
+                        android:drawableStart="@drawable/ic_baseline_people_24"
+                        android:textColor="@color/black"
+                        android:textSize="25dp" />
+                    <TextView
+                        style="@style/textStyle.large"
+                        android:layout_marginTop="16dp"
+                        android:text="Population"/>
+
+                    <TextView
+                        style="@style/textStyle"
+                        android:text="333,455"
+                        android:drawableStart="@drawable/ic_baseline_people_24"
+                        android:textSize="25dp" />
+                    <TextView
+                        style="@style/textStyle.large"
+                        android:visibility="gone"
+                        android:layout_marginTop="16dp"
+                        android:text="Captail"/>
+
+                    <TextView
+                        style="@style/textStyle"
+                        android:text="Baghdad"
+                        android:drawableStart="@drawable/ic_baseline_people_24"
+                        android:visibility="gone" />
+                    <TextView
+                        style="@style/textStyle.large"
+                        android:layout_marginTop="16dp"
+                        android:text="Country"/>
+
+                    <TextView
+                        style="@style/textStyle"
+                        android:text="Iraq"
+                        android:textSize="25sp"
+                        android:drawableStart="@drawable/ic_baseline_people_24"/>
+                    <TextView
+                        style="@style/textStyle.large"
+                        android:visibility="gone"
+                        android:layout_marginTop="16dp"
+                        android:text="ISO2"/>
+
+                    <TextView
+                        style="@style/textStyle"
+                        android:text="IQ"
+                        android:drawableStart="@drawable/ic_baseline_people_24"
+                        android:visibility="gone"
+                        android:textSize="25dp" />
+                    <TextView
+                        style="@style/textStyle.large"
+                        android:layout_marginTop="16dp"
+                        android:text="Time"/>
+
+                    <TextView
+                        android:text="22:33:55"
+                        android:drawableStart="@drawable/ic_baseline_people_24"
+                        style="@style/textStyle"
+                        android:textSize="25dp" />
+                    <TextView
+                        style="@style/textStyle.large"
+                        android:visibility="gone"
+                        android:layout_marginTop="16dp"
+                        android:text="ISO3"/>
+
+                    <TextView
+                        style="@style/textStyle"
+                        android:text="IQR"
+                        android:visibility="gone"
+                        android:layout_marginBottom="16dp"
+                        android:drawableStart="@drawable/ic_baseline_people_24"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cities"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_margin="40dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="4dp"
+        android:visibility="visible"
+        app:cardCornerRadius="@dimen/cardview_default_radius"
+
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintTop_toBottomOf="@id/search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/line"
+                android:layout_width="60dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/line"/>
+            <TextView
+                android:id="@+id/cities_text"
+                style="@style/textStyle.large"
+                android:text="cities"
+                android:layout_gravity="center_horizontal"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/sort_by_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_city"
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.motion.widget.MotionLayout>

@@ -3,10 +3,15 @@
     <string name="text">
         Capital: Tokyo\nArea: 377,975 km²\nCurrency: Japanese yen\nContinent: Asia
     </string>
-    <string name="text2">
+    <string-array name="filter">
+        <item >City</item>
+        <item >Country</item>
+        <item >Location</item>
+    </string-array>
+    <string name="main_text">
         What are\n you searching for?
     </string>
-    <string name="text3">
+    <string name="sub_text">
         Search for your favorite thing or find\n similar results in this area.
     </string>
     <string name="discover_countries_information">Discover Countries Information.</string>

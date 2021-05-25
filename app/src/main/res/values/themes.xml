@@ -35,4 +35,32 @@
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/search</item>
     </style>
+    <style name="textStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="textStyle.large">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="textStyle.small">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#615E5E</item>
+    </style>
+    <style name="lotte">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">250dp</item>
+        <item name="lottie_autoPlay">true</item>
+        <item name="lottie_loop">true</item>
+        <item name="android:layout_marginTop">60dp</item>
+    </style>
+    <style name="views">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="layout_constraintDimensionRatio">1:0.7</item>
+    </style>
 </resources>
