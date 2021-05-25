@@ -31,7 +31,8 @@
             android:gravity="center"
             android:text="Sorry there is no result try again."
             android:textAllCaps="false"
-            android:textSize="25sp"
+            android:textSize="23sp"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/constraintLayout2" />
@@ -75,7 +76,7 @@
         android:fontFamily="@font/headland_one"
         android:text="@string/text3"
         android:gravity="center"
-        android:textColor="#615E5E"
+        android:textColor="#3A3434"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
