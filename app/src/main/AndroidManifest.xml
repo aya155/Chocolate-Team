@@ -15,7 +15,8 @@
         android:theme="@style/Theme.ChocolateTeam">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDxBZTZR_E9CjbSFSSy-CYhZfFfny9iI7M" />
+            android:value="@string/google_maps_key"/>
+
         <activity
             android:name=".ui.activities.SearchResultActivity"
             android:theme="@style/AppFullScreenTheme" />
