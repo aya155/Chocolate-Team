@@ -4,192 +4,386 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6E3E3"
+    android:background="#F1E9E9"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ImageView
+        android:id="@+id/before_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_baseline_chevron_left_24"
+        app:layout_constraintBottom_toBottomOf="@id/country_name"
+        app:layout_constraintEnd_toStartOf="@+id/country_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/country_name"
+        app:layout_constraintVertical_bias="1.0" />
 
+    <TextView
+        android:id="@+id/country_name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/basic"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Iraq"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:autoSizeMaxTextSize="100sp"
+        app:autoSizeMinTextSize="20sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toStartOf="@id/next_btn"
+        app:layout_constraintStart_toEndOf="@id/before_btn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/next_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_baseline_chevron_right_24"
+        app:layout_constraintBottom_toBottomOf="@id/country_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.208"
+        app:layout_constraintStart_toEndOf="@+id/country_name"
+        app:layout_constraintTop_toTopOf="@id/country_name"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/country_name"/>
 
     <ScrollView
-        android:id="@+id/scroll"
+        android:id="@+id/scroll3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="68dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="20dp">
+        app:layout_constraintTop_toBottomOf="@id/view3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+            android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3">
+            app:layout_constraintTop_toBottomOf="@id/country_name">
 
-            <TextView
-                android:id="@+id/country_name"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                app:autoSizeMaxTextSize="100sp"
-                app:autoSizeMinTextSize="20sp"
-                app:autoSizeTextType="uniform"
-                android:fontFamily="@font/headland_one"
-                android:gravity="center"
-                android:text="Japan"
-                android:elevation="10dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/description"
-                app:layout_constraintEnd_toStartOf="@id/next_btn"
-                app:layout_constraintStart_toEndOf="@id/before_btn"
-                app:layout_constraintTop_toTopOf="parent"/>
-            <ImageView
-                android:id="@+id/next_btn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="20dp"
-                android:elevation="16dp"
-                android:src="@drawable/rightarrow"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.208"
-                app:layout_constraintStart_toEndOf="@+id/country_name"
-                app:layout_constraintTop_toTopOf="@id/country_name"
-                app:layout_constraintBottom_toBottomOf="@id/country_name"/>
 
-            <ImageView
-                android:id="@+id/before_btn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:elevation="16dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/leftarrow"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/country_name"
-                app:layout_constraintTop_toTopOf="@id/country_name"
-                app:layout_constraintBottom_toBottomOf="@id/country_name"/>
-
-            <TextView
-                android:id="@+id/description"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/headland_one"
-                android:gravity="center"
-                android:layout_margin="20dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/constraintLayout2">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/ch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/headland_one"
+                    android:text="Baghdad"
+                    app:chipBackgroundColor="#c5a880" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/ch2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/headland_one"
+                    android:text="Basra"
+                    app:chipBackgroundColor="#c5a880" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/ch3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/headland_one"
+                    android:text="Anbar"
+                    app:chipBackgroundColor="#c5a880" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/ch4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/headland_one"
+                    android:text="Hila"
+                    app:chipBackgroundColor="#c5a880" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/ch5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/headland_one"
+                    android:text="Arbil"
+                    app:chipBackgroundColor="#c5a880" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/ch6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/headland_one"
+                    android:text="Al-Nasirea"
+                    app:chipBackgroundColor="#c5a880" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/ch7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/headland_one"
+                    android:text="Al-Nasirea"
+                    app:chipBackgroundColor="#c5a880" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/ch8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/headland_one"
+                    android:text="Al-Nasirea"
+                    app:chipBackgroundColor="#c5a880" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/ch9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/headland_one"
+                    android:text="Al-Nasirea"
+                    app:chipBackgroundColor="#c5a880" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:text="@string/text"
-                android:textColor="@color/black"
-                android:textSize="13dp"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/country_name"/>
+                app:layout_constraintTop_toBottomOf="@id/chip_group" />
 
-
-            <TextView
-                android:id="@+id/text_listView"
-                android:layout_width="355dp"
-                android:layout_height="250dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/textview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description"
-                app:layout_constraintBottom_toTopOf="@id/population"/>
-
-            <TextView
-                android:id="@+id/cities"
-                android:layout_width="wrap_content"
+            <HorizontalScrollView
+                android:id="@+id/HorizontalScroll"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/headland_one"
-                android:text="Cities of this country"
-                android:textColor="@color/black"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toTopOf="@id/citiesLine"
-                app:layout_constraintStart_toStartOf="@+id/text_listView"
-                app:layout_constraintTop_toTopOf="@+id/text_listView" />
-
-            <View
-                android:id="@+id/citiesLine"
-                android:layout_width="340dp"
-                android:layout_height="1dp"
-                android:background="#e0e0e0"
-                app:layout_constraintEnd_toEndOf="@+id/text_listView"
-                app:layout_constraintHorizontal_bias="0.466"
-                app:layout_constraintStart_toStartOf="@+id/text_listView"
-                app:layout_constraintBottom_toTopOf="@id/list_item"/>
-
-            <ListView
-                android:id="@+id/list_item"
-                android:layout_width="345dp"
-                android:layout_height="180dp"
-                android:layout_marginTop="5dp"
-                android:clickable="true"
-                android:divider="#FFC107"
-                android:dividerHeight="2dp"
-                android:entries="@array/CitiesName"
-                android:focusable="true"
-                android:listSelector="@drawable/listview"
-                app:layout_constraintTop_toBottomOf="@id/citiesLine"
-                app:layout_constraintEnd_toEndOf="@id/text_listView"
-                app:layout_constraintHorizontal_bias="0.4"
-                app:layout_constraintStart_toStartOf="@id/text_listView"
-                app:layout_constraintBottom_toBottomOf="@id/text_listView"
-                app:layout_constraintVertical_bias="0.753" />
-
-            <TextView
-                android:id="@+id/population"
-                android:layout_width="355dp"
-                android:layout_height="250dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/textview"
+                android:orientation="vertical"
+                android:scrollbars="none"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/list_item" />
+                app:layout_constraintTop_toBottomOf="@id/view">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/horCard1"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="130dp"
+                        app:cardBackgroundColor="#c5a880"
+                        app:cardCornerRadius="20dp"
+                        app:layout_constraintStart_toStartOf="@id/constraintLayout3"
+                        app:layout_constraintTop_toTopOf="@id/constraintLayout3">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="35dp"
+                                android:layout_marginTop="20dp"
+                                android:fontFamily="@font/basic"
+                                android:text="population"
+                                android:textColor="#D0000000"
+                                android:textSize="20sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="8dp"
+                                android:src="@drawable/ic_baseline_people_24"
+                                app:layout_constraintStart_toEndOf="@+id/textView"
+                                app:layout_constraintTop_toTopOf="@+id/textView" />
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="33,521,452"
+                                android:textColor="#D0000000"
+                                android:textSize="16sp"
+                                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                                app:layout_constraintHorizontal_bias="0.619"
+                                app:layout_constraintStart_toStartOf="@+id/textView"
+                                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="@font/basic"
+                                android:text="ISO2 :"
+                                android:textColor="#D0000000"
+                                android:textSize="20sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="377,975 km²"
+                                android:textColor="#D0000000"
+                                android:textSize="16sp"
+                                app:layout_constraintStart_toEndOf="@+id/textView5"
+                                app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                            <TextView
+                                android:id="@+id/textView13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="@font/basic"
+                                android:text="ISO3 :"
+                                android:textColor="#D0000000"
+                                android:textSize="20sp"
+                                app:layout_constraintStart_toStartOf="@+id/textView5"
+                                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/basic"
+                                android:text="126.3 "
+                                android:textColor="#D0000000"
+                                android:textSize="16sp"
+                                app:layout_constraintStart_toEndOf="@+id/textView13"
+                                app:layout_constraintTop_toTopOf="@id/textView13" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="16dp"
+                        app:cardBackgroundColor="#c5a880"
+                        app:cardCornerRadius="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/horCard1"
+                        app:layout_constraintStart_toEndOf="@id/horCard1"
+                        app:layout_constraintTop_toTopOf="@+id/horCard1"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="56dp"
+                                android:layout_marginTop="28dp"
+                                android:fontFamily="@font/basic"
+                                android:text="Longitude"
+                                android:textColor="#D0000000"
+                                android:textSize="20sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text=" 377,975 km²"
+                                android:textColor="#D0000000"
+                                android:textSize="16sp"
+                                app:layout_constraintEnd_toEndOf="@+id/textView7"
+                                app:layout_constraintStart_toStartOf="@+id/textView7"
+                                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                            <TextView
+                                android:id="@+id/textView11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="@font/basic"
+                                android:text="Latitude"
+                                android:textColor="#D0000000"
+                                android:textSize="20sp"
+                                app:layout_constraintEnd_toEndOf="@+id/textView9"
+                                app:layout_constraintStart_toStartOf="@+id/textView9"
+                                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="126.3 "
+                                android:textColor="#D0000000"
+                                android:textSize="16sp"
+                                app:layout_constraintEnd_toEndOf="@+id/textView11"
+                                app:layout_constraintStart_toStartOf="@+id/textView11"
+                                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
 
             <View
-                android:id="@+id/citiesLine2"
-                android:layout_width="340dp"
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="50dp"
-                android:background="#e0e0e0"
-                app:layout_constraintEnd_toEndOf="@+id/population"
-                app:layout_constraintHorizontal_bias="0.484"
-                app:layout_constraintStart_toStartOf="@+id/population"
-                app:layout_constraintTop_toTopOf="@+id/population" />
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/HorizontalScroll" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/headland_one"
-                android:text="Population According To Years"
-                android:textColor="@color/black"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toTopOf="@id/citiesLine2"
-                app:layout_constraintStart_toStartOf="@+id/population"
-                app:layout_constraintTop_toTopOf="@+id/population"  />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#c5a880"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view4">
 
-            <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
-                android:id="@+id/population_cities_chart"
-                android:layout_width="355dp"
-                android:layout_height="193dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toEndOf="@id/population"
-                app:layout_constraintStart_toStartOf="@id/population"
-                app:layout_constraintTop_toBottomOf="@+id/citiesLine2">
+                <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
+                    android:id="@+id/aa_chart_view"
+                    android:layout_width="355dp"
+                    android:layout_height="285dp"
+                    android:layout_gravity="center">
 
-            </com.github.aachartmodel.aainfographics.aachartcreator.AAChartView>
-
+                </com.github.aachartmodel.aainfographics.aachartcreator.AAChartView>
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

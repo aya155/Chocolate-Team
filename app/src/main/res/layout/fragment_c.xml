@@ -38,6 +38,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search" />
+
+    <TextView
+        android:id="@+id/subtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="invisible"
+        android:text="@string/sub_text"
+        style="@style/textStyle.small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_text"/>
     <TextView
         android:id="@+id/error_text"
         style="@style/textStyle.large"
@@ -48,16 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search" />
-    <TextView
-        android:id="@+id/subtext"
-        android:layout_marginTop="20dp"
-        android:text="@string/sub_text"
-        style="@style/textStyle.small"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@id/search_photo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/search_photo"
         style="@style/lotte"
@@ -107,6 +110,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card"
                 style="@style/views"
+                android:visibility="visible"
                 app:cardCornerRadius="16dp"
                 app:cardBackgroundColor="#c5a880"
                 android:layout_height="wrap_content"
