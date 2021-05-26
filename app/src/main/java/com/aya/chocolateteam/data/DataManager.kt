@@ -95,6 +95,19 @@ object DataManager {
 
 
     /**
+     * this function take a parameter of string and return a City that satisfy search keyword
+     * @param cityName a string represent name of city that user search for
+     * @return a City with info satisfy search keyword
+     */
+    @OptIn(ExperimentalStdlibApi::class)
+    fun searchCityByName(cityName: String): City? {
+        return citesList.firstOrNull {
+            it.cityName.lowercase().trim() == cityName.lowercase().trim()
+        }
+    }
+
+
+    /**
      * this function take a parameter of SortType enum and return list sorted by population size
      * @param sortType a type of SortType
      * @return a List of City with info sorted by population
@@ -272,6 +285,18 @@ object DataManager {
      */
     fun getCapitalCity(country: Country): City? {
         return country.cities.firstOrNull { it.capital.trim() == "primary" }
+    }
+
+    /**
+     * this function take a list of string
+     * @param listToSearch a list of string
+     * @return a City with info satisfy search
+     */
+    @OptIn(ExperimentalStdlibApi::class)
+    fun searchCityByLongLat(listToSearch: List<String>): City? {
+        return citesList.firstOrNull {
+            it.longitude == listToSearch[0].toDouble() &&   it.latitude == listToSearch[1].toDouble()
+        }
     }
 }
 
