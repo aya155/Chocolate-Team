@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id 'com.google.secrets_gradle_plugin' version '0.5'
 }
 
 android {
@@ -54,6 +55,7 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.4.0-beta01'
+
 
 
     implementation 'com.google.android.libraries.places:places:2.4.0'

@@ -1,13 +1,18 @@
 package com.aya.chocolateteam.ui.fragments
 
 
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.City
 
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.FragmentBBinding
+import com.aya.chocolateteam.ui.activities.SearchResultActivity
+import com.aya.chocolateteam.util.Constants
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
@@ -17,6 +22,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_b.*
+import kotlinx.android.synthetic.main.fragment_c.*
 
 
 class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
@@ -35,6 +41,8 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
         Toast.makeText(activity, "setup", Toast.LENGTH_SHORT).show()
         log("setup")
         mapInit()
+
+        setVisibility(true)
     }
 
     fun mapInit() {
@@ -110,6 +118,47 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
                 log("button on ")
                 addCityToMap(DataManager.getCurrentCity())
             }
+        }
+
+//        binding!!.apply {
+//            search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//                //click search icon in keyboard
+//                override fun onQueryTextSubmit(query: String)=search()
+//                //when change text and be empty set visibility
+//                override fun onQueryTextChange(newText: String?):Boolean{
+//                    takeIf { search.query.isBlank() }?.let { setVisibility(true) }
+//                    return false
+//                }
+//            })
+//
+//            search.queryHint = "Search ..."
+//        }
+    }
+
+    private fun search():Boolean{
+        binding?.apply {
+            val country=DataManager.getCountryByName(search.query.toString())
+            // if country already exiting  in csv file
+            if (country!=null) {
+                val intent= Intent(activity, SearchResultActivity::class.java)
+                intent.putExtra(Constants.COUNTRY,country)
+                startActivity(intent)
+                setVisibility(true)
+            }// if invalid country
+            else setVisibility(false)
+        }
+        return false
+    }
+
+    private fun setVisibility(b:Boolean){
+        val searchVisible:Int=if(b) View.VISIBLE else View.INVISIBLE
+        val errorVisible:Int=if(b) View.INVISIBLE else View.VISIBLE
+        binding?.apply {
+            //notFound.visibility=errorVisible
+            //searchPhoto.visibility=searchVisible
+            subtext.visibility=searchVisible
+           // text.visibility=searchVisible
+           // errorText.visibility=errorVisible
         }
     }
 
