@@ -298,6 +298,42 @@ object DataManager {
             it.longitude == listToSearch[0].toDouble() &&   it.latitude == listToSearch[1].toDouble()
         }
     }
+
+    /**
+     * this function take a string represent long of city
+     * @param long  string
+     * @return a City with info satisfy search
+     */
+    fun searchCityByLong(long: String): City? {
+        return citesList.firstOrNull {
+            it.longitude == long.trim().toDoubleOrNull()
+        }
+    }
+
+
+    /**
+     * this function take a string represent lat of city
+     * @param lat  string
+     * @return a City with info satisfy search
+     */
+    fun searchCityByLat(lat: String): City? {
+        return citesList.firstOrNull {
+            it.latitude == lat.trim().toDoubleOrNull()
+        }
+    }
+
+
+    /**
+     * this function take a string represent population of city
+     * @param population  string
+     * @return a City with info satisfy search
+     */
+    fun searchCityByPopulation(population: String): City? {
+        return citesList.firstOrNull {
+            it.population == population.trim().toDoubleOrNull()
+        }
+    }
+
 }
 
 
