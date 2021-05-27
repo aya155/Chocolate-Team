@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="elevation">10dp</dimen>
+    <dimen name="card_corner_radius">20dp</dimen>
+    <dimen name="large_textsize">20sp</dimen>
+    <dimen name="normal_textsize">16sp</dimen>
+</resources>
