@@ -1,6 +1,7 @@
 package com.aya.chocolateteam.ui.activities
 
 import android.view.LayoutInflater
+import androidx.fragment.app.Fragment
 import com.aya.chocolateteam.R
 import com.aya.chocolateteam.ui.fragments.FragmentA
 import com.aya.chocolateteam.ui.fragments.FragmentC
@@ -8,12 +9,15 @@ import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.ActivityTabBinding
 import com.aya.chocolateteam.ui.adapters.Viewpager2Adapter
+import com.aya.chocolateteam.ui.fragments.FragmentB
 import com.aya.chocolateteam.util.CsvParser
+import kotlinx.android.synthetic.main.activity_tab.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
 
 class TabActivity : BaseActivity<ActivityTabBinding>() {
+
 
     override val LOG_TAG: String = "MAIN_ACTIVITY"
     override val bindingInflater: (LayoutInflater) -> ActivityTabBinding =
@@ -22,13 +26,24 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
     override fun setup() {
         parseFile()
         //setTabs()
+        replaceFragment(FragmentA())
     }
 
 
 
 
     override fun addCallBack() {
+        binding?.bottomNavigationView?.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.pageHome -> replaceFragment(FragmentA())
+                R.id.pageSearch -> replaceFragment(FragmentC())
+                R.id.PageMap -> replaceFragment(FragmentB())
+            }
+            true
+        }
     }
+
+
 
     // parse csv file an put info in city list and country list
     private fun parseFile() {
@@ -61,4 +76,16 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
     override fun bindLayout(country: Country) {
 
     }
+
+
+    private fun replaceFragment(fragment: Fragment){
+        if (fragment !=null){
+            val transaction=supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container,fragment)
+            transaction.commit()
+        }
+
+    }
+
+
 }

@@ -38,7 +38,7 @@ class FragmentA : BaseFragment<FragmentABinding>() {
             countryName.text=country.name
             populationCitiesChart?.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(3)).toTypedArray()))
 //            description.text="Population  : ${DataManager.getTotalCountryPopulation(country)} \nISO2  : ${DataManager.getIso2ByCountry(country)}     \nISO3  : ${DataManager.getIso3ByCountry(country)}   \n"
-//            listItem.adapter= ArrayAdapter(context!!, android.R.layout.simple_list_item_1,DataManager.getCountryCitiesName(country))
+//            listItem.adapter= ArrayAdapter(Context(), android.R.layout.simple_list_item_1,DataManager.getCountryCitiesName(country))
         }
     }
 }
