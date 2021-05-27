@@ -6,16 +6,25 @@
     android:layout_height="match_parent"
     android:background="#f1f2f6">
 
-    <androidx.appcompat.widget.SearchView
+    <SearchView
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/rec"
         android:elevation="@dimen/cardview_default_elevation"
+        android:focusable="auto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+
+
+        android:gravity="start|center"
+        android:iconifiedByDefault="false"
+        android:inputType="text"
+        android:queryHint="search country"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray" />
 
 
     <com.google.android.gms.maps.MapView
@@ -32,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="108dp"
-        android:text="Button"
+        android:text="test button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

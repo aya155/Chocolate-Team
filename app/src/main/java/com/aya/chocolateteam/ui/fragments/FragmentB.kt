@@ -2,25 +2,25 @@ package com.aya.chocolateteam.ui.fragments
 
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.SearchView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
+import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.City
-
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.FragmentBBinding
 import com.aya.chocolateteam.ui.activities.SearchResultActivity
 import com.aya.chocolateteam.util.Constants
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import kotlinx.android.synthetic.main.fragment_b.*
 import kotlinx.android.synthetic.main.fragment_c.*
 
@@ -38,10 +38,9 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
     private var gMap: GoogleMap? = null
 
     override fun setup() {
-        Toast.makeText(activity, "setup", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(activity, "setup", Toast.LENGTH_SHORT).show()
         log("setup")
         mapInit()
-
         setVisibility(true)
     }
 
@@ -63,16 +62,9 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
     //make move to address on map
     override fun onMapReady(googleMap: GoogleMap) {
         gMap = googleMap
-        gMap?.setOnMapClickListener {
-            if (::marker.isInitialized) {
-                marker.remove()
-            }
-            markerOptions.position(it)
-            Toast.makeText(activity, "Clicked on ", Toast.LENGTH_SHORT).show()
-            log("Clicked on ")
-        }
-//        moveMapCamera(DataManager.getCurrentCity())
+        addCityToMap(DataManager.getCurrentCity())
     }
+
 
     private fun setMapLocation(map: GoogleMap) {
         log("setMapLocation")
@@ -90,33 +82,63 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
         }
     }
 
+
+
     private fun addCityToMap(city: City) {
         log("addCityToMap")
-        //to avoid null value in csv file
         try {
-            val cameraPosition = CameraPosition.Builder()
-                .target(LatLng(city.latitude.toDouble(), city.longitude.toDouble()))
-                .tilt(20f)
-                .zoom(10f)
-                .bearing(0f)
-                .build()
-            gMap?.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
-        }catch (e: NullPointerException){
-            Toast.makeText(activity, e.message,Toast.LENGTH_SHORT).show()
+            gMap!!.clear()
+
+            val latLng = LatLng(city.latitude, city.longitude)
+            val cameraPosition = CameraPosition.Builder()
+                .target(latLng) // Sets the center of the map to Mountain View
+                .zoom(17f) // Sets the zoom
+                .bearing(90f) // Sets the orientation of the camera to east
+                .tilt(30f) // Sets the tilt of the camera to 30 degrees
+                .build() // Creates a CameraPosition from the builder
+
+            gMap!!.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+            gMap!!.addMarker(
+                MarkerOptions()
+                    .position(latLng)
+                    .title("🏢 ${city.cityName}").snippet("🌆 ${city.countryName} \n📊 ${city.population} \n ISO2: ${city.iso2} ")
+                    .icon( BitmapDescriptorFactory.fromResource(R.drawable.city))
+            )
+
+            gMap!!.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
+                override fun getInfoWindow(arg0: Marker): View? {
+                    return null
+                }
+
+                override fun getInfoContents(marker: Marker): View {
+                    val info = LinearLayout(requireContext())
+                    info.orientation = LinearLayout.VERTICAL
+                    val title = TextView(requireContext())
+                    title.setTextColor(Color.BLACK)
+                    title.gravity = Gravity.CENTER
+                    title.setTypeface(null, Typeface.BOLD)
+                    title.text = marker.title
+                    val snippet = TextView(requireContext())
+                    snippet.setTextColor(Color.GRAY)
+                    snippet.text = marker.snippet
+                    info.addView(title)
+                    info.addView(snippet)
+                    return info
+                }
+            })
+
+        } catch (e: NullPointerException) {
+            Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
             log(e.message.toString())
         }
-
-
     }
 
 
     override fun addCallBack() {
         binding?.apply {
             button.setOnClickListener {
-                position = LatLng(41.015137, 32.979530)
-                log("button on ")
-                addCityToMap(DataManager.getCurrentCity())
+                addCityToMap(DataManager.getNextCity())
             }
         }
 
@@ -135,13 +157,13 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
 //        }
     }
 
-    private fun search():Boolean{
+    private fun search(): Boolean {
         binding?.apply {
-            val country=DataManager.getCountryByName(search.query.toString())
+            val country = DataManager.getCountryByName(search.query.toString())
             // if country already exiting  in csv file
-            if (country!=null) {
-                val intent= Intent(activity, SearchResultActivity::class.java)
-                intent.putExtra(Constants.COUNTRY,country)
+            if (country != null) {
+                val intent = Intent(activity, SearchResultActivity::class.java)
+                intent.putExtra(Constants.COUNTRY, country)
                 startActivity(intent)
                 setVisibility(true)
             }// if invalid country
@@ -150,15 +172,15 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
         return false
     }
 
-    private fun setVisibility(b:Boolean){
-        val searchVisible:Int=if(b) View.VISIBLE else View.INVISIBLE
-        val errorVisible:Int=if(b) View.INVISIBLE else View.VISIBLE
+    private fun setVisibility(b: Boolean) {
+        val searchVisible: Int = if (b) View.VISIBLE else View.INVISIBLE
+        val errorVisible: Int = if (b) View.INVISIBLE else View.VISIBLE
         binding?.apply {
             //notFound.visibility=errorVisible
             //searchPhoto.visibility=searchVisible
             //subtext.visibility=searchVisible
-           // text.visibility=searchVisible
-           // errorText.visibility=errorVisible
+            // text.visibility=searchVisible
+            // errorText.visibility=errorVisible
         }
     }
 
