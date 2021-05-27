@@ -108,7 +108,7 @@ object DataManager {
 
 
     /**
-     * this function take a parameter of SortType enum and return list sorted by population size
+     * this function take a parameter of SortType enum and return list  of city  sorted by population size
      * @param sortType a type of SortType
      * @return a List of City with info sorted by population
      */
@@ -120,7 +120,7 @@ object DataManager {
     }
 
     /**
-     * this function take a parameter of SortType enum and return list sorted by population size
+     * this function take a parameter of SortType enum and return list of city sorted by population size
      * @param sortType a type of SortType
      * @param noOfRetrievedCity an integer represent count of required cities to retrieve after sorting
      * @return a List of City with info sorted by population
@@ -133,13 +133,17 @@ object DataManager {
     }
 
 
+
+
+
+
     /**
      * this function return data grouped by country
      * @return a List Country with it's name and cities
      */
     fun createCountriesInfo(): List<Country> {
         citesList.groupBy { it.countryName }.entries.map { (name, group) ->
-            name.let { Country(it, group as ArrayList<City>) }.let { countryList.add(it) }
+            Country(name, group as ArrayList<City>).let { countryList.add(it) }
         }
 
         return countryList
@@ -267,6 +271,21 @@ object DataManager {
         return getCitiesName(country.cities)
     }
 
+
+    /**
+     * this function return a list of cities name of a country
+     * @param country a required country
+     * @param sortType sort type
+     * @return list of String represent cities of a country
+     */
+    fun getCountryCitiesName(country: Country,sortType: SortType): List<String> {
+
+        return when (sortType) {
+            SortType.Ascending -> getCitiesName(country.cities).sorted()
+            else -> getCitiesName(country.cities).sortedDescending()
+        }
+    }
+
     /**
      * this function return string represent country latitude and longitude
      * @param country a required country
@@ -275,7 +294,6 @@ object DataManager {
     fun getCountryLatLan(country: Country): String {
         return "${country.cities[0].latitude.toString()},${country.cities[0].longitude.toString()}"
     }
-
 
 
     /**
@@ -295,9 +313,45 @@ object DataManager {
     @OptIn(ExperimentalStdlibApi::class)
     fun searchCityByLongLat(listToSearch: List<String>): City? {
         return citesList.firstOrNull {
-            it.longitude == listToSearch[0].toDouble() &&   it.latitude == listToSearch[1].toDouble()
+            it.longitude == listToSearch[0].toDouble() && it.latitude == listToSearch[1].toDouble()
         }
     }
+
+    /**
+     * this function take a string represent long of city
+     * @param long  string
+     * @return a City with info satisfy search
+     */
+    fun searchCityByLong(long: String): City? {
+        return citesList.firstOrNull {
+            it.longitude == long.trim().toDoubleOrNull()
+        }
+    }
+
+
+    /**
+     * this function take a string represent lat of city
+     * @param lat  string
+     * @return a City with info satisfy search
+     */
+    fun searchCityByLat(lat: String): City? {
+        return citesList.firstOrNull {
+            it.latitude == lat.trim().toDoubleOrNull()
+        }
+    }
+
+
+    /**
+     * this function take a string represent population of city
+     * @param population  string
+     * @return a City with info satisfy search
+     */
+    fun searchCityByPopulation(population: String): City? {
+        return citesList.firstOrNull {
+            it.population == population.trim().toDoubleOrNull()
+        }
+    }
+
 }
 
 
