@@ -8,7 +8,7 @@ import com.aya.chocolateteam.ui.fragments.FragmentC
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.ActivityTabBinding
-import com.aya.chocolateteam.ui.adapters.Viewpager2Adapter
+import com.aya.chocolateteam.ui.adapters.ViewpagerAdapter
 import com.aya.chocolateteam.ui.fragments.FragmentB
 import com.aya.chocolateteam.util.CsvParser
 import kotlinx.android.synthetic.main.activity_tab.*
