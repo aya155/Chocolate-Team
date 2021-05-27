@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.City
 import com.aya.chocolateteam.data.domain.Country
+import com.aya.chocolateteam.data.domain.SortType
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.adapters.CustomAdapter
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
@@ -96,14 +97,14 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
                     else -> "search long ,lat ..... "
                 }
             }
-//            sortBySpinner.selected {
-//                when(it){
-//                    0 -> TODO()//DataManager.getcitiybyname()
-//                    1 ->TODO()//DataManager.getcitiybypooulation()
-//                    2 ->TODO()//DataManager.getcitiybylat()
-//                    3 ->TODO()//DataManager.getcitiybylong()
-//                }
-//            }
+            sortBySpinner.selected {
+                listCity.adapter=when(it){
+                    0 -> CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.cityName }.map { it.cityName }.toTypedArray())
+                    1 ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.population }.map { it.cityName }.toTypedArray())
+                    2 ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.latitude }.map { it.cityName }.toTypedArray())
+                    else ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.longitude }.map { it.cityName }.toTypedArray())
+                }
+            }
         }
     }
     private fun search(searchText:String):Boolean{
@@ -159,8 +160,7 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             iso2.text=DataManager.getIso2ByCountry(country)
             iso3.text=DataManager.getIso3ByCountry(country)
             listCity.layoutManager= LinearLayoutManager(context)
-            val adapter= CustomAdapter(DataManager.getCountryCitiesName(country).toTypedArray())
-            listCity.adapter=adapter
+            listCity.adapter=CustomAdapter(DataManager.getCountryCitiesName(country).toTypedArray())
         }
 
     }
