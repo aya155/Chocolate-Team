@@ -156,7 +156,7 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
         binding?.apply {
             //notFound.visibility=errorVisible
             //searchPhoto.visibility=searchVisible
-            subtext.visibility=searchVisible
+            //subtext.visibility=searchVisible
            // text.visibility=searchVisible
            // errorText.visibility=errorVisible
         }
