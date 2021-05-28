@@ -17,6 +17,7 @@ import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.FragmentBBinding
 import com.aya.chocolateteam.ui.activities.SearchResultActivity
 import com.aya.chocolateteam.util.Constants
+import com.aya.chocolateteam.util.toFlagEmoji
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -102,7 +103,7 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
             gMap!!.addMarker(
                 MarkerOptions()
                     .position(latLng)
-                    .title("🏢 ${city.cityName}").snippet("🌆 ${city.countryName} \n📊 ${city.population} \n ISO2: ${city.iso2} ")
+                    .title("🏢 ${city.cityName}").snippet("${city.iso2.toFlagEmoji()} ${city.countryName} \n📊 ${city.population} \n ISO2: ${city.iso2} ")
                     .icon( BitmapDescriptorFactory.fromResource(R.drawable.city))
             )
 
