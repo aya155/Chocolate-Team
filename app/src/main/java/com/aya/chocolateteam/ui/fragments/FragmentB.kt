@@ -2,6 +2,7 @@ package com.aya.chocolateteam.ui.fragments
 
 
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.Typeface
 import android.view.Gravity
@@ -17,15 +18,17 @@ import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.FragmentBBinding
 import com.aya.chocolateteam.ui.activities.SearchResultActivity
 import com.aya.chocolateteam.util.Constants
+import com.aya.chocolateteam.util.toFlagEmoji
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import kotlinx.android.synthetic.main.fragment_b.*
 import kotlinx.android.synthetic.main.fragment_c.*
 
 
-class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
+class FragmentB : BaseFragment<FragmentBBinding>(),OnMapReadyCallback {
     override val LOG_TAG: String = "FRAGMENT_B"
     override val bindingInflater: (LayoutInflater) -> FragmentBBinding = FragmentBBinding::inflate
 
@@ -35,7 +38,8 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
     lateinit var marker: Marker
 
 
-    private var gMap: GoogleMap? = null
+//    private var gMap: GoogleMap? = null
+    private lateinit var gMap: GoogleMap
 
     override fun setup() {
 //        Toast.makeText(activity, "setup", Toast.LENGTH_SHORT).show()
@@ -45,11 +49,14 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
     }
 
     fun mapInit() {
-        with(binding!!.mapView) {
+
+        val mapFragment = childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+
+        with(mapFragment) {
             // Initialise the MapView
             onCreate(null)
             // Set the map ready callback to receive the GoogleMap object
-            this.getMapAsync(this@FragmentB)
+            getMapAsync(this@FragmentB)
 //            this.getMapAsync {
 //                MapsInitializer.initialize(requireContext())
 //                setMapLocation(it)
@@ -102,7 +109,7 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
             gMap!!.addMarker(
                 MarkerOptions()
                     .position(latLng)
-                    .title("🏢 ${city.cityName}").snippet("🌆 ${city.countryName} \n📊 ${city.population} \n ISO2: ${city.iso2} ")
+                    .title("🏢 ${city.cityName}").snippet("${city.iso2.toFlagEmoji()} ${city.countryName} \n📊 ${city.population} \n ISO2: ${city.iso2} ")
                     .icon( BitmapDescriptorFactory.fromResource(R.drawable.city))
             )
 
