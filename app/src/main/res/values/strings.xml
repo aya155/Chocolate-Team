@@ -8,6 +8,12 @@
         <item >Country</item>
         <item >Location</item>
     </string-array>
+    <string-array name="city_list">
+        <item >By name</item>
+        <item >By population</item>
+        <item> By latitude</item>
+        <item> By longitude</item>
+    </string-array>
     <string name="main_text">
         What are\n you searching for?
     </string>

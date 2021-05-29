@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
-    app:layoutDescription="@xml/fragment_c_scene">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#f1f2f6">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        app:queryHint="search city ..... "
         android:background="@drawable/rec"
-        app:layout_constraintBottom_toTopOf="@id/text"
+        app:iconifiedByDefault="false"
+        app:layout_constraintBottom_toTopOf="@id/result"
         android:elevation="@dimen/cardview_default_elevation"
         app:layout_constraintEnd_toStartOf="@+id/spinner_filter"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,96 +30,131 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search"
         app:layout_constraintTop_toTopOf="@+id/search" />
-    <TextView
-        android:id="@+id/main_text"
-        style="@style/textStyle.large"
-        android:layout_marginTop="40dp"
-        android:text="@string/main_text"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@id/subtext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search" />
-
-    <TextView
-        android:id="@+id/subtext"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_go_to_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:visibility="invisible"
-        android:text="@string/sub_text"
-        style="@style/textStyle.small"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"
+        android:backgroundTint="#d2b48c"
+        app:srcCompat="@drawable/ic_baseline_add_location_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_text"/>
-    <TextView
-        android:id="@+id/error_text"
-        style="@style/textStyle.large"
-        android:text="@string/no_result"
-        android:visibility="invisible"
-        android:layout_marginTop="120dp"
-        app:layout_constraintBottom_toTopOf="@id/error_photo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search" />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/search_photo"
-        style="@style/lotte"
-        android:layout_marginHorizontal="16dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subtext"
-        app:lottie_rawRes="@raw/searchingcontract" />
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/error_photo"
-        style="@style/lotte"
-        android:layout_marginHorizontal="16dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/error_text"
-        app:lottie_rawRes="@raw/robot" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/country_result"
+        android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/search"
         app:layout_constraintBottom_toBottomOf="parent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
-                android:id="@+id/AAChartView"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_margin="16dp"
-                android:visibility="visible"
+            <TextView
+                android:id="@+id/main_text"
+                style="@style/textStyle.large"
+                android:layout_marginTop="60dp"
+                android:text="@string/main_text"
+                app:layout_constraintBottom_toTopOf="@id/subtext"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-            <ImageView
-                android:id="@+id/photo_city"
-                style="@style/views"
-                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/error_text"
+                style="@style/textStyle.large"
+                android:visibility="gone"
+                android:text="Sorry there is no result try again"
+                android:layout_marginTop="120dp"
+                app:layout_constraintBottom_toTopOf="@id/error_photo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/subtext"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="24dp"
+                android:text="@string/sub_text"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                style="@style/textStyle.small"
+                app:layout_constraintBottom_toTopOf="@id/search_photo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_text" />
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/search_photo"
+                style="@style/lotte"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/subtext"
+                app:lottie_rawRes="@raw/searchingcontract" />
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/error_photo"
+                style="@style/lotte"
+                android:visibility="gone"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/error_text"
+                app:lottie_rawRes="@raw/robot" />
+
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card"
-                style="@style/views"
-                android:visibility="visible"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardBackgroundColor="#c5a880"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/views"
+           android:layout_height="wrap_content"
+           app:cardCornerRadius="16dp"
+           app:cardBackgroundColor="#d2b48c"
+           android:id="@+id/bord_chart"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/card_info"
+                app:layout_constraintStart_toStartOf="parent">
+            <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
+                android:layout_margin="16dp"
+                android:id="@+id/country_chart"
+                android:layout_height="250dp"
+                android:layout_width="match_parent" />
+       </com.google.android.material.card.MaterialCardView>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/photo_city"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/AAChartView">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/card_info"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/worldmap" />
+
+            <TextView
+                android:id="@+id/city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="160dp"
+                android:fontFamily="cursive"
+                android:gravity="center"
+                android:text="Japan"
+                android:textColor="@color/black"
+                android:textSize="50sp"
+                app:layout_constraintBottom_toTopOf="@id/card_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/photo_city" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_info"
+                style="@style/views"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="#d2b48c"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/cities"
+                app:layout_constraintStart_toStartOf="parent"
+                >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -125,133 +162,138 @@
                     android:layout_marginVertical="16dp"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/v_country_population"
                         style="@style/textStyle.large"
-                        android:visibility="gone"
                         android:layout_marginTop="16dp"
                         android:text="Total population"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
+                        android:id="@+id/country_population"
+                        style="@style/textStyle"
                         android:text="22,333,455"
                         android:drawableStart="@drawable/ic_baseline_people_24"
-                        android:textColor="@color/black"
-                        android:textSize="25dp" />
+                        android:textSize="20sp" />
                     <TextView
+                        android:id="@+id/v_city_population"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
                         android:text="Population"/>
 
                     <TextView
+                        android:id="@+id/city_population"
                         style="@style/textStyle"
                         android:text="333,455"
                         android:drawableStart="@drawable/ic_baseline_people_24"
-                        android:textSize="25dp" />
+                        android:textSize="20sp" />
                     <TextView
+                        android:id="@+id/v_country_captail"
                         style="@style/textStyle.large"
-                        android:visibility="gone"
                         android:layout_marginTop="16dp"
                         android:text="Captail"/>
 
                     <TextView
+                        android:id="@+id/country_captail"
                         style="@style/textStyle"
+                        android:textSize="20sp"
                         android:text="Baghdad"
-                        android:drawableStart="@drawable/ic_baseline_people_24"
-                        android:visibility="gone" />
+                        android:drawableStart="@drawable/ic_baseline_stars_24" />
                     <TextView
+                        android:id="@+id/v_city_country"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
                         android:text="Country"/>
 
                     <TextView
+                        android:id="@+id/city_country"
                         style="@style/textStyle"
                         android:text="Iraq"
                         android:textSize="25sp"
-                        android:drawableStart="@drawable/ic_baseline_people_24"/>
+                        android:drawableStart="@drawable/ic_baseline_stars_24"/>
                     <TextView
+                        android:id="@+id/v_iso2"
                         style="@style/textStyle.large"
-                        android:visibility="gone"
                         android:layout_marginTop="16dp"
                         android:text="ISO2"/>
 
                     <TextView
+                        android:id="@+id/iso2"
                         style="@style/textStyle"
                         android:text="IQ"
-                        android:drawableStart="@drawable/ic_baseline_people_24"
-                        android:visibility="gone"
-                        android:textSize="25dp" />
-                    <TextView
-                        style="@style/textStyle.large"
-                        android:layout_marginTop="16dp"
-                        android:text="Time"/>
+                        android:drawableStart="@drawable/ic_baseline_language_24"
+                        android:textSize="20sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/v_time"-->
+<!--                        style="@style/textStyle.large"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        android:text="Time"/>-->
 
+<!--                    <TextView-->
+<!--                        android:id="@+id/time"-->
+<!--                        android:text="22:33:55"-->
+<!--                        android:drawableStart="@drawable/ic_baseline_people_24"-->
+<!--                        style="@style/textStyle"-->
+<!--                        android:textSize="20sp" />-->
                     <TextView
-                        android:text="22:33:55"
-                        android:drawableStart="@drawable/ic_baseline_people_24"
-                        style="@style/textStyle"
-                        android:textSize="25dp" />
-                    <TextView
+                        android:id="@+id/v_iso3"
                         style="@style/textStyle.large"
-                        android:visibility="gone"
                         android:layout_marginTop="16dp"
                         android:text="ISO3"/>
 
                     <TextView
+                        android:id="@+id/iso3"
                         style="@style/textStyle"
                         android:text="IQR"
-                        android:visibility="gone"
                         android:layout_marginBottom="16dp"
-                        android:drawableStart="@drawable/ic_baseline_people_24"
-                        android:textSize="25dp" />
+                        android:drawablePadding="7dp"
+                        android:drawableStart="@drawable/ic_baseline_language_24"
+                        android:textSize="20sp" />
 
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="16dp"
+                app:cardBackgroundColor="#d2b48c"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/cities_text"
+                        style="@style/textStyle.large"
+                        android:layout_marginTop="24dp"
+                        android:layout_gravity="center"
+                        android:text="cities" />
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/sort_by_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/city_list"
+                        android:layout_margin="24dp"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginHorizontal="24dp"
+                        android:clickable="true"
+                        android:scrollbars="vertical"
+                        android:divider="@color/black"
+                        android:dividerHeight="2dp"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"
+                        android:focusable="true"
+                        android:listSelector="@drawable/listview" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cities"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:layout_margin="40dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardElevation="4dp"
-        android:visibility="visible"
-        app:cardCornerRadius="@dimen/cardview_default_radius"
-
-        app:layout_constraintVertical_bias="1"
-        app:layout_constraintTop_toBottomOf="@id/search"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/line"
-                android:layout_width="50dp"
-                android:layout_height="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/line"/>
-            <TextView
-                android:id="@+id/cities_text"
-                style="@style/textStyle.large"
-                android:text="@string/cities"
-                android:layout_gravity="center_horizontal"/>
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/sort_by_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_city"
-                android:layout_width="match_parent"
-                android:layout_margin="16dp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
