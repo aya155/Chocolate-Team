@@ -7,12 +7,15 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager.widget.ViewPager
+import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.City
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.data.domain.SortType
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.adapters.CustomAdapter
+import com.aya.chocolateteam.util.Constants
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
 import com.google.android.material.navigation.NavigationBarView
 import kotlinx.android.synthetic.main.fragment_c.*
@@ -20,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_c.*
 
 class FragmentC : BaseFragment<FragmentCBinding>() {
     override val LOG_TAG: String="FRAGMENT_C"
+    lateinit var currentCountry: Country
     private val errorViews= arrayListOf<View?>()
     private val cityViews= arrayListOf<View?>()
     private val countryViews= arrayListOf<View?>()
@@ -50,6 +54,11 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
                 add(photo_city)
                 add(cityCountry)
                 add(cityName)
+                add(iso2)
+                add(btnGoToMap)
+                add(iso3)
+                add(vIso2)
+                add(vIso3)
                 add(vCityCountry)
                 add(vCityPopulation)
                 add(cityPopulation)
@@ -99,11 +108,14 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             }
             sortBySpinner.selected {
                 listCity.adapter=when(it){
-                    0 -> CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.cityName }.map { it.cityName }.toTypedArray())
-                    1 ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.population }.map { it.cityName }.toTypedArray())
-                    2 ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.latitude }.map { it.cityName }.toTypedArray())
-                    else ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.longitude }.map { it.cityName }.toTypedArray())
+                    0 -> CustomAdapter(DataManager.getCountryCitiesName(currentCountry,SortType.Ascending))
+                    1 ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.population }.map { it.cityName })
+                    2 ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.latitude }.map { it.cityName })
+                    else ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.longitude }.map { it.cityName })
                 }
+            }
+            btnGoToMap.setOnClickListener {
+                activity?.findViewById<ViewPager>(R.id.viewpager)?.currentItem=0
             }
         }
     }
@@ -123,6 +135,7 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             val country= DataManager.getCountryByName(countryName)
             // if country already exiting  in csv file
             if (country!=null) {
+                currentCountry=country
                 setVisibility(countryViews,searchViews,errorViews,cityViews)
                 bindCountryLayout(country)
             }else errorSearch()
@@ -150,6 +163,9 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             cityPopulation.text= city.population.toString()
             cityCountry.text=city.countryName
             cityName.text=city.cityName
+            iso2.text=city.iso2
+            iso3.text=city.iso3
+            Constants.cityMap=city
         }
     }
     private fun bindCountryLayout(country: Country) {
@@ -160,7 +176,7 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             iso2.text=DataManager.getIso2ByCountry(country)
             iso3.text=DataManager.getIso3ByCountry(country)
             listCity.layoutManager= LinearLayoutManager(context)
-            listCity.adapter=CustomAdapter(DataManager.getCountryCitiesName(country).toTypedArray())
+            listCity.adapter=CustomAdapter(DataManager.getCountryCitiesName(currentCountry,SortType.Ascending))
         }
 
     }

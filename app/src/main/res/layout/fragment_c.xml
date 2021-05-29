@@ -30,6 +30,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search"
         app:layout_constraintTop_toTopOf="@+id/search" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_go_to_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="#d2b48c"
+        app:srcCompat="@drawable/ic_baseline_add_location_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
     <androidx.core.widget.NestedScrollView
         android:id="@+id/result"
         android:layout_width="match_parent"
@@ -54,7 +63,7 @@
                 android:id="@+id/error_text"
                 style="@style/textStyle.large"
                 android:visibility="gone"
-                android:text="sorry sorry sorry sorry sorry "
+                android:text="Sorry there is no result try again"
                 android:layout_marginTop="120dp"
                 app:layout_constraintBottom_toTopOf="@id/error_photo"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -63,8 +72,10 @@
             <TextView
                 android:id="@+id/subtext"
                 android:layout_marginTop="20dp"
-                android:padding="24dp"
+                android:paddingHorizontal="24dp"
                 android:text="@string/sub_text"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 style="@style/textStyle.small"
                 app:layout_constraintBottom_toTopOf="@id/search_photo"
                 app:layout_constraintEnd_toEndOf="parent"
