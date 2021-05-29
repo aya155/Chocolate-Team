@@ -9,6 +9,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import com.aya.chocolateteam.R
@@ -45,7 +46,6 @@ class FragmentB : BaseFragment<FragmentBBinding>(),OnMapReadyCallback {
 //        Toast.makeText(activity, "setup", Toast.LENGTH_SHORT).show()
         log("setup")
         mapInit()
-        setVisibility(true)
     }
 
     fun mapInit() {
@@ -143,52 +143,27 @@ class FragmentB : BaseFragment<FragmentBBinding>(),OnMapReadyCallback {
 
 
     override fun addCallBack() {
+        binding!!.apply {
+            search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                //click search icon in keyboard
+                override fun onQueryTextSubmit(query: String)=search(query)
+                override fun onQueryTextChange(newText: String?)= false
+            })
+
+            search.queryHint = "Search ..."
+        }
+    }
+
+    private fun search(cityName:String): Boolean {
         binding?.apply {
-            button.setOnClickListener {
-                addCityToMap(DataManager.getNextCity())
+            val city = DataManager.searchCityByName(cityName)
+            // if city already exiting  in csv file
+            if (city != null) {
+                addCityToMap(city)
+            }else{
             }
         }
-
-//        binding!!.apply {
-//            search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//                //click search icon in keyboard
-//                override fun onQueryTextSubmit(query: String)=search()
-//                //when change text and be empty set visibility
-//                override fun onQueryTextChange(newText: String?):Boolean{
-//                    takeIf { search.query.isBlank() }?.let { setVisibility(true) }
-//                    return false
-//                }
-//            })
-//
-//            search.queryHint = "Search ..."
-//        }
-    }
-
-    private fun search(): Boolean {
-        binding?.apply {
-            val country = DataManager.getCountryByName(search.query.toString())
-            // if country already exiting  in csv file
-            if (country != null) {
-                val intent = Intent(activity, SearchResultActivity::class.java)
-                intent.putExtra(Constants.COUNTRY, country)
-                startActivity(intent)
-                setVisibility(true)
-            }// if invalid country
-            else setVisibility(false)
-        }
         return false
-    }
-
-    private fun setVisibility(b: Boolean) {
-        val searchVisible: Int = if (b) View.VISIBLE else View.INVISIBLE
-        val errorVisible: Int = if (b) View.INVISIBLE else View.VISIBLE
-        binding?.apply {
-            //notFound.visibility=errorVisible
-            //searchPhoto.visibility=searchVisible
-            //subtext.visibility=searchVisible
-            // text.visibility=searchVisible
-            // errorText.visibility=errorVisible
-        }
     }
 
     override fun bindLayout(country: Country) {
