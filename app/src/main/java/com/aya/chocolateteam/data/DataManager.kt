@@ -286,19 +286,6 @@ object DataManager {
         }
     }
 
-    /**
-     * this function return a list of cities name of a country
-     * @param country a required country
-     * @param sortType sort type
-     * @return list of String represent cities of a country
-     */
-    fun getCountryCitiesName(country: Country,sortType: SortType): List<String> {
-
-        return when (sortType) {
-            SortType.Ascending -> getCitiesName(country.cities).sorted()
-            else -> getCitiesName(country.cities).sortedDescending()
-        }
-    }
 
 
     /**

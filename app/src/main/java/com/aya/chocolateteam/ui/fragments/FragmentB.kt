@@ -69,10 +69,17 @@ class FragmentB : BaseFragment<FragmentBBinding>(),OnMapReadyCallback {
     //make move to address on map
     override fun onMapReady(googleMap: GoogleMap) {
         gMap = googleMap
-        addCityToMap(DataManager.getCurrentCity())
+        setInitialLocation()
     }
 
 
+    private fun setInitialLocation() {
+        if(Constants.cityMap!=null){
+            addCityToMap(Constants.cityMap!!)
+            Constants.cityMap=null
+        }else addCityToMap(DataManager.getCurrentCity())
+
+    }
     private fun setMapLocation(map: GoogleMap) {
         log("setMapLocation")
         with(map) {

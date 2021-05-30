@@ -1,6 +1,8 @@
 package com.aya.chocolateteam.ui.fragments
 
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
@@ -17,6 +19,7 @@ import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.adapters.CustomAdapter
 import com.aya.chocolateteam.util.Constants
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import kotlinx.android.synthetic.main.fragment_c.*
 
@@ -115,7 +118,10 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
                 }
             }
             btnGoToMap.setOnClickListener {
-                activity?.findViewById<ViewPager>(R.id.viewpager)?.currentItem=0
+                activity?.apply {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, FragmentB()).commit()
+                    findViewById<View>(R.id.PageMap).performClick()
+                }
             }
         }
     }
