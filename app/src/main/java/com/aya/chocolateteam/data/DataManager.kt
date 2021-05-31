@@ -2,6 +2,7 @@ package com.aya.chocolateteam.data
 
 import com.aya.chocolateteam.data.domain.City
 import com.aya.chocolateteam.data.domain.Country
+import com.aya.chocolateteam.data.domain.SortBy
 import com.aya.chocolateteam.data.domain.SortType
 
 object DataManager {
@@ -48,6 +49,14 @@ object DataManager {
 
 
     /**
+     * this function return an instance of City
+     * @param index an integer represent index of required city
+     * @return an instance of City with info
+     */
+    fun getCityByIndex(index: Int): City = citesList[index]
+
+
+    /**
      * this function return a long represent total population of list of cities
      * @param list a list represent cities
      * @return an long represent total population of list of cities
@@ -56,42 +65,47 @@ object DataManager {
         list.sumOf { it.population }.toLong()
 
 
+
     /**
-     * this function take a parameter of string which represent country name and return list of Cities with info belong to searched country
-     * @param countryName a string represent name of country that user search for
-     * @return a list of Cities with info belong to searched country
+     * this function return a list of cities name
+     * @param cities a list of cities
+     * @return a list of cities name
      */
-    @OptIn(ExperimentalStdlibApi::class)
-    fun getCitiesByCountry(countryName: String): List<City> {
-        return citesList.filter {
-            it.countryName.lowercase().trim() == countryName.lowercase().trim()
+    fun getCitiesName(cities: List<City>, sortBy: SortBy = SortBy.CityName, sortType: SortType = SortType.Descending): List<String> {
+
+        return  when(sortBy)
+        {   SortBy.CityName ->   {
+                when (sortType) {
+                    SortType.Ascending -> cities.sortedBy { it.cityName }.map { it.cityName }
+                    else -> cities.sortedByDescending{it.cityName }.map { it.cityName }
+                }
+            }
+
+            SortBy.Population-> {
+                when (sortType) {
+                    SortType.Ascending -> cities.sortedBy { it.population }.map { it.cityName }
+                    else -> cities.sortedByDescending { it.population }.map { it.cityName }
+                }
+            }
+                SortBy.Latitude ->
+                {
+                    when (sortType) {
+                        SortType.Ascending -> cities.sortedBy { it.latitude }.map { it.cityName }
+                        else -> cities.sortedByDescending { it.latitude }.map { it.cityName }
+                    }
+                }
+            SortBy.Longitude ->
+            {
+                when (sortType) {
+                    SortType.Ascending -> cities.sortedBy { it.longitude }.map { it.cityName }
+                    else -> cities.sortedByDescending { it.longitude }.map { it.cityName }
+                }
+            }
         }
+
+//        return cities.sortedBy { it.cityName }.map { it.cityName }
     }
 
-
-    /**
-     * this function return an instance of City
-     * @param index an integer represent index of required city
-     * @return an instance of City with info
-     */
-    fun getCityByIndex(index: Int): City = citesList[index]
-
-
-    fun getCountriesInfo() {
-        citesList.groupBy { it.countryName }.entries.map { (name, group) ->
-            name.let { Country(it, group as ArrayList<City>) }.let { countryList.add(it) }
-        }
-    }
-
-    /**
-     * this function take a parameter of string and return list of cities that satisfy search keyword
-     * @param cityName a string represent name of city that user search for
-     * @return a list of City with info satisfy search keyword
-     */
-    @OptIn(ExperimentalStdlibApi::class)
-    fun searchCity(cityName: String): List<City> {
-        return citesList.filter { it.cityName.lowercase().trim() == cityName.lowercase().trim() }
-    }
 
 
     /**
@@ -105,6 +119,25 @@ object DataManager {
             it.cityName.lowercase().trim() == cityName.lowercase().trim()
         }
     }
+
+
+    /**
+     * this function take a parameter of string and return list of cities that satisfy search keyword
+     * @param cityName a string represent name of city that user search for
+     * @return a list of City with info satisfy search keyword
+     */
+    @OptIn(ExperimentalStdlibApi::class)
+    fun searchCity(cityName: String): List<City> {
+        return citesList.filter { it.cityName.lowercase().trim() == cityName.lowercase().trim() }
+    }
+
+
+    fun getCountriesInfo() {
+        citesList.groupBy { it.countryName }.entries.map { (name, group) ->
+            Country(name, group as ArrayList<City>).let { countryList.add(it) }
+        }
+    }
+
 
 
     /**
@@ -131,9 +164,6 @@ object DataManager {
             else -> citesList.sortedByDescending { it.population }.take(noOfRetrievedCity)
         }
     }
-
-
-
 
 
 
@@ -252,14 +282,19 @@ object DataManager {
         return country.cities[0].iso3
     }
 
+
     /**
-     * this function return a list of cities name
-     * @param cities a list of cities
-     * @return a list of cities name
+     * this function take a parameter of string which represent country name and return list of Cities with info belong to searched country
+     * @param countryName a string represent name of country that user search for
+     * @return a list of Cities with info belong to searched country
      */
-    fun getCitiesName(cities: List<City>): List<String> {
-        return cities.map { it.cityName }
+    @OptIn(ExperimentalStdlibApi::class)
+    fun getCitiesByCountry(countryName: String): List<City> {
+        return citesList.filter {
+            it.countryName.lowercase().trim() == countryName.lowercase().trim()
+        }
     }
+
 
 
     /**
@@ -278,13 +313,11 @@ object DataManager {
      * @param sortType sort type
      * @return list of String represent cities of a country
      */
-    fun getCountryCitiesName(country: Country,sortType: SortType): List<String> {
-
-        return when (sortType) {
-            SortType.Ascending -> getCitiesName(country.cities).sorted()
-            else -> getCitiesName(country.cities).sortedDescending()
-        }
+    fun getCountryCitiesName(country: Country, sortBy: SortBy = SortBy.CityName, sortType: SortType = SortType.Descending): List<String> {
+       return  getCitiesName(country.cities,sortBy,sortType)
     }
+
+
 
     /**
      * this function return string represent country latitude and longitude
