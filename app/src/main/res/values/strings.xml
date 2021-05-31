@@ -20,6 +20,10 @@
     <string name="sub_text">
         Search for your favorite thing or find\n similar results in this area.
     </string>
+    <string name="text_info">
+        ID : IRQ\n Position : 3,548,557\n ISO2 : IQ\n ISO3 : IRQ
+    </string>
+
     <string name="discover_countries_information">Discover Countries Information.</string>
     <string name="world_fact">World Fact</string>
     <string name="earth_image">earth image</string>

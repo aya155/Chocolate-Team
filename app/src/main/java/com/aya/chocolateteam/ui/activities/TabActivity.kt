@@ -35,16 +35,16 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
         val buffer = BufferedReader(InputStreamReader(inputStream))
         val parser = CsvParser()
         buffer.forEachLine {
-           DataManager.addCity(parser.parse(it))
+            DataManager.addCity(parser.parse(it))
         }
         DataManager.createCountriesInfo()
     }
     // add home && search fragment and set tabs text
     private fun setTabs(){
         val adapter = ViewpagerAdapter(supportFragmentManager).apply {
-            addFragment(FragmentB(), "Map")
             addFragment(FragmentA(), "Home")
             addFragment(FragmentC(), "Search")
+            addFragment(FragmentB(), "Map")
         }
         //set adapter of view pager and title tabs
         binding?.viewpager?.adapter = adapter

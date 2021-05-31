@@ -2,6 +2,7 @@ package com.aya.chocolateteam.data
 
 import com.aya.chocolateteam.data.domain.City
 import com.aya.chocolateteam.data.domain.Country
+import com.aya.chocolateteam.data.domain.SortBy
 import com.aya.chocolateteam.data.domain.SortType
 
 object DataManager {
@@ -48,6 +49,14 @@ object DataManager {
 
 
     /**
+     * this function return an instance of City
+     * @param index an integer represent index of required city
+     * @return an instance of City with info
+     */
+    fun getCityByIndex(index: Int): City = citesList[index]
+
+
+    /**
      * this function return a long represent total population of list of cities
      * @param list a list represent cities
      * @return an long represent total population of list of cities
@@ -56,42 +65,47 @@ object DataManager {
         list.sumOf { it.population }.toLong()
 
 
+
     /**
-     * this function take a parameter of string which represent country name and return list of Cities with info belong to searched country
-     * @param countryName a string represent name of country that user search for
-     * @return a list of Cities with info belong to searched country
+     * this function return a list of cities name
+     * @param cities a list of cities
+     * @return a list of cities name
      */
-    @OptIn(ExperimentalStdlibApi::class)
-    fun getCitiesByCountry(countryName: String): List<City> {
-        return citesList.filter {
-            it.countryName.lowercase().trim() == countryName.lowercase().trim()
+    fun getCitiesName(cities: List<City>, sortBy: SortBy = SortBy.CityName, sortType: SortType = SortType.Descending): List<String> {
+
+        return  when(sortBy)
+        {   SortBy.CityName ->   {
+                when (sortType) {
+                    SortType.Ascending -> cities.sortedBy { it.cityName }.map { it.cityName }
+                    else -> cities.sortedByDescending{it.cityName }.map { it.cityName }
+                }
+            }
+
+            SortBy.Population-> {
+                when (sortType) {
+                    SortType.Ascending -> cities.sortedBy { it.population }.map { it.cityName }
+                    else -> cities.sortedByDescending { it.population }.map { it.cityName }
+                }
+            }
+                SortBy.Latitude ->
+                {
+                    when (sortType) {
+                        SortType.Ascending -> cities.sortedBy { it.latitude }.map { it.cityName }
+                        else -> cities.sortedByDescending { it.latitude }.map { it.cityName }
+                    }
+                }
+            SortBy.Longitude ->
+            {
+                when (sortType) {
+                    SortType.Ascending -> cities.sortedBy { it.longitude }.map { it.cityName }
+                    else -> cities.sortedByDescending { it.longitude }.map { it.cityName }
+                }
+            }
         }
+
+//        return cities.sortedBy { it.cityName }.map { it.cityName }
     }
 
-
-    /**
-     * this function return an instance of City
-     * @param index an integer represent index of required city
-     * @return an instance of City with info
-     */
-    fun getCityByIndex(index: Int): City = citesList[index]
-
-
-    fun getCountriesInfo() {
-        citesList.groupBy { it.countryName }.entries.map { (name, group) ->
-            name.let { Country(it, group as ArrayList<City>) }.let { countryList.add(it) }
-        }
-    }
-
-    /**
-     * this function take a parameter of string and return list of cities that satisfy search keyword
-     * @param cityName a string represent name of city that user search for
-     * @return a list of City with info satisfy search keyword
-     */
-    @OptIn(ExperimentalStdlibApi::class)
-    fun searchCity(cityName: String): List<City> {
-        return citesList.filter { it.cityName.lowercase().trim() == cityName.lowercase().trim() }
-    }
 
 
     /**
@@ -108,7 +122,26 @@ object DataManager {
 
 
     /**
-     * this function take a parameter of SortType enum and return list sorted by population size
+     * this function take a parameter of string and return list of cities that satisfy search keyword
+     * @param cityName a string represent name of city that user search for
+     * @return a list of City with info satisfy search keyword
+     */
+    @OptIn(ExperimentalStdlibApi::class)
+    fun searchCity(cityName: String): List<City> {
+        return citesList.filter { it.cityName.lowercase().trim() == cityName.lowercase().trim() }
+    }
+
+
+    fun getCountriesInfo() {
+        citesList.groupBy { it.countryName }.entries.map { (name, group) ->
+            Country(name, group as ArrayList<City>).let { countryList.add(it) }
+        }
+    }
+
+
+
+    /**
+     * this function take a parameter of SortType enum and return list  of city  sorted by population size
      * @param sortType a type of SortType
      * @return a List of City with info sorted by population
      */
@@ -120,7 +153,7 @@ object DataManager {
     }
 
     /**
-     * this function take a parameter of SortType enum and return list sorted by population size
+     * this function take a parameter of SortType enum and return list of city sorted by population size
      * @param sortType a type of SortType
      * @param noOfRetrievedCity an integer represent count of required cities to retrieve after sorting
      * @return a List of City with info sorted by population
@@ -133,13 +166,14 @@ object DataManager {
     }
 
 
+
     /**
      * this function return data grouped by country
      * @return a List Country with it's name and cities
      */
     fun createCountriesInfo(): List<Country> {
         citesList.groupBy { it.countryName }.entries.map { (name, group) ->
-            name.let { Country(it, group as ArrayList<City>) }.let { countryList.add(it) }
+            Country(name, group as ArrayList<City>).let { countryList.add(it) }
         }
 
         return countryList
@@ -248,14 +282,19 @@ object DataManager {
         return country.cities[0].iso3
     }
 
+
     /**
-     * this function return a list of cities name
-     * @param cities a list of cities
-     * @return a list of cities name
+     * this function take a parameter of string which represent country name and return list of Cities with info belong to searched country
+     * @param countryName a string represent name of country that user search for
+     * @return a list of Cities with info belong to searched country
      */
-    fun getCitiesName(cities: List<City>): List<String> {
-        return cities.map { it.cityName }
+    @OptIn(ExperimentalStdlibApi::class)
+    fun getCitiesByCountry(countryName: String): List<City> {
+        return citesList.filter {
+            it.countryName.lowercase().trim() == countryName.lowercase().trim()
+        }
     }
+
 
 
     /**
@@ -266,6 +305,18 @@ object DataManager {
     fun getCountryCitiesName(country: Country): List<String> {
         return getCitiesName(country.cities)
     }
+
+
+    /**
+     * this function return a list of cities name of a country
+     * @param country a required country
+     * @param sortType sort type
+     * @return list of String represent cities of a country
+     */
+    fun getCountryCitiesName(country: Country, sortBy: SortBy = SortBy.CityName, sortType: SortType = SortType.Descending): List<String> {
+       return  getCitiesName(country.cities,sortBy,sortType)
+    }
+    
 
     /**
      * this function return a list of cities name of a country
@@ -292,7 +343,6 @@ object DataManager {
     }
 
 
-
     /**
      * this function return primary city of a country
      * @param country a required country
@@ -310,9 +360,45 @@ object DataManager {
     @OptIn(ExperimentalStdlibApi::class)
     fun searchCityByLongLat(listToSearch: List<String>): City? {
         return citesList.firstOrNull {
-            it.longitude == listToSearch[0].toDouble() &&   it.latitude == listToSearch[1].toDouble()
+            it.longitude == listToSearch[0].toDouble() && it.latitude == listToSearch[1].toDouble()
         }
     }
+
+    /**
+     * this function take a string represent long of city
+     * @param long  string
+     * @return a City with info satisfy search
+     */
+    fun searchCityByLong(long: String): City? {
+        return citesList.firstOrNull {
+            it.longitude == long.trim().toDoubleOrNull()
+        }
+    }
+
+
+    /**
+     * this function take a string represent lat of city
+     * @param lat  string
+     * @return a City with info satisfy search
+     */
+    fun searchCityByLat(lat: String): City? {
+        return citesList.firstOrNull {
+            it.latitude == lat.trim().toDoubleOrNull()
+        }
+    }
+
+
+    /**
+     * this function take a string represent population of city
+     * @param population  string
+     * @return a City with info satisfy search
+     */
+    fun searchCityByPopulation(population: String): City? {
+        return citesList.firstOrNull {
+            it.population == population.trim().toDoubleOrNull()
+        }
+    }
+
 }
 
 
