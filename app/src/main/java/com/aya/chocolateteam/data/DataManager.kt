@@ -316,8 +316,7 @@ object DataManager {
     fun getCountryCitiesName(country: Country, sortBy: SortBy = SortBy.CityName, sortType: SortType = SortType.Descending): List<String> {
        return  getCitiesName(country.cities,sortBy,sortType)
     }
-
-
+    
 
     /**
      * this function return string represent country latitude and longitude
