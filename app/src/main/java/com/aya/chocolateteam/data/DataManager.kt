@@ -69,6 +69,8 @@ object DataManager {
     /**
      * this function return a list of cities name
      * @param cities a list of cities
+     * @param sortBy a sort by a property
+     * @param sortType a sort type either Ascending or Descending
      * @return a list of cities name
      */
     fun getCitiesName(cities: List<City>, sortBy: SortBy = SortBy.CityName, sortType: SortType = SortType.Descending): List<String> {
@@ -76,29 +78,70 @@ object DataManager {
         return  when(sortBy)
         {   SortBy.CityName ->   {
                 when (sortType) {
-                    SortType.Ascending -> cities.sortedBy { it.cityName }.map { it.cityName }
-                    else -> cities.sortedByDescending{it.cityName }.map { it.cityName }
+                    SortType.Ascending -> getSortedCities(cities,SortBy.CityName,SortType.Ascending).map { it.cityName }
+                    else -> getSortedCities(cities).map { it.cityName }
                 }
             }
 
             SortBy.Population-> {
                 when (sortType) {
-                    SortType.Ascending -> cities.sortedBy { it.population }.map { it.cityName }
-                    else -> cities.sortedByDescending { it.population }.map { it.cityName }
+                    SortType.Ascending -> getSortedCities(cities,SortBy.Population,SortType.Ascending).map { it.cityName }
+                    else -> getSortedCities(cities,SortBy.Population).map { it.cityName }
                 }
             }
                 SortBy.Latitude ->
                 {
                     when (sortType) {
-                        SortType.Ascending -> cities.sortedBy { it.latitude }.map { it.cityName }
-                        else -> cities.sortedByDescending { it.latitude }.map { it.cityName }
+                        SortType.Ascending -> getSortedCities(cities,SortBy.Latitude,SortType.Ascending).map { it.cityName }
+                        else -> getSortedCities(cities,SortBy.Latitude).map { it.cityName }
                     }
                 }
             SortBy.Longitude ->
             {
                 when (sortType) {
-                    SortType.Ascending -> cities.sortedBy { it.longitude }.map { it.cityName }
-                    else -> cities.sortedByDescending { it.longitude }.map { it.cityName }
+                    SortType.Ascending -> getSortedCities(cities,SortBy.Longitude,SortType.Ascending).map { it.cityName }
+                    else -> getSortedCities(cities,SortBy.Longitude).map { it.cityName }
+                }
+            }
+        }
+    }
+
+
+    /**
+     * this function return a list of sorted cities
+     * @param cities a list of cities
+     * @param sortBy a sort by a property
+     * @param sortType a sort type either Ascending or Descending
+     * @return a list of cities
+     */
+    private fun getSortedCities(cities: List<City>, sortBy: SortBy = SortBy.CityName, sortType: SortType = SortType.Descending): List<City> {
+
+        return  when(sortBy)
+        {   SortBy.CityName ->   {
+                when (sortType) {
+                    SortType.Ascending -> cities.sortedBy { it.cityName }
+                    else -> cities.sortedByDescending{it.cityName }
+                }
+            }
+
+            SortBy.Population-> {
+                when (sortType) {
+                    SortType.Ascending -> cities.sortedBy { it.population }
+                    else -> cities.sortedByDescending { it.population }
+                }
+            }
+            SortBy.Latitude ->
+            {
+                when (sortType) {
+                    SortType.Ascending -> cities.sortedBy { it.latitude }
+                    else -> cities.sortedByDescending { it.latitude }
+                }
+            }
+            SortBy.Longitude ->
+            {
+                when (sortType) {
+                    SortType.Ascending -> cities.sortedBy { it.longitude }
+                    else -> cities.sortedByDescending { it.longitude }
                 }
             }
         }
@@ -106,6 +149,17 @@ object DataManager {
 //        return cities.sortedBy { it.cityName }.map { it.cityName }
     }
 
+
+
+    /**
+     * this function return a list of cities name of a country
+     * @param country a required country
+     * @param sortType sort type
+     * @return list of String represent cities of a country
+     */
+    fun getCountryCities(country: Country, sortBy: SortBy = SortBy.CityName, sortType: SortType = SortType.Descending): List<City> {
+        return  getSortedCities(country.cities,sortBy,sortType)
+    }
 
 
     /**
@@ -316,7 +370,9 @@ object DataManager {
     fun getCountryCitiesName(country: Country, sortBy: SortBy = SortBy.CityName, sortType: SortType = SortType.Descending): List<String> {
        return  getCitiesName(country.cities,sortBy,sortType)
     }
-    
+
+
+
 
     /**
      * this function return a list of cities name of a country
