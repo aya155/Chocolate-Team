@@ -6,18 +6,17 @@ import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.City
 import com.aya.chocolateteam.data.domain.Country
+import com.aya.chocolateteam.data.domain.SortBy
 import com.aya.chocolateteam.data.domain.SortType
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.adapters.CustomAdapter
 import com.aya.chocolateteam.util.Constants
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
-import com.google.android.material.navigation.NavigationBarView
 import kotlinx.android.synthetic.main.fragment_c.*
 
 
@@ -108,10 +107,10 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             }
             sortBySpinner.selected {
                 listCity.adapter=when(it){
-                    0 -> CustomAdapter(DataManager.getCountryCitiesName(currentCountry,SortType.Ascending))
-                    1 ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.population }.map { it.cityName })
-                    2 ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.latitude }.map { it.cityName })
-                    else ->CustomAdapter(DataManager.getCitiesByCountry(search.query.toString()).sortedBy { it.longitude }.map { it.cityName })
+                    0 -> CustomAdapter(DataManager.getCountryCities(country = currentCountry,sortBy = SortBy.CityName,sortType = SortType.Ascending))
+                    1 ->CustomAdapter(DataManager.getCountryCities(country = currentCountry,sortBy = SortBy.Population))
+                    2 ->CustomAdapter(DataManager.getCountryCities(country = currentCountry,sortBy = SortBy.Latitude))
+                    else ->CustomAdapter(DataManager.getCountryCities(country = currentCountry,sortBy = SortBy.Longitude))
                 }
             }
             btnGoToMap.setOnClickListener {
@@ -175,8 +174,7 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             countryCaptail.text= DataManager.getCapitalCity(country)?.cityName
             iso2.text=DataManager.getIso2ByCountry(country)
             iso3.text=DataManager.getIso3ByCountry(country)
-            listCity.layoutManager= LinearLayoutManager(context)
-            listCity.adapter=CustomAdapter(DataManager.getCountryCitiesName(currentCountry,SortType.Ascending))
+            listCity.adapter=CustomAdapter(DataManager.getCountryCities(country = currentCountry,sortBy = SortBy.CityName,sortType = SortType.Ascending))
         }
 
     }
