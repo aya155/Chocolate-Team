@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#f1f2f6">
+    android:background="@color/background_color">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search"
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="#d2b48c"
+        android:backgroundTint="#f1f2f6"
         app:srcCompat="@drawable/ic_baseline_add_location_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -63,7 +63,7 @@
                 android:id="@+id/error_text"
                 style="@style/textStyle.large"
                 android:visibility="gone"
-                android:text="Sorry there is no result try again"
+                android:text="@string/no_result"
                 android:layout_marginTop="120dp"
                 app:layout_constraintBottom_toTopOf="@id/error_photo"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -74,8 +74,6 @@
                 android:layout_marginTop="20dp"
                 android:paddingHorizontal="24dp"
                 android:text="@string/sub_text"
-                android:textColor="@color/black"
-                android:textSize="18sp"
                 style="@style/textStyle.small"
                 app:layout_constraintBottom_toTopOf="@id/search_photo"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +86,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/subtext"
-                app:lottie_rawRes="@raw/searchingcontract" />
+                app:lottie_rawRes="@raw/searchhh" />
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/error_photo"
                 style="@style/lotte"
@@ -97,14 +95,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/error_text"
-                app:lottie_rawRes="@raw/robot" />
+                app:lottie_rawRes="@raw/shopcashempty" />
 
             <com.google.android.material.card.MaterialCardView
-            style="@style/views"
-           android:layout_height="wrap_content"
-           app:cardCornerRadius="16dp"
-           app:cardBackgroundColor="#d2b48c"
-           android:id="@+id/bord_chart"
+                android:id="@+id/bord_chart"
+                style="@style/views"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardBackgroundColor="@color/main_color"
                 android:visibility="gone"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +126,7 @@
                 app:layout_constraintBottom_toTopOf="@id/card_info"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/worldmap" />
+                app:lottie_rawRes="@raw/map" />
 
             <TextView
                 android:id="@+id/city_name"
@@ -138,8 +136,8 @@
                 android:layout_marginTop="160dp"
                 android:fontFamily="cursive"
                 android:gravity="center"
-                android:text="Japan"
-                android:textColor="@color/black"
+                android:text="@string/country_name"
+                android:textColor="@color/text_color"
                 android:textSize="50sp"
                 app:layout_constraintBottom_toTopOf="@id/card_info"
                 app:layout_constraintStart_toStartOf="parent"
@@ -148,8 +146,8 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_info"
                 style="@style/views"
-                app:cardCornerRadius="16dp"
-                app:cardBackgroundColor="#d2b48c"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardBackgroundColor="@color/main_color"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/cities"
@@ -165,62 +163,62 @@
                         android:id="@+id/v_country_population"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
-                        android:text="Total population"/>
+                        android:text="@string/total_population"/>
 
                     <TextView
                         android:id="@+id/country_population"
                         style="@style/textStyle"
-                        android:text="22,333,455"
+                        android:text="@string/_22_333_455"
                         android:drawableStart="@drawable/ic_baseline_people_24"
                         android:textSize="20sp" />
                     <TextView
                         android:id="@+id/v_city_population"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
-                        android:text="Population"/>
+                        android:text="@string/Population"/>
 
                     <TextView
                         android:id="@+id/city_population"
                         style="@style/textStyle"
-                        android:text="333,455"
+                        android:text="@string/_333_455"
                         android:drawableStart="@drawable/ic_baseline_people_24"
                         android:textSize="20sp" />
                     <TextView
                         android:id="@+id/v_country_captail"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
-                        android:text="Captail"/>
+                        android:text="@string/captail"/>
 
                     <TextView
                         android:id="@+id/country_captail"
                         style="@style/textStyle"
                         android:textSize="20sp"
-                        android:text="Baghdad"
+                        android:text="@string/capital_name"
                         android:drawableStart="@drawable/ic_baseline_stars_24" />
                     <TextView
                         android:id="@+id/v_city_country"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
-                        android:text="Country"/>
+                        android:text="@string/country"/>
 
                     <TextView
                         android:id="@+id/city_country"
                         style="@style/textStyle"
-                        android:text="Iraq"
+                        android:text="@string/Country"
                         android:textSize="25sp"
                         android:drawableStart="@drawable/ic_baseline_stars_24"/>
                     <TextView
                         android:id="@+id/v_iso2"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
-                        android:text="ISO2"/>
+                        android:text="@string/ISO2"/>
 
                     <TextView
                         android:id="@+id/iso2"
                         style="@style/textStyle"
-                        android:text="IQ"
+                        android:text="ISO2_Name"
                         android:drawableStart="@drawable/ic_baseline_language_24"
-                        android:textSize="20sp" />
+                        android:textSize="@dimen/large_textsize" />
 <!--                    <TextView-->
 <!--                        android:id="@+id/v_time"-->
 <!--                        style="@style/textStyle.large"-->
@@ -237,16 +235,16 @@
                         android:id="@+id/v_iso3"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
-                        android:text="ISO3"/>
+                        android:text="@string/ISO3"/>
 
                     <TextView
                         android:id="@+id/iso3"
                         style="@style/textStyle"
-                        android:text="IQR"
+                        android:text="@string/ISO3_Name"
                         android:layout_marginBottom="16dp"
                         android:drawablePadding="7dp"
                         android:drawableStart="@drawable/ic_baseline_language_24"
-                        android:textSize="20sp" />
+                        android:textSize="@dimen/large_textsize" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -257,9 +255,9 @@
                 android:layout_margin="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:padding="16dp"
-                app:cardBackgroundColor="#d2b48c"
+                app:cardBackgroundColor="@color/main_color"
                 app:cardElevation="4dp"
-                app:cardCornerRadius="16dp"
+                app:cardCornerRadius="@dimen/card_corner_radius"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
@@ -272,7 +270,7 @@
                         style="@style/textStyle.large"
                         android:layout_marginTop="24dp"
                         android:layout_gravity="center"
-                        android:text="cities" />
+                        android:text="@string/citiess" />
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/sort_by_spinner"
                         android:layout_width="match_parent"

@@ -9,6 +9,7 @@ import com.aya.chocolateteam.databinding.FragmentABinding
 import com.aya.chocolateteam.util.Constants
 
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
+import kotlinx.android.synthetic.main.fragment_a.*
 
 class FragmentA : BaseFragment<FragmentABinding>() {
     override val LOG_TAG: String="FRAGMENT_A"

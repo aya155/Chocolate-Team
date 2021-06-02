@@ -37,6 +37,19 @@
     <string name="latitude">Latitude</string>
     <string name="_126_3">126.3</string>
     <string name="no_result">Sorry there is no result try again!</string>
+    <string name="citiess">cities</string>
+    <string name="country_name">Japan</string>
+    <string name="total_population">Total population</string>
+    <string name="_22_333_455">22,333,455</string>
+    <string name="Population">Population</string>
+    <string name="_333_455">333,455</string>
+    <string name="captail">Captail</string>
+    <string name="capital_name">Baghdad</string>
+    <string name="country">Country</string>
+    <string name="Country">Iraq</string>
+    <string name="ISO2">ISO2</string>
+    <string name="ISO3">ISO3</string>
+    <string name="ISO3_Name">IQR</string>
     <string name="cities">cities</string>
 
     <string-array name="CitiesName">

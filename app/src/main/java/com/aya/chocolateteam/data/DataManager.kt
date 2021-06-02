@@ -292,13 +292,13 @@ object DataManager {
      * @param sortType sort type
      * @return list of String represent cities of a country
      */
-    fun getCountryCitiesName(country: Country,sortType: SortType): List<String> {
-
-        return when (sortType) {
-            SortType.Ascending -> getCitiesName(country.cities).sorted()
-            else -> getCitiesName(country.cities).sortedDescending()
-        }
-    }
+//    fun getCountryCitiesName(country: Country,sortType: SortType): List<String> {
+//
+//        return when (sortType) {
+//            SortType.Ascending -> getCitiesName(country.cities).sorted()
+//            else -> getCitiesName(country.cities).sortedDescending()
+//        }
+//    }
 
 
     /**

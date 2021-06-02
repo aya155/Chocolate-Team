@@ -11,9 +11,9 @@
     <color name="ic_launcher_background">#cdcaca</color>
     <color name="lightwhite">#f1f2f6</color>
 
-    <color name="background_color">#f1f2f6</color>
-    <color name="main_color">#c5a880</color>
-    <color name="text_color">#D0000000</color>
-    <color name="view_color">#7C7979</color>
-    <color name="search_color">#ffffff</color>
+    <color name="background_color">#171819</color>
+    <color name="main_color">#353433</color>
+    <color name="text_color">#BDA17A</color>
+    <color name="view_color">#F3F1F1</color>
+    <color name="search_color">#353433</color>
 </resources>
