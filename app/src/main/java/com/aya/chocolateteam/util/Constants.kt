@@ -1,4 +1,7 @@
 package com.aya.chocolateteam.util
+
+import com.aya.chocolateteam.data.domain.City
+
 //"city","city_ascii","lat","lng","country","iso2","iso3","admin_name","capital","population","id"
 
 object Constants {
@@ -11,4 +14,5 @@ object Constants {
     const val CAPITAL_INDEX = 8
     const val POPULATION_INDEX = 9
     const val COUNTRY="COUNTRY"
+    var cityMap:City?=null
 }
