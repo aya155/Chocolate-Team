@@ -9,6 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#B8B7B7</color>
     <color name="ic_launcher_background">#cdcaca</color>
+    <color name="lightwhite">#F1E9E9</color>
+    <color name="background">#f1f2f6</color>
+    <color name="cards_color">#d2b48c</color>
+    <color name="chip_color">#c5a880</color>
 
     <color name="background_color">#f1f2f6</color>
     <color name="main_color">#c5a880</color>
