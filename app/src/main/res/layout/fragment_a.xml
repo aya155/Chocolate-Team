@@ -373,32 +373,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/HorizontalScroll" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardChart"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/main_color"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view4">
 
-                <com.anychart.AnyChartView
-                    android:id="@+id/any_chart_view"
+                <com.github.mikephil.charting.charts.HorizontalBarChart
+                    android:id="@+id/populationCitiesChart"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/main_color"/>
-
-
-            </androidx.cardview.widget.CardView>
+                    android:layout_marginVertical="16dp"
+                    android:layout_height="300dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view4"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardChart"/>
+                app:layout_constraintTop_toBottomOf="@id/populationCitiesChart"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
