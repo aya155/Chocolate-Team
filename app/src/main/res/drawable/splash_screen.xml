@@ -8,7 +8,7 @@
     </item>
 
 <item>
-    <bitmap android:src="@drawable/pictu"
+    <bitmap android:src="@drawable/pic"
         android:gravity="bottom"/>
 </item>
 
