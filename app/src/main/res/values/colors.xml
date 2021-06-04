@@ -19,6 +19,17 @@
     <color name="text_color">#D0000000</color>
     <color name="view_color">#7C7979</color>
     <color name="search_color">#ffffff</color>
-    <color name="alert_color">#f1f2f6</color>
-    <color name="alert_text_color">#D0000000</color>
+
+
+    <color name="color1">#714732</color>
+    <color name="color9">#84563D</color>
+    <color name="color3">#FEFCCF</color>
+    <color name="color4">#E2CE9B</color>
+    <color name="color5">#EDEBD6</color>
+    <color name="color6">#FEFDE9</color>
+    <color name="color7">#C1907F</color>
+    <color name="color8">#956359</color>
+    <color name="color2">#AC7566</color>
+
+
 </resources>

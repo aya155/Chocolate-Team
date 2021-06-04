@@ -2,11 +2,14 @@ package com.aya.chocolateteam.ui.fragments
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.DataManager
@@ -18,6 +21,8 @@ import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.adapters.CustomAdapter
 import com.aya.chocolateteam.util.Constants
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import kotlinx.android.synthetic.main.fragment_c.*
 
 
@@ -247,6 +252,13 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             }
 
 
+            countryChart.setPieChart(country)
+            countryPopulation.text=DataManager.getTotalCountryPopulation(country).toString()
+            countryCaptail.text= DataManager.getCapitalCity(country)?.cityName
+            iso2.text=DataManager.getIso2ByCountry(country)
+            iso3.text=DataManager.getIso3ByCountry(country)
+            listCity.layoutManager= LinearLayoutManager(context)
+            listCity.adapter=CustomAdapter(DataManager.getCountryCitiesName(currentCountry,SortType.Ascending))
         }
 
     }

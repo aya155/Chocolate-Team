@@ -42,4 +42,17 @@
     <string name="iso2_name">ISO2_Name</string>
 
 
+    <array name="chart_color">
+        <item >@color/color1</item>
+        <item >@color/color2</item>
+        <item >@color/color3</item>
+        <item >@color/color4</item>
+        <item >@color/color5</item>
+        <item >@color/color6</item>
+        <item >@color/color7</item>
+        <item >@color/color8</item>
+        <item >@color/color9</item>
+    </array>
+
+
 </resources>
