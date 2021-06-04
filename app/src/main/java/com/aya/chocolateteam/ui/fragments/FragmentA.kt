@@ -3,10 +3,6 @@ package com.aya.chocolateteam.ui.fragments
 import android.content.res.ColorStateList
 import android.util.TypedValue
 import android.view.LayoutInflater
-import android.widget.ArrayAdapter
-import com.anychart.AnyChart
-import com.anychart.chart.common.dataentry.DataEntry
-import com.anychart.chart.common.dataentry.ValueDataEntry
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.aya.chocolateteam.R
@@ -16,12 +12,11 @@ import com.aya.chocolateteam.data.domain.SortBy
 import com.aya.chocolateteam.databinding.FragmentABinding
 
 import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
-import kotlinx.android.synthetic.main.fragment_a.*
 import com.google.android.material.chip.Chip
 
 class FragmentA : BaseFragment<FragmentABinding>() {
-    override val LOG_TAG: String="FRAGMENT_A"
-    override val bindingInflater: (LayoutInflater) -> FragmentABinding=FragmentABinding::inflate
+    override val LOG_TAG: String = "FRAGMENT_A"
+    override val bindingInflater: (LayoutInflater) -> FragmentABinding = FragmentABinding::inflate
 
     override fun setup() {
         // get  initial country
@@ -40,28 +35,9 @@ class FragmentA : BaseFragment<FragmentABinding>() {
                 bindLayout(DataManager.getNextCountry())
             }
         }
-
-        val string= DataManager.getCitiesByCountry("iraq").map { it.cityName }.take(5)
-        val wight=  DataManager.getCitiesByCountry("iraq").map { it.population }.take(5)
-        val dataEntry= arrayListOf<DataEntry>().apply {
-            string.forEachIndexed { index, s ->
-                add(ValueDataEntry(s, wight[index]))
-            }
-        }
-
-        val pie= AnyChart.column().apply {
-            data(dataEntry)
-            animation(true)
-
-
-            when(this@FragmentA.resources.configuration.uiMode.and(Configuration.UI_MODE_NIGHT_MASK)) {
-                Configuration.UI_MODE_NIGHT_YES -> background().fill("#353433")
-                Configuration.UI_MODE_NIGHT_NO -> background().fill("#c5a880")
-            }
-
-        }
-        binding?.anyChartView?.setChart(pie)
     }
+
+
     // set layout with information of current country
     override fun bindLayout(country: Country) {
         binding?.apply {
