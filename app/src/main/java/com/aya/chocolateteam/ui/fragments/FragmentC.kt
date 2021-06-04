@@ -1,16 +1,12 @@
 package com.aya.chocolateteam.ui.fragments
 
-import android.content.Intent
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager.widget.ViewPager
 import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.City
@@ -20,9 +16,6 @@ import com.aya.chocolateteam.data.domain.SortType
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.adapters.CustomAdapter
 import com.aya.chocolateteam.util.Constants
-import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
 import kotlinx.android.synthetic.main.fragment_c.*
 
 
@@ -164,7 +157,10 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
                 }
             }
             btnGoToMap.setOnClickListener {
-                activity?.findViewById<ViewPager>(R.id.viewpager)?.currentItem = 0
+                activity?.apply {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, FragmentB()).commit()
+                    findViewById<View>(R.id.PageMap).performClick()
+                }
             }
         }
     }
@@ -227,16 +223,16 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
 
     private fun bindCountryLayout(country: Country) {
         binding?.apply {
-            countryChart.aa_drawChartWithChartModel(
-                bindChart(
-                    type = AAChartType.Bar,
-                    backgroundColor = "#d2b48c",
-                    title = country.name,
-                    seriesArray = makeSeriesArray(
-                        country.cities.shuffled().filter { it.population != 0.0 }.take(3)
-                    ).toTypedArray()
-                )
-            )
+//            countryChart.aa_drawChartWithChartModel(
+//                bindChart(
+//                    type = AAChartType.Bar,
+//                    backgroundColor = "#d2b48c",
+//                    title = country.name,
+//                    seriesArray = makeSeriesArray(
+//                        country.cities.shuffled().filter { it.population != 0.0 }.take(3)
+//                    ).toTypedArray()
+//                )
+//            )
             countryPopulation.text = DataManager.getTotalCountryPopulation(country).toString()
             countryCaptail.text = DataManager.getCapitalCity(country)?.cityName
             iso2.text = DataManager.getIso2ByCountry(country)

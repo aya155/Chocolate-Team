@@ -20,6 +20,8 @@
     <color name="view_color">#7C7979</color>
     <color name="search_color">#ffffff</color>
 
+    <color name="alert_color">#f1f2f6</color>
+    <color name="alert_text_color">#D0000000</color>
 
     <color name="color1">#714732</color>
     <color name="color9">#84563D</color>

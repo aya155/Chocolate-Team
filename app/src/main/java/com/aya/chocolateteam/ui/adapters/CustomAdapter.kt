@@ -1,17 +1,12 @@
 package com.aya.chocolateteam.ui.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.domain.City
-import com.aya.chocolateteam.databinding.ItemBinding
 import com.aya.chocolateteam.databinding.ItemCityBinding
-import java.util.ArrayList
 
 
 class CustomAdapter(
