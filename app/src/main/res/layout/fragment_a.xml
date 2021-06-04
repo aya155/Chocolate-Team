@@ -87,7 +87,7 @@
                 android:id="@+id/chip_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/constraintLayout2">
@@ -96,7 +96,7 @@
                     android:id="@+id/ch1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/headland_one"
+                    android:fontFamily="@font/basic"
                     android:text="Baghdad"
                     android:textColor="@color/text_color"
                     app:chipBackgroundColor="@color/main_color" />
@@ -105,7 +105,7 @@
                     android:id="@+id/ch2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/headland_one"
+                    android:fontFamily="@font/basic"
                     android:text="Basra"
                     android:textColor="@color/text_color"
                     app:chipBackgroundColor="@color/main_color" />
@@ -114,7 +114,7 @@
                     android:id="@+id/ch3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/headland_one"
+                    android:fontFamily="@font/basic"
                     android:text="Anbar"
                     android:textColor="@color/text_color"
                     app:chipBackgroundColor="@color/main_color" />
@@ -123,7 +123,7 @@
                     android:id="@+id/ch4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/headland_one"
+                    android:fontFamily="@font/basic"
                     android:text="Hila"
                     android:textColor="@color/text_color"
                     app:chipBackgroundColor="@color/main_color" />
@@ -132,7 +132,7 @@
                     android:id="@+id/ch5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/headland_one"
+                    android:fontFamily="@font/basic"
                     android:text="Arbil"
                     android:textColor="@color/text_color"
                     app:chipBackgroundColor="@color/main_color" />
@@ -141,7 +141,7 @@
                     android:id="@+id/ch6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/headland_one"
+                    android:fontFamily="@font/basic"
                     android:text="Al-Nasirea"
                     android:textColor="@color/text_color"
                     app:chipBackgroundColor="@color/main_color" />
@@ -150,7 +150,7 @@
                     android:id="@+id/ch7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/headland_one"
+                    android:fontFamily="@font/basic"
                     android:text="Al-Nasirea"
                     android:textColor="@color/text_color"
                     app:chipBackgroundColor="@color/main_color" />
@@ -159,7 +159,7 @@
                     android:id="@+id/ch8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/headland_one"
+                    android:fontFamily="@font/basic"
                     android:text="Al-Nasirea"
                     android:textColor="@color/text_color"
                     app:chipBackgroundColor="@color/main_color" />
@@ -168,7 +168,7 @@
                     android:id="@+id/ch9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/headland_one"
+                    android:fontFamily="@font/basic"
                     android:text="Al-Nasirea"
                     android:textColor="@color/text_color"
                     app:chipBackgroundColor="@color/main_color" />
@@ -217,34 +217,25 @@
                                 android:id="@+id/textView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="35dp"
+                                android:layout_marginStart="52dp"
                                 android:layout_marginTop="28dp"
                                 android:fontFamily="@font/basic"
-                                android:text="@string/population"
+                                android:text="@string/Population"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/large_textsize"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageView
-                                android:id="@+id/imageView"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_marginStart="8dp"
-                                android:src="@drawable/ic_baseline_people_24"
-                                app:layout_constraintStart_toEndOf="@+id/textView"
-                                app:layout_constraintTop_toTopOf="@+id/textView"
-                                app:tint="@color/text_color" />
 
                             <TextView
                                 android:id="@+id/population"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text="@string/populationn"
+                                android:text="@string/_33_521_452"
+                                android:fontFamily="@font/basic"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/normal_textsize"
-                                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                                app:layout_constraintEnd_toEndOf="@+id/textView"
                                 app:layout_constraintHorizontal_bias="0.619"
                                 app:layout_constraintStart_toStartOf="@+id/textView"
                                 app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -253,8 +244,8 @@
                                 android:id="@+id/textView5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginTop="16dp"
+                                android:layout_marginStart="45dp"
+                                android:layout_marginTop="20dp"
                                 android:fontFamily="@font/basic"
                                 android:text="@string/iso2"
                                 android:textColor="@color/text_color"
@@ -267,7 +258,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="@string/iso22"
+                                android:text="@string/iso2_name"
+                                android:fontFamily="@font/basic"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/normal_textsize"
                                 app:layout_constraintStart_toEndOf="@+id/textView5"
@@ -292,7 +284,7 @@
                                 android:layout_marginStart="12dp"
                                 android:layout_marginTop="4dp"
                                 android:fontFamily="@font/basic"
-                                android:text="@string/_126_3"
+                                android:text="@string/ISO3_Name"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/normal_textsize"
                                 app:layout_constraintStart_toEndOf="@+id/textView13"
@@ -333,6 +325,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
+                                android:fontFamily="@font/basic"
                                 android:text="@string/_377_975_km"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/normal_textsize"
@@ -358,6 +351,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
+                                android:fontFamily="@font/basic"
                                 android:text="@string/_126_3"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/normal_textsize"
@@ -379,21 +373,32 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/HorizontalScroll" />
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardChart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/main_color"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view4">
 
-                <com.github.mikephil.charting.charts.HorizontalBarChart
-                    android:id="@+id/populationCitiesChart"
-                    android:layout_width="0dp"
-                    android:layout_height="300dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view4"/>
+                <com.anychart.AnyChartView
+                    android:id="@+id/any_chart_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/main_color"/>
+
+
+            </androidx.cardview.widget.CardView>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/populationCitiesChart"/>
+                app:layout_constraintTop_toBottomOf="@id/cardChart"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

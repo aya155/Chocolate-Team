@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/worldmap" />
+                app:lottie_rawRes="@raw/map" />
 
             <TextView
                 android:id="@+id/country_name"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="140dp"
-                android:fontFamily="cursive"
+                android:fontFamily="@font/basic"
                 android:gravity="center"
                 android:text="Japan"
                 android:textColor="@color/black"
@@ -53,7 +53,6 @@
                 android:layout_width="360dp"
                 android:layout_height="270dp"
                 android:layout_marginTop="25dp"
-                android:background="@drawable/textview"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.49"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +65,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/andada"
-                android:text="@string/chartName"
+
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/textView2"
@@ -99,7 +98,6 @@
                 android:layout_width="360dp"
                 android:layout_height="180dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/textview"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.49"
                 app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +109,6 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/iso"
                 app:layout_constraintStart_toStartOf="@+id/textView3"
                 app:layout_constraintTop_toTopOf="@+id/textView3" />
 
@@ -129,7 +126,7 @@
                 android:id="@+id/iso2_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/andada"
+                android:fontFamily="@font/basic"
                 android:text="iso2 : 377,975 km²"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -143,7 +140,6 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="25dp"
-                android:src="@drawable/isoo"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -163,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
-                android:fontFamily="@font/andada"
+                android:fontFamily="@font/basic"
                 android:text="iso3: 126.3 "
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -177,7 +173,6 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="25dp"
-                android:src="@drawable/demographics"
                 app:layout_constraintStart_toStartOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -186,7 +181,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:fontFamily="@font/andada"
+                android:fontFamily="@font/basic"
                 android:gravity="center"
                 android:text="Population: 126.3 million (2019)"
                 android:textColor="@color/black"

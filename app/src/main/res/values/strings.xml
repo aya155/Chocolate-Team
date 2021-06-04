@@ -1,19 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ChocolateTeam</string>
-    <string name="text">
-        Capital: Tokyo\nArea: 377,975 km²\nCurrency: Japanese yen\nContinent: Asia
-    </string>
+
     <string-array name="filter">
         <item >City</item>
         <item >Country</item>
         <item >Location</item>
     </string-array>
+
     <string-array name="city_list">
         <item >By name</item>
         <item >By population</item>
         <item> By latitude</item>
         <item> By longitude</item>
     </string-array>
+
     <string name="main_text">
         What are\n you searching for?
     </string>
@@ -21,46 +21,26 @@
         Search for your favorite thing or find\n similar results in this area.
     </string>
 
-
-    <string name="discover_countries_information">Discover Countries Information.</string>
-    <string name="world_fact">World Fact</string>
-    <string name="earth_image">earth image</string>
-    <string name="chartName">Population According To Cities</string>
-    <string name="population">population</string>
     <string name="_33_521_452">33,521,452</string>
     <string name="iso2">ISO2 :</string>
-    <string name="populationn">377,975 km²</string>
     <string name="iso3">ISO3 :</string>
-    <string name="iso22">126.3</string>
     <string name="longitude">Longitude</string>
     <string name="_377_975_km">377,975 km²</string>
     <string name="latitude">Latitude</string>
     <string name="_126_3">126.3</string>
     <string name="no_result">Sorry there is no result try again!</string>
-    <string name="citiess">cities</string>
-    <string name="country_name">Japan</string>
+    <string name="country_name">Iraq</string>
     <string name="total_population">Total population</string>
     <string name="_22_333_455">22,333,455</string>
     <string name="Population">Population</string>
-    <string name="_333_455">333,455</string>
-    <string name="captail">Captail</string>
+    <string name="capital">Capital</string>
     <string name="capital_name">Baghdad</string>
     <string name="country">Country</string>
-    <string name="Country">Iraq</string>
-    <string name="ISO2">ISO2</string>
-    <string name="ISO3">ISO3</string>
+    <string name="Country_name">Iraq</string>
     <string name="ISO3_Name">IQR</string>
     <string name="cities">cities</string>
+    <string name="iso2_name">ISO2_Name</string>
 
-    <string-array name="CitiesName">
-        <item name="city">Baghdad</item>
-        <item name="city">Tokyo</item>
-        <item name="city">Beijing</item>
-        <item name="city">Delhi</item>
-        <item name="city">Washington</item>
-        <item name="city">Cairo</item>
-        <item name="city">Seoul</item>
-    </string-array>
 
     <array name="chart_color">
         <item >@color/color1</item>

@@ -171,14 +171,14 @@
                     <TextView
                         android:id="@+id/city_population"
                         style="@style/textStyle"
-                        android:text="@string/_333_455"
+                        android:text="@string/_33_521_452"
                         android:drawableStart="@drawable/ic_baseline_people_24"
                         android:textSize="20sp" />
                     <TextView
                         android:id="@+id/v_country_captail"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
-                        android:text="@string/captail"/>
+                        android:text="@string/capital"/>
 
                     <TextView
                         android:id="@+id/country_captail"
@@ -195,19 +195,19 @@
                     <TextView
                         android:id="@+id/city_country"
                         style="@style/textStyle"
-                        android:text="@string/Country"
+                        android:text="@string/Country_name"
                         android:textSize="25sp"
                         android:drawableStart="@drawable/ic_baseline_stars_24"/>
                     <TextView
                         android:id="@+id/v_iso2"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
-                        android:text="@string/ISO2"/>
+                        android:text="@string/iso2"/>
 
                     <TextView
                         android:id="@+id/iso2"
                         style="@style/textStyle"
-                        android:text="ISO2_Name"
+                        android:text="@string/iso2_name"
                         android:drawableStart="@drawable/ic_baseline_language_24"
                         android:textSize="@dimen/large_textsize" />
 <!--                    <TextView-->
@@ -226,7 +226,7 @@
                         android:id="@+id/v_iso3"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
-                        android:text="@string/ISO3"/>
+                        android:text="@string/iso3"/>
 
                     <TextView
                         android:id="@+id/iso3"
@@ -261,7 +261,7 @@
                         style="@style/textStyle.large"
                         android:layout_marginTop="24dp"
                         android:layout_gravity="center"
-                        android:text="@string/citiess" />
+                        android:text="@string/cities" />
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/sort_by_spinner"
                         android:layout_width="match_parent"
