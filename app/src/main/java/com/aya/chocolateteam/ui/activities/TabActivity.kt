@@ -10,6 +10,7 @@ import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.ActivityTabBinding
 import com.aya.chocolateteam.ui.adapters.ViewpagerAdapter
 import com.aya.chocolateteam.ui.fragments.FragmentB
+import com.aya.chocolateteam.util.Constants
 import com.aya.chocolateteam.util.CsvParser
 import kotlinx.android.synthetic.main.activity_tab.*
 import java.io.BufferedReader
@@ -24,12 +25,15 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
         ActivityTabBinding::inflate
 
     override fun setup() {
+        initialColors()
         parseFile()
         //setTabs()
         replaceFragment(FragmentA())
     }
 
-
+    private  fun initialColors() {
+        Constants.CUSTOM_COLORS= arrayListOf<Int>().apply { resources.getIntArray(R.array.chart_color).forEach { this.add(it) } }
+    }
 
 
     override fun addCallBack() {

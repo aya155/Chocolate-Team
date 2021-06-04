@@ -37,7 +37,7 @@ class FragmentA : BaseFragment<FragmentABinding>() {
     override fun bindLayout(country: Country){
         binding?.apply {
             countryName.text=country.name
-            populationCitiesChart?.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,title = country.name,backgroundColor="#c5a880",seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(3)).toTypedArray()))
+            populationCitiesChart.setBarChart(country)
 //            description.text="Population  : ${DataManager.getTotalCountryPopulation(country)} \nISO2  : ${DataManager.getIso2ByCountry(country)}     \nISO3  : ${DataManager.getIso3ByCountry(country)}   \n"
 //            listItem.adapter= ArrayAdapter(Context(), android.R.layout.simple_list_item_1,DataManager.getCountryCitiesName(country))
         }

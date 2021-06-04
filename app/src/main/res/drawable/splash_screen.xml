@@ -7,9 +7,9 @@
             android:gravity="center" />
     </item>
 
-<item>
-    <bitmap android:src="@drawable/pictu"
-        android:gravity="bottom"/>
-</item>
+<!--<item>-->
+<!--    <bitmap android:src="@drawable/pictu"-->
+<!--        android:gravity="bottom"/>-->
+<!--</item>-->
 
 </layer-list>

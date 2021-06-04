@@ -1,6 +1,10 @@
 package com.aya.chocolateteam.util
 
+import android.content.res.Resources
+import android.widget.TableLayout
+import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.domain.City
+import com.aya.chocolateteam.ui.activities.TabActivity
 
 //"city","city_ascii","lat","lng","country","iso2","iso3","admin_name","capital","population","id"
 
@@ -14,5 +18,6 @@ object Constants {
     const val CAPITAL_INDEX = 8
     const val POPULATION_INDEX = 9
     const val COUNTRY="COUNTRY"
+    lateinit var CUSTOM_COLORS:ArrayList<Int>
     var cityMap:City?=null
 }

@@ -68,7 +68,6 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             }
             countryViews.apply {
                 add(cardInfo)
-                add(bordChart)
                 add(country_chart)
                 add(countryCaptail)
                 add(vCountryCaptail)
@@ -176,7 +175,7 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
     }
     private fun bindCountryLayout(country: Country) {
         binding?.apply {
-            countryChart.aa_drawChartWithChartModel(bindChart(type = AAChartType.Bar,backgroundColor = "#d2b48c",title = country.name,seriesArray = makeSeriesArray(country.cities.shuffled().filter { it.population!=0.0 }.take(3)).toTypedArray()))
+            countryChart.setPieChart(country)
             countryPopulation.text=DataManager.getTotalCountryPopulation(country).toString()
             countryCaptail.text= DataManager.getCapitalCity(country)?.cityName
             iso2.text=DataManager.getIso2ByCountry(country)
