@@ -69,7 +69,6 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             }
             countryViews.apply {
                 add(cardInfo)
-                add(bordChart)
                 add(country_chart)
                 add(countryCaptail)
                 add(vCountryCaptail)
@@ -223,16 +222,6 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
 
     private fun bindCountryLayout(country: Country) {
         binding?.apply {
-//            countryChart.aa_drawChartWithChartModel(
-//                bindChart(
-//                    type = AAChartType.Bar,
-//                    backgroundColor = "#d2b48c",
-//                    title = country.name,
-//                    seriesArray = makeSeriesArray(
-//                        country.cities.shuffled().filter { it.population != 0.0 }.take(3)
-//                    ).toTypedArray()
-//                )
-//            )
             countryPopulation.text = DataManager.getTotalCountryPopulation(country).toString()
             countryCaptail.text = DataManager.getCapitalCity(country)?.cityName
             iso2.text = DataManager.getIso2ByCountry(country)
@@ -253,8 +242,7 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             countryCaptail.text= DataManager.getCapitalCity(country)?.cityName
             iso2.text=DataManager.getIso2ByCountry(country)
             iso3.text=DataManager.getIso3ByCountry(country)
-            listCity.layoutManager= LinearLayoutManager(context)
-            listCity.adapter=CustomAdapter(DataManager.getCountryCitiesName(currentCountry,SortType.Ascending))
+            listCity.adapter=CustomAdapter(DataManager.getCountryCities(country = currentCountry, sortBy = SortBy.CityName, sortType = SortType.Ascending)){ cityModel -> log(cityModel.cityName) }
         }
 
     }

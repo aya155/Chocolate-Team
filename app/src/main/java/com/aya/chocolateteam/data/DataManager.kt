@@ -367,7 +367,7 @@ object DataManager {
      * @param sortType sort type
      * @return list of String represent cities of a country
      */
-    fun getCountryCitiesName(country: Country, sortBy: SortType = SortBy.CityName, sortType: SortType = SortType.Descending): List<String> {
+    fun getCountryCitiesName(country: Country, sortBy: SortBy = SortBy.CityName, sortType: SortType = SortType.Descending): List<String> {
         return  getCitiesName(country.cities,sortBy,sortType)
     }
 
