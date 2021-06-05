@@ -438,6 +438,23 @@ object DataManager {
         }
     }
 
+    /**
+     * this function take a parameter as list of city, noOfRetrievedCity as integer  and return a list of city randomly
+     * @param cities a list of City
+     * @param noOfRetrievedCity an integer represent count of required cities to retrieve
+     * @return a List of City with info
+     */
+    private fun getRandomCities(cities: MutableList<City> , noOfRetrievedCity: Int = 5)  = cities.shuffled().filter { it.population!=0.0 }.take(noOfRetrievedCity)
+
+
+    /**
+     * this function take a parameter as an object of Country, noOfRetrievedCity as integer,  and return a list of city randomly
+     * @param country an object of Country
+     * @param noOfRetrievedCity an integer represent count of required cities to retrieve
+     * @return a List of City with info
+     */
+    fun getCountryRandomCities(country: Country , noOfRetrievedCity: Int = 5)  = getRandomCities(country.cities,noOfRetrievedCity)
+
 }
 
 
