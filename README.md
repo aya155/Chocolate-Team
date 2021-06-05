@@ -7,7 +7,7 @@
 <br/>
 <br/>
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/aya155/Chocolate-Team/blob/master/Screenshots/app.gif" width="200" height="400" />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/aya155/Chocolate-Team/blob/Develope/Screenshots/app.gif" width="200" height="400" />
 
 <br/>
 
