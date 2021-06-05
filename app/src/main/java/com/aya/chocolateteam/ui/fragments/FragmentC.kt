@@ -2,6 +2,7 @@ package com.aya.chocolateteam.ui.fragments
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
@@ -258,7 +259,8 @@ class FragmentC : BaseFragment<FragmentCBinding>(){
              iso3City.text=city.iso3
              context?.let { AlertDialog.Builder(it).setView(root) }?.create()?.apply {
                  show()
-                 window?.setLayout(740,685)
+                 val factor: Float = root.context.resources.displayMetrics.density
+                 window?.setLayout((410*factor).toInt(),(380*factor).toInt())
              }
          }
     }
