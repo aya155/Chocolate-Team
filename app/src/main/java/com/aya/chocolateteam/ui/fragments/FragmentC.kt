@@ -5,23 +5,25 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.aya.chocolateteam.R
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.City
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.data.domain.SortBy
 import com.aya.chocolateteam.data.domain.SortType
+import com.aya.chocolateteam.databinding.AlertDialogBinding
 import com.aya.chocolateteam.databinding.FragmentCBinding
 import com.aya.chocolateteam.ui.adapters.CustomAdapter
 import com.aya.chocolateteam.util.Constants
 import kotlinx.android.synthetic.main.fragment_c.*
 
 
-class FragmentC : BaseFragment<FragmentCBinding>() {
+class FragmentC : BaseFragment<FragmentCBinding>(){
     override val LOG_TAG: String = "FRAGMENT_C"
     lateinit var currentCountry: Country
+    lateinit var adapter: CustomAdapter
     private val errorViews = arrayListOf<View?>()
     private val cityViews = arrayListOf<View?>()
     private val countryViews = arrayListOf<View?>()
@@ -120,40 +122,28 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
                 }
             }
             sortBySpinner.selected {
-                listCity.adapter = when (it) {
-                    0 -> CustomAdapter(
-                        DataManager.getCountryCities(
-                            country = currentCountry,
-                            sortBy = SortBy.CityName,
-                            sortType = SortType.Ascending
-                        )
-                    ) { cityModel ->
-                        log(cityModel.cityName)
-                    }
-                    1 -> CustomAdapter(
+                when (it) {
+                    0 -> adapter.setData(
+                            DataManager.getCountryCities(
+                                    country = currentCountry,
+                                    sortBy = SortBy.CityName,
+                                    sortType = SortType.Ascending
+                            ))
+                    1 -> adapter.setData(
                         DataManager.getCountryCities(
                             country = currentCountry,
                             sortBy = SortBy.Population
-                        )
-                    ) { cityModel ->
-                        log(cityModel.cityName)
-                    }
-                    2 -> CustomAdapter(
+                        ))
+                    2 -> adapter.setData(
                         DataManager.getCountryCities(
                             country = currentCountry,
                             sortBy = SortBy.Latitude
-                        )
-                    ) { cityModel ->
-                        log(cityModel.cityName)
-                    }
-                    else -> CustomAdapter(
+                        ))
+                    else -> adapter.setData(
                         DataManager.getCountryCities(
                             country = currentCountry,
                             sortBy = SortBy.Longitude
-                        )
-                    ) { cityModel ->
-                        log(cityModel.cityName)
-                    }
+                        ))
                 }
             }
             btnGoToMap.setOnClickListener {
@@ -227,23 +217,17 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             countryCaptail.text = DataManager.getCapitalCity(country)?.cityName
             iso2.text = DataManager.getIso2ByCountry(country)
             iso3.text = DataManager.getIso3ByCountry(country)
-            listCity.adapter = CustomAdapter(
-                DataManager.getCountryCities(
-                    country = currentCountry,
-                    sortBy = SortBy.CityName,
-                    sortType = SortType.Ascending
-                )
+            adapter= CustomAdapter(
+                    DataManager.getCountryCities(
+                            country = currentCountry,
+                            sortBy = SortBy.CityName,
+                            sortType = SortType.Ascending
+                    )
             ) { cityModel ->
-                log(cityModel.cityName)
+                onItemClicked(cityModel)
             }
-
-
+            listCity.adapter =adapter
             countryChart.setPieChart(country)
-            countryPopulation.text=DataManager.getTotalCountryPopulation(country).toString()
-            countryCaptail.text= DataManager.getCapitalCity(country)?.cityName
-            iso2.text=DataManager.getIso2ByCountry(country)
-            iso3.text=DataManager.getIso3ByCountry(country)
-            listCity.adapter=CustomAdapter(DataManager.getCountryCities(country = currentCountry, sortBy = SortBy.CityName, sortType = SortType.Ascending)){ cityModel -> log(cityModel.cityName) }
         }
 
     }
@@ -263,5 +247,20 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
                 action(position)
             }
         }
+    }
+
+     private fun onItemClicked(city: City) {
+         AlertDialogBinding.bind(View.inflate(context,R.layout.alert_dialog,null)).apply {
+             populationCity.text=city.population.toString()
+             latCity.text=city.latitude.toString()
+             longCity.text=city.longitude.toString()
+             nameCity.text=city.cityName
+             iso2City.text=city.iso2
+             iso3City.text=city.iso3
+             context?.let { AlertDialog.Builder(it).setView(root) }?.create()?.apply {
+                 show()
+                 window?.setLayout(740,685)
+             }
+         }
     }
 }
