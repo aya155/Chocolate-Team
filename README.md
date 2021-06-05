@@ -1,13 +1,14 @@
-# WorldFacts-App
+# Chocolate-App
+## Chocolate-App is a WorldFacts-App built by Chocolate-Team
 
-### It is an app for learning purposes to how deal with CSV files in android using kotlin and gets info from it.
+### It is an app for learning purpose to how deal with CSV files in android using kotlin and gets info from it.
 ### This app is to discover information about the Countries in the World such as the population, Cities, Geographic Coordinate, ...etc.
 
-#### Below app screen shots 😊
+### Below video and screenshots that shows its interfaces and functionality 😊
 <br/>
 <br/>
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/aya155/Chocolate-Team/blob/Develope/Screenshots/app.gif" width="200" height="400" />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/aya155/Chocolate-Team/blob/Develope/Screenshots/app.gif" width="200" height="400" />
 
 <br/>
 
