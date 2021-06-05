@@ -2,7 +2,6 @@ package com.aya.chocolateteam.ui.fragments
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
@@ -16,15 +15,15 @@ import com.aya.chocolateteam.data.domain.SortBy
 import com.aya.chocolateteam.data.domain.SortType
 import com.aya.chocolateteam.databinding.AlertDialogBinding
 import com.aya.chocolateteam.databinding.FragmentCBinding
-import com.aya.chocolateteam.ui.adapters.CustomAdapter
+import com.aya.chocolateteam.ui.adapters.CitiesAdapter
 import com.aya.chocolateteam.util.Constants
 import kotlinx.android.synthetic.main.fragment_c.*
 
 
-class FragmentC : BaseFragment<FragmentCBinding>(){
+class FragmentC : BaseFragment<FragmentCBinding>() {
     override val LOG_TAG: String = "FRAGMENT_C"
     lateinit var currentCountry: Country
-    lateinit var adapter: CustomAdapter
+    lateinit var adapter: CitiesAdapter
     private val errorViews = arrayListOf<View?>()
     private val cityViews = arrayListOf<View?>()
     private val countryViews = arrayListOf<View?>()
@@ -47,15 +46,18 @@ class FragmentC : BaseFragment<FragmentCBinding>(){
 
     private fun initialViews() {
         binding?.run {
+
             searchViews.apply {
                 add(mainText)
                 add(subtext)
                 add(search_photo)
             }
+
             errorViews.apply {
                 add(errorPhoto)
                 add(errorText)
             }
+
             cityViews.apply {
                 add(cardInfo)
                 add(photo_city)
@@ -70,6 +72,7 @@ class FragmentC : BaseFragment<FragmentCBinding>(){
                 add(vCityPopulation)
                 add(cityPopulation)
             }
+
             countryViews.apply {
                 add(cardInfo)
                 add(country_chart)
@@ -91,6 +94,7 @@ class FragmentC : BaseFragment<FragmentCBinding>(){
 
         binding!!.apply {
             search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
                 //click search icon in keyboard
                 override fun onQueryTextSubmit(query: String) = search(search.query.toString())
 
@@ -107,49 +111,60 @@ class FragmentC : BaseFragment<FragmentCBinding>(){
                     return false
                 }
             })
+
             cityCountry.setOnClickListener {
                 searchCountry((it as TextView).text.toString())
                 search.setQuery(it.text.toString(), false)
             }
+
             countryCaptail.setOnClickListener {
                 searchCity((it as TextView).text.toString())
                 search.setQuery(it.text.toString(), false)
             }
+
+            //Select type of search by spinner
             spinnerFilter.selected {
                 search.queryHint = when (it) {
-                    0 -> "search city ..... "
-                    1 -> "search country ..... "
-                    else -> "search long ,lat ..... "
+                    0 -> "Type city Name"
+                    1 -> "Type Country Name"
+                    else -> "Type city long & lat"
                 }
             }
+
+            //Select sort type
             sortBySpinner.selected {
                 when (it) {
                     0 -> adapter.setData(
-                            DataManager.getCountryCities(
-                                    country = currentCountry,
-                                    sortBy = SortBy.CityName,
-                                    sortType = SortType.Ascending
-                            ))
+                        DataManager.getCountryCities(
+                            country = currentCountry,
+                            sortBy = SortBy.CityName,
+                            sortType = SortType.Ascending
+                        )
+                    )
                     1 -> adapter.setData(
                         DataManager.getCountryCities(
                             country = currentCountry,
                             sortBy = SortBy.Population
-                        ))
+                        )
+                    )
                     2 -> adapter.setData(
                         DataManager.getCountryCities(
                             country = currentCountry,
                             sortBy = SortBy.Latitude
-                        ))
+                        )
+                    )
                     else -> adapter.setData(
                         DataManager.getCountryCities(
                             country = currentCountry,
                             sortBy = SortBy.Longitude
-                        ))
+                        )
+                    )
                 }
             }
             btnGoToMap.setOnClickListener {
                 activity?.apply {
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, FragmentB()).commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, FragmentB()).commit()
                     findViewById<View>(R.id.PageMap).performClick()
                 }
             }
@@ -168,9 +183,11 @@ class FragmentC : BaseFragment<FragmentCBinding>(){
         return false
     }
 
+    //When No result match search
     private fun errorSearch() {
         setVisibility(errorViews, searchViews, countryViews, cityViews)
     }
+
 
     private fun searchCountry(countryName: String) {
         val country = DataManager.getCountryByName(countryName)
@@ -182,8 +199,8 @@ class FragmentC : BaseFragment<FragmentCBinding>(){
         } else errorSearch()
     }
 
+    //Search city by long and lat
     private fun searchLocation(location: String) {
-
         val city: City? = DataManager.searchCityByLongLat(location.split(','))
         // if city already exiting  in csv file
         if (city != null) {
@@ -218,16 +235,16 @@ class FragmentC : BaseFragment<FragmentCBinding>(){
             countryCaptail.text = DataManager.getCapitalCity(country)?.cityName
             iso2.text = DataManager.getIso2ByCountry(country)
             iso3.text = DataManager.getIso3ByCountry(country)
-            adapter= CustomAdapter(
-                    DataManager.getCountryCities(
-                            country = currentCountry,
-                            sortBy = SortBy.CityName,
-                            sortType = SortType.Ascending
-                    )
+            adapter = CitiesAdapter(
+                DataManager.getCountryCities(
+                    country = currentCountry,
+                    sortBy = SortBy.CityName,
+                    sortType = SortType.Ascending
+                )
             ) { cityModel ->
                 onItemClicked(cityModel)
             }
-            listCity.adapter =adapter
+            listCity.adapter = adapter
             countryChart.setPieChart(country)
         }
 
@@ -250,19 +267,20 @@ class FragmentC : BaseFragment<FragmentCBinding>(){
         }
     }
 
-     private fun onItemClicked(city: City) {
-         AlertDialogBinding.bind(View.inflate(context,R.layout.alert_dialog,null)).apply {
-             populationCity.text=city.population.toString()
-             latCity.text=city.latitude.toString()
-             longCity.text=city.longitude.toString()
-             nameCity.text=city.cityName
-             iso2City.text=city.iso2
-             iso3City.text=city.iso3
-             context?.let { AlertDialog.Builder(it).setView(root) }?.create()?.apply {
-                 show()
-                 val factor: Float = root.context.resources.displayMetrics.density
-                 window?.setLayout((380*factor).toInt(),(380*factor).toInt())
-             }
-         }
+
+    private fun onItemClicked(city: City) {
+        AlertDialogBinding.bind(View.inflate(context, R.layout.alert_dialog, null)).apply {
+            populationCity.text = city.population.toString()
+            latCity.text = city.latitude.toString()
+            longCity.text = city.longitude.toString()
+            nameCity.text = city.cityName
+            iso2City.text = city.iso2
+            iso3City.text = city.iso3
+            context?.let { AlertDialog.Builder(it).setView(root) }?.create()?.apply {
+                show()
+                val factor: Float = root.context.resources.displayMetrics.density
+                window?.setLayout((380 * factor).toInt(), (380 * factor).toInt())
+            }
+        }
     }
 }

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
- xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
-    <item android:drawable="@color/background_color"/>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item android:drawable="@color/background_color" />
     <item>
-        <bitmap android:src="@drawable/logo"
-            android:gravity="center" />
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/logo" />
     </item>
 
-<item>
-    <bitmap android:src="@drawable/pic"
-        android:gravity="bottom"/>
-</item>
-
+    <item>
+        <bitmap
+            android:gravity="bottom"
+            android:src="@drawable/pic" />
+    </item>
 </layer-list>

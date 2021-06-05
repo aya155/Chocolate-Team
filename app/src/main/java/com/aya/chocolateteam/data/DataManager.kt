@@ -349,8 +349,6 @@ object DataManager {
         }
     }
 
-
-
     /**
      * this function return a list of cities name of a country
      * @param country a required country
@@ -359,7 +357,6 @@ object DataManager {
     fun getCountryCitiesName(country: Country): List<String> {
         return getCitiesName(country.cities)
     }
-
 
     /**
      * this function return a list of cities name of a country
@@ -414,7 +411,6 @@ object DataManager {
         }
     }
 
-
     /**
      * this function take a string represent lat of city
      * @param lat  string
@@ -425,7 +421,6 @@ object DataManager {
             it.latitude == lat.trim().toDoubleOrNull()
         }
     }
-
 
     /**
      * this function take a string represent population of city

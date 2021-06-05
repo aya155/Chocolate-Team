@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/background_color">
 
     <ImageView
         android:id="@+id/before_btn"
@@ -23,12 +22,12 @@
         android:id="@+id/country_name"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:lines="1"
-        android:ellipsize="end"
         android:layout_marginTop="6dp"
         android:elevation="@dimen/elevation"
+        android:ellipsize="end"
         android:fontFamily="@font/basic"
         android:gravity="center"
+        android:lines="1"
         android:padding="10dp"
         android:text="Iraq"
         android:textColor="@color/text_color"
@@ -57,11 +56,11 @@
         android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/view_color"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/view_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/country_name"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/country_name" />
 
     <ScrollView
         android:id="@+id/scroll3"
@@ -81,105 +80,106 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/country_name">
 
-            <HorizontalScrollView
-                android:id="@+id/HorizontalScrollChips"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scrollbars="none"
-                app:layout_constraintStart_toStartOf="parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/chipsContainer"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chip_group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/HorizontalScrollChips">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/ch1"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/basic"
-                    android:text="Baghdad"
-                    android:textColor="@color/text_color"
-                    app:chipBackgroundColor="@color/main_color" />
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/chipsContainer">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/ch2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/basic"
-                    android:text="Basra"
-                    android:textColor="@color/text_color"
-                    app:chipBackgroundColor="@color/main_color" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/ch1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/basic"
+                        android:text="Baghdad"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="@color/main_color" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/ch3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/basic"
-                    android:text="Anbar"
-                    android:textColor="@color/text_color"
-                    app:chipBackgroundColor="@color/main_color" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/ch2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/basic"
+                        android:text="Basra"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="@color/main_color" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/ch4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/basic"
-                    android:text="Hila"
-                    android:textColor="@color/text_color"
-                    app:chipBackgroundColor="@color/main_color" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/ch3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/basic"
+                        android:text="Anbar"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="@color/main_color" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/ch5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/basic"
-                    android:text="Arbil"
-                    android:textColor="@color/text_color"
-                    app:chipBackgroundColor="@color/main_color" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/ch4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/basic"
+                        android:text="Hila"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="@color/main_color" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/ch6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/basic"
-                    android:text="Al-Nasirea"
-                    android:textColor="@color/text_color"
-                    app:chipBackgroundColor="@color/main_color" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/ch5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/basic"
+                        android:text="Arbil"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="@color/main_color" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/ch7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/basic"
-                    android:text="Al-Nasirea"
-                    android:textColor="@color/text_color"
-                    app:chipBackgroundColor="@color/main_color" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/ch6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/basic"
+                        android:text="Al-Nasirea"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="@color/main_color" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/ch8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/basic"
-                    android:text="Al-Nasirea"
-                    android:textColor="@color/text_color"
-                    app:chipBackgroundColor="@color/main_color" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/ch7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/basic"
+                        android:text="Al-Nasirea"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="@color/main_color" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/ch9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/basic"
-                    android:text="Al-Nasirea"
-                    android:textColor="@color/text_color"
-                    app:chipBackgroundColor="@color/main_color" />
-            </com.google.android.material.chip.ChipGroup>
-            </HorizontalScrollView>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/ch8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/basic"
+                        android:text="Al-Nasirea"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="@color/main_color" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/ch9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/basic"
+                        android:text="Al-Nasirea"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="@color/main_color" />
+                </com.google.android.material.chip.ChipGroup>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
@@ -188,7 +188,7 @@
                 android:background="@color/view_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/HorizontalScrollChips" />
+                app:layout_constraintTop_toBottomOf="@id/chipsContainer" />
 
             <HorizontalScrollView
                 android:id="@+id/HorizontalScroll"
@@ -237,8 +237,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text="@string/_33_521_452"
                                 android:fontFamily="@font/basic"
+                                android:text="@string/_33_521_452"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/normal_textsize"
                                 app:layout_constraintEnd_toEndOf="@+id/textView"
@@ -264,8 +264,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:text="@string/iso2_name"
                                 android:fontFamily="@font/basic"
+                                android:text="@string/iso2_name"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/normal_textsize"
                                 app:layout_constraintStart_toEndOf="@+id/textView5"
@@ -408,9 +408,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/populationCitiesChart"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/populationCitiesChart" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

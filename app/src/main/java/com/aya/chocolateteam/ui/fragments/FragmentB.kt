@@ -1,8 +1,6 @@
 package com.aya.chocolateteam.ui.fragments
 
 
-import android.content.Intent
-import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.Typeface
 import android.view.Gravity
@@ -17,7 +15,6 @@ import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.City
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.FragmentBBinding
-import com.aya.chocolateteam.ui.activities.SearchResultActivity
 import com.aya.chocolateteam.util.Constants
 import com.aya.chocolateteam.util.toFlagEmoji
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -29,7 +26,7 @@ import kotlinx.android.synthetic.main.fragment_b.*
 import kotlinx.android.synthetic.main.fragment_c.*
 
 
-class FragmentB : BaseFragment<FragmentBBinding>(),OnMapReadyCallback {
+class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
     override val LOG_TAG: String = "FRAGMENT_B"
     override val bindingInflater: (LayoutInflater) -> FragmentBBinding = FragmentBBinding::inflate
 
@@ -37,31 +34,24 @@ class FragmentB : BaseFragment<FragmentBBinding>(),OnMapReadyCallback {
     var position = LatLng(44.3125881, 31.9956919)
     var markerOptions = MarkerOptions().position(position)
     lateinit var marker: Marker
-
-
-//    private var gMap: GoogleMap? = null
     private lateinit var gMap: GoogleMap
 
     override fun setup() {
-//        Toast.makeText(activity, "setup", Toast.LENGTH_SHORT).show()
-        log("setup")
         mapInit()
     }
 
-    fun mapInit() {
 
-        val mapFragment = childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+    //Initialization of map
+    fun mapInit() {
+        val mapFragment =
+            childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
 
         with(mapFragment) {
             // Initialise the MapView
             onCreate(null)
+
             // Set the map ready callback to receive the GoogleMap object
             getMapAsync(this@FragmentB)
-//            this.getMapAsync {
-//                MapsInitializer.initialize(requireContext())
-//                setMapLocation(it)
-//            }
-
         }
     }
 
@@ -74,36 +64,18 @@ class FragmentB : BaseFragment<FragmentBBinding>(),OnMapReadyCallback {
 
 
     private fun setInitialLocation() {
-        if(Constants.cityMap!=null){
+        if (Constants.cityMap != null) {
             addCityToMap(Constants.cityMap!!)
-            Constants.cityMap=null
-        }else addCityToMap(DataManager.getCurrentCity())
+            Constants.cityMap = null
+        } else addCityToMap(DataManager.getCurrentCity())
 
     }
-    private fun setMapLocation(map: GoogleMap) {
-        log("setMapLocation")
-        with(map) {
-            moveCamera(CameraUpdateFactory.newLatLngZoom(position, 13f))
-            mapType = GoogleMap.MAP_TYPE_NORMAL
-            setOnMapClickListener {
-                if (::marker.isInitialized) {
-                    marker.remove()
-                }
-                markerOptions.position(it)
-                marker = addMarker(markerOptions)!!
-                log("Clicked on ")
-            }
-        }
-    }
 
-
-
+    //Show City info on map with custom drawable
     private fun addCityToMap(city: City) {
         log("addCityToMap")
         try {
-
-            gMap!!.clear()
-
+            gMap.clear()
             val latLng = LatLng(city.latitude, city.longitude)
             val cameraPosition = CameraPosition.Builder()
                 .target(latLng) // Sets the center of the map to Mountain View
@@ -112,15 +84,16 @@ class FragmentB : BaseFragment<FragmentBBinding>(),OnMapReadyCallback {
                 .tilt(30f) // Sets the tilt of the camera to 30 degrees
                 .build() // Creates a CameraPosition from the builder
 
-            gMap!!.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
-            gMap!!.addMarker(
+            gMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
+            gMap.addMarker(
                 MarkerOptions()
                     .position(latLng)
-                    .title("🏢 ${city.cityName}").snippet("${city.iso2.toFlagEmoji()} ${city.countryName} \n📊 ${city.population} \n ISO2: ${city.iso2} ")
-                    .icon( BitmapDescriptorFactory.fromResource(R.drawable.city))
+                    .title("🏢 ${city.cityName}")
+                    .snippet("${city.iso2.toFlagEmoji()} ${city.countryName} \n📊 ${city.population} \n ISO2: ${city.iso2} ")
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.city))
             )
 
-            gMap!!.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
+            gMap.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
                 override fun getInfoWindow(arg0: Marker): View? {
                     return null
                 }
@@ -153,21 +126,21 @@ class FragmentB : BaseFragment<FragmentBBinding>(),OnMapReadyCallback {
         binding!!.apply {
             search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 //click search icon in keyboard
-                override fun onQueryTextSubmit(query: String)=search(query)
-                override fun onQueryTextChange(newText: String?)= false
+                override fun onQueryTextSubmit(query: String) = search(query)
+                override fun onQueryTextChange(newText: String?) = false
             })
-
-            search.queryHint = "Search ..."
+            search.queryHint = "Looking for city, Type it's Name"
         }
     }
 
-    private fun search(cityName:String): Boolean {
+    private fun search(cityName: String): Boolean {
         binding?.apply {
             val city = DataManager.searchCityByName(cityName)
             // if city already exiting  in csv file
             if (city != null) {
                 addCityToMap(city)
-            }else{
+            } else {
+                Toast.makeText(requireContext(),"No result match your query",Toast.LENGTH_SHORT)
             }
         }
         return false

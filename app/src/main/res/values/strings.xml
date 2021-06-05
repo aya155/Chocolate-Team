@@ -2,16 +2,16 @@
     <string name="app_name">ChocolateTeam</string>
 
     <string-array name="filter">
-        <item >City</item>
-        <item >Country</item>
-        <item >Location</item>
+        <item>City</item>
+        <item>Country</item>
+        <item>Location</item>
     </string-array>
 
     <string-array name="city_list">
-        <item >By name</item>
-        <item >By population</item>
-        <item> By latitude</item>
-        <item> By longitude</item>
+        <item> Name</item>
+        <item> Population</item>
+        <item> Latitude</item>
+        <item> Longitude</item>
     </string-array>
 
     <string name="main_text">
@@ -40,18 +40,19 @@
     <string name="ISO3_Name">IQR</string>
     <string name="cities">cities</string>
     <string name="iso2_name">ISO2_Name</string>
+    <string name="sort_cities_by">Sort Cities By:  </string>
 
 
     <array name="chart_color">
-        <item >@color/color1</item>
-        <item >@color/color2</item>
-        <item >@color/color3</item>
-        <item >@color/color4</item>
-        <item >@color/color5</item>
-        <item >@color/color6</item>
-        <item >@color/color7</item>
-        <item >@color/color8</item>
-        <item >@color/color9</item>
+        <item>@color/color1</item>
+        <item>@color/color2</item>
+        <item>@color/color3</item>
+        <item>@color/color4</item>
+        <item>@color/color5</item>
+        <item>@color/color6</item>
+        <item>@color/color7</item>
+        <item>@color/color8</item>
+        <item>@color/color9</item>
     </array>
 
 

@@ -11,7 +11,6 @@ import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.data.domain.SortBy
 import com.aya.chocolateteam.databinding.FragmentABinding
 
-import com.github.aachartmodel.aainfographics.aachartcreator.AAChartType
 import com.google.android.material.chip.Chip
 
 class FragmentA : BaseFragment<FragmentABinding>() {
@@ -20,7 +19,7 @@ class FragmentA : BaseFragment<FragmentABinding>() {
 
     override fun setup() {
         // get  initial country
-        val country= DataManager.getCurrentCountry()
+        val country = DataManager.getCurrentCountry()
         bindLayout(country)
     }
 
@@ -42,26 +41,14 @@ class FragmentA : BaseFragment<FragmentABinding>() {
     override fun bindLayout(country: Country) {
         binding?.apply {
             countryName.text = country.name
-            val citiesToShow = DataManager.getCountryCities(country,SortBy.Population).take(5)
+            val citiesToShow = DataManager.getCountryRandomCities(country,10)
             populationCitiesChart.setBarChart(country)
-//            populationCitiesChart?.aa_drawChartWithChartModel(
-//                bindChart(
-//                    type = AAChartType.Bar,
-//                    title = country.name,
-//                    seriesArray = makeSeriesArray(
-//                        citiesToShow
-////                        country.cities.shuffled().filter { it.population != 0.0 }.take(5)
-//                    ).toTypedArray()
-//                )
-//            )
             showCitiesNames(DataManager.getCitiesName(citiesToShow))
-//            description.text="Population  : ${DataManager.getTotalCountryPopulation(country)} \nISO2  : ${DataManager.getIso2ByCountry(country)}     \nISO3  : ${DataManager.getIso3ByCountry(country)}   \n"
-//            listItem.adapter= ArrayAdapter(context!!, android.R.layout.simple_list_item_1,DataManager.getCountryCitiesName(country))
         }
     }
 
+    //To Show cities on chips
     private fun showCitiesNames(citiesList: List<String>) {
-
         binding?.chipGroup?.removeAllViews()
         for (index in citiesList.indices) {
             val tagName = citiesList[index]
@@ -73,9 +60,6 @@ class FragmentA : BaseFragment<FragmentABinding>() {
 
             chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp)
             chip.text = tagName
-//            chip.isCloseIconEnabled= true
-//            chip.setCloseIconResource(R.drawable.ic_baseline_close_24)
-
             chip.isClickable = true
             chip.isFocusable = true
             chip.setOnClickListener(chipClickListener)
@@ -87,19 +71,12 @@ class FragmentA : BaseFragment<FragmentABinding>() {
                     )
                 )
             chip.setTextAppearanceResource(R.style.ChipTextStyle_Selected);
-//            //Added click listener on close icon to remove tag from ChipGroup
-//            chip.setOnCloseIconClickListener {
-//                Log.v("chip","clicked")
-//                tagList.remove(tagName)
-//                chipGroup.removeView(chip)
-//            }
-
             binding?.chipGroup?.addView(chip)
         }
     }
 
+    //On Clicking on a Chip
     private val chipClickListener = View.OnClickListener {
-
         log("CityClicked")
     }
 }

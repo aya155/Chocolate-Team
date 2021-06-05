@@ -9,10 +9,10 @@ import com.aya.chocolateteam.data.domain.City
 import com.aya.chocolateteam.databinding.ItemCityBinding
 
 
-class CustomAdapter(
+class CitiesAdapter(
     var cityList: List<City>,
     val itemClick: (City) -> Unit
-) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<CitiesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_city, parent, false),
@@ -31,11 +31,15 @@ class CustomAdapter(
         var cityTxt = this.binding.cityName
         fun bindViewHolder(cityItem: City) {
             cityTxt.text = cityItem.cityName
+
+            //On clicking item
             itemView.setOnClickListener { itemClick(cityItem) }
         }
     }
-    fun setData(newList:List<City>){
-        cityList=newList
+
+    //Show data on recyclerview
+    fun setData(newList: List<City>) {
+        cityList = newList
         notifyDataSetChanged()
     }
 }
