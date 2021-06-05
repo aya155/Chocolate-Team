@@ -82,7 +82,7 @@
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/search_photo"
                 style="@style/lotte"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginHorizontal="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/subtext"
@@ -91,20 +91,34 @@
                 android:id="@+id/error_photo"
                 style="@style/lotte"
                 android:visibility="gone"
-                android:layout_marginHorizontal="16dp"
+                android:layout_marginHorizontal="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/error_text"
                 app:lottie_rawRes="@raw/shopcashempty" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="88dp"
+                android:fontFamily="@font/basic"
+                android:text="Country According to Cities"
+                android:textColor="@color/text_color"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.github.mikephil.charting.charts.PieChart
-                    android:layout_margin="16dp"
+                    android:layout_margin="10dp"
                     android:id="@+id/country_chart"
                     android:layout_height="270dp"
                     android:layout_width="match_parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/card_info"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingClass" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/photo_city"
@@ -154,24 +168,28 @@
                         android:id="@+id/v_country_population"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
+                        android:fontFamily="@font/basic"
                         android:text="@string/total_population"/>
 
                     <TextView
                         android:id="@+id/country_population"
                         style="@style/textStyle"
                         android:text="@string/_22_333_455"
+                        android:fontFamily="@font/basic"
                         android:drawableStart="@drawable/ic_baseline_people_24"
                         android:textSize="20sp" />
                     <TextView
                         android:id="@+id/v_city_population"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
+                        android:fontFamily="@font/basic"
                         android:text="@string/Population"/>
 
                     <TextView
                         android:id="@+id/city_population"
                         style="@style/textStyle"
                         android:text="@string/_33_521_452"
+                        android:fontFamily="@font/basic"
                         android:drawableStart="@drawable/ic_baseline_people_24"
                         android:textSize="20sp" />
                     <TextView
@@ -184,6 +202,7 @@
                         android:id="@+id/country_captail"
                         style="@style/textStyle"
                         android:textSize="20sp"
+                        android:fontFamily="@font/basic"
                         android:text="@string/capital_name"
                         android:drawableStart="@drawable/ic_baseline_stars_24" />
                     <TextView
@@ -196,6 +215,7 @@
                         android:id="@+id/city_country"
                         style="@style/textStyle"
                         android:text="@string/Country_name"
+                        android:fontFamily="@font/basic"
                         android:textSize="25sp"
                         android:drawableStart="@drawable/ic_baseline_stars_24"/>
                     <TextView
@@ -208,6 +228,7 @@
                         android:id="@+id/iso2"
                         style="@style/textStyle"
                         android:text="@string/iso2_name"
+                        android:fontFamily="@font/basic"
                         android:drawableStart="@drawable/ic_baseline_language_24"
                         android:textSize="@dimen/large_textsize" />
 <!--                    <TextView-->
@@ -226,12 +247,14 @@
                         android:id="@+id/v_iso3"
                         style="@style/textStyle.large"
                         android:layout_marginTop="16dp"
+                        android:fontFamily="@font/basic"
                         android:text="@string/iso3"/>
 
                     <TextView
                         android:id="@+id/iso3"
                         style="@style/textStyle"
                         android:text="@string/ISO3_Name"
+                        android:fontFamily="@font/basic"
                         android:layout_marginBottom="16dp"
                         android:drawablePadding="7dp"
                         android:drawableStart="@drawable/ic_baseline_language_24"
@@ -258,8 +281,12 @@
                     android:orientation="vertical">
                     <TextView
                         android:id="@+id/cities_text"
-                        style="@style/textStyle.large"
-                        android:layout_marginTop="24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:textSize="30sp"
+                        android:fontFamily="@font/basic"
+                        android:layout_marginTop="16dp"
                         android:layout_gravity="center"
                         android:text="@string/cities" />
                     <androidx.appcompat.widget.AppCompatSpinner
@@ -267,13 +294,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:entries="@array/city_list"
-                        android:layout_margin="24dp"/>
+                        android:layout_margin="16dp"/>
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/list_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="16dp"
-                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginHorizontal="20dp"
                         android:clickable="true"
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

@@ -79,6 +79,7 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
                 add(vIso3)
                 add(iso2)
                 add(iso3)
+                add(text)
             }
         }
     }

@@ -17,4 +17,5 @@
     <color name="search_color">#353433</color>
     <color name="alert_color">#2C2A28</color>
     <color name="alert_text_color">#f1f2f6</color>
+    <color name="chip_color">#353433</color>
 </resources>
