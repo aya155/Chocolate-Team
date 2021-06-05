@@ -10,7 +10,7 @@ import com.aya.chocolateteam.databinding.ItemCityBinding
 
 
 class CustomAdapter(
-    val cityList: List<City>,
+    var cityList: List<City>,
     val itemClick: (City) -> Unit
 ) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
@@ -33,5 +33,9 @@ class CustomAdapter(
             cityTxt.text = cityItem.cityName
             itemView.setOnClickListener { itemClick(cityItem) }
         }
+    }
+    fun setData(newList:List<City>){
+        cityList=newList
+        notifyDataSetChanged()
     }
 }
