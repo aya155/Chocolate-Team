@@ -261,7 +261,7 @@ class FragmentC : BaseFragment<FragmentCBinding>(){
              context?.let { AlertDialog.Builder(it).setView(root) }?.create()?.apply {
                  show()
                  val factor: Float = root.context.resources.displayMetrics.density
-                 window?.setLayout((410*factor).toInt(),(380*factor).toInt())
+                 window?.setLayout((380*factor).toInt(),(380*factor).toInt())
              }
          }
     }

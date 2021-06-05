@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="16dp"
     android:background="@color/alert_color"
     android:layout_height="370dp">
 
@@ -36,8 +35,7 @@
         android:id="@+id/imageView2"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="70dp"
         android:src="@drawable/population"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,20 +46,20 @@
         android:id="@+id/population_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="110dp"
         android:fontFamily="@font/basic"
         android:text="@string/_33_521_452"
         android:textColor="@color/alert_text_color"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <View
         android:id="@+id/view5"
-        android:layout_width="375dp"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="60dp"
         android:background="@color/view_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +71,7 @@
         android:layout_height="25dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/longitude"
-        app:layout_constraintStart_toStartOf="@+id/view5"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/view5"
         app:tint="@color/alert_text_color" />
 
@@ -94,17 +92,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
-        android:layout_marginTop="4dp"
         android:fontFamily="@font/basic"
         android:text="@string/_377_975_km"
         android:textColor="@color/alert_text_color"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/population_city"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <View
         android:id="@+id/view6"
-        android:layout_width="375dp"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="60dp"
         android:background="@color/view_color"
@@ -118,7 +117,7 @@
         android:layout_height="25dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/latitude"
-        app:layout_constraintStart_toStartOf="@+id/view6"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/view6"
         app:tint="@color/alert_text_color" />
 
@@ -138,17 +137,19 @@
         android:id="@+id/lat_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
+        android:layout_marginStart="150dp"
         android:fontFamily="@font/basic"
         android:text="@string/_126_3"
         android:textColor="@color/alert_text_color"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/long_city"
+        app:layout_constraintHorizontal_bias="0.71"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <View
         android:id="@+id/view7"
-        android:layout_width="375dp"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="60dp"
         android:background="@color/view_color"
@@ -162,7 +163,7 @@
         android:layout_height="25dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/iso"
-        app:layout_constraintStart_toStartOf="@+id/view7"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/view7"
         app:tint="@color/alert_text_color" />
 
@@ -182,17 +183,19 @@
         android:id="@+id/iso2_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
+        android:layout_marginStart="190dp"
         android:fontFamily="@font/basic"
         android:text="@string/iso2_name"
         android:textColor="@color/alert_text_color"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/lat_city"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toTopOf="@+id/textView10" />
 
     <View
         android:id="@+id/view8"
-        android:layout_width="375dp"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="60dp"
         android:background="@color/view_color"
@@ -208,7 +211,7 @@
         android:src="@drawable/iso"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/view8"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/view8"
         app:tint="@color/alert_text_color" />
 
@@ -229,12 +232,13 @@
         android:id="@+id/iso3_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="210dp"
+        android:layout_marginStart="200dp"
         android:fontFamily="@font/basic"
         android:text="@string/ISO3_Name"
         android:textColor="@color/alert_text_color"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@id/imageView8"
+        app:layout_constraintEnd_toEndOf="@+id/iso2_city"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
 </androidx.constraintlayout.widget.ConstraintLayout>
