@@ -20,7 +20,7 @@ import com.aya.chocolateteam.util.Constants
 import kotlinx.android.synthetic.main.fragment_c.*
 
 
-class FragmentC : BaseFragment<FragmentCBinding>() {
+class SearchFragment : BaseFragment<FragmentCBinding>() {
     override val LOG_TAG: String = "FRAGMENT_C"
     lateinit var currentCountry: Country
     lateinit var adapter: CitiesAdapter
@@ -164,7 +164,7 @@ class FragmentC : BaseFragment<FragmentCBinding>() {
             btnGoToMap.setOnClickListener {
                 activity?.apply {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, FragmentB()).commit()
+                        .replace(R.id.fragment_container, MapFragment()).commit()
                     findViewById<View>(R.id.PageMap).performClick()
                 }
             }

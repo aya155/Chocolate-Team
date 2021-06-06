@@ -13,7 +13,7 @@ import com.aya.chocolateteam.databinding.FragmentABinding
 
 import com.google.android.material.chip.Chip
 
-class FragmentA : BaseFragment<FragmentABinding>() {
+class HomeFragment : BaseFragment<FragmentABinding>() {
     override val LOG_TAG: String = "FRAGMENT_A"
     override val bindingInflater: (LayoutInflater) -> FragmentABinding = FragmentABinding::inflate
 

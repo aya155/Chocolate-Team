@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.fragment_b.*
 import kotlinx.android.synthetic.main.fragment_c.*
 
 
-class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
+class MapFragment : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
     override val LOG_TAG: String = "FRAGMENT_B"
     override val bindingInflater: (LayoutInflater) -> FragmentBBinding = FragmentBBinding::inflate
 
@@ -51,7 +51,7 @@ class FragmentB : BaseFragment<FragmentBBinding>(), OnMapReadyCallback {
             onCreate(null)
 
             // Set the map ready callback to receive the GoogleMap object
-            getMapAsync(this@FragmentB)
+            getMapAsync(this@MapFragment)
         }
     }
 

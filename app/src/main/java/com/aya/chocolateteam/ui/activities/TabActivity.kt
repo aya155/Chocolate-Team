@@ -3,12 +3,12 @@ package com.aya.chocolateteam.ui.activities
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import com.aya.chocolateteam.R
-import com.aya.chocolateteam.ui.fragments.FragmentA
-import com.aya.chocolateteam.ui.fragments.FragmentC
+import com.aya.chocolateteam.ui.fragments.HomeFragment
+import com.aya.chocolateteam.ui.fragments.SearchFragment
 import com.aya.chocolateteam.data.DataManager
 import com.aya.chocolateteam.data.domain.Country
 import com.aya.chocolateteam.databinding.ActivityTabBinding
-import com.aya.chocolateteam.ui.fragments.FragmentB
+import com.aya.chocolateteam.ui.fragments.MapFragment
 import com.aya.chocolateteam.util.Constants
 import com.aya.chocolateteam.util.CsvParser
 import java.io.BufferedReader
@@ -26,7 +26,7 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
         initialColors()
         parseFile()
         //setTabs()
-        replaceFragment(FragmentA())
+        replaceFragment(HomeFragment())
     }
 
     private  fun initialColors() {
@@ -37,9 +37,9 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
     override fun addCallBack() {
         binding?.bottomNavigationView?.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.pageHome -> replaceFragment(FragmentA())
-                R.id.pageSearch -> replaceFragment(FragmentC())
-                R.id.PageMap -> replaceFragment(FragmentB())
+                R.id.pageHome -> replaceFragment(HomeFragment())
+                R.id.pageSearch -> replaceFragment(SearchFragment())
+                R.id.PageMap -> replaceFragment(MapFragment())
             }
             true
         }
